@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+
+// make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
     return (
@@ -13,6 +16,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div>Type this here</div>
       </div>
     );
   }
