@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux'
+import { login, register, like, newPost, deleteMessage } from './Redux/Actions'
 
 
 
@@ -9,17 +9,29 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div>Type this here</div>
-      </div>
+        suck my balls kyyyyyllle
+      </div >
     );
   }
 }
 
+
+
+const mapStateToProps = (state) => {
+  return { messages: state.messages }
+}
+
+function mapDispatchToProps(dispatch) {
+  return ({
+    login: () => { dispatch(login()) },
+    register: () => { dispatch(register()) },
+    newPost: () => { dispatch(newPost()) },
+    like: () => { dispatch(like()) },
+    deleteMessage: () => { dispatch(deleteMessage()) },
+  })
+}
+
+
+export const Connect = connect(mapStateToProps, mapDispatchToProps)(App)
 export default App;
+
