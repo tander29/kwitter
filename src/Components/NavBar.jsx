@@ -5,10 +5,26 @@ const NavBar = () => (
     <Menu>
         <Menu.Menu>
             <Menu.Item>
-                Something <img src={logo} alt="logo" />
+                Something 
                 </Menu.Item>
-
+        </Menu.Menu>
+        <Menu.Menu>
+            <Menu.Item>
+                Stuff
+            </Menu.Item>
+        </Menu.Menu>
+        <Menu.Menu>
+            <Menu.Item>
+                More Stuff
+            </Menu.Item>
+        </Menu.Menu>
+        <Menu.Menu>
+            <Menu.Item>
+                Mas Stuff
+            </Menu.Item>
         </Menu.Menu>
     </Menu>
 
 )
+
+export default NavBar;
