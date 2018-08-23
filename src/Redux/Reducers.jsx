@@ -9,7 +9,6 @@ export default function (state = initialState, action) {
         case LOGIN:
             return console.log("are we getting here?")
 
-
         case REGISTER:
             break;
 
