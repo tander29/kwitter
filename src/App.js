@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { login, register, like, newPost, deleteMessage } from './Redux/Actions'
-
+import { login, register, like, newPost, deleteMessage, getMessages } from './Redux/Actions'
+import Message from './Components/Message'
 
 
 // make skeleton leave header here, add footer, sections for each component
@@ -9,7 +9,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        suck my balls kyyyyyllle
+        <div>This is from APP</div>
+        <Message getMessages={this.props.getMessages}></Message>
       </div >
     );
   }
@@ -28,10 +29,11 @@ function mapDispatchToProps(dispatch) {
     newPost: () => { dispatch(newPost()) },
     like: () => { dispatch(like()) },
     deleteMessage: () => { dispatch(deleteMessage()) },
+    getMessages: () => { dispatch(getMessages()) },
   })
 }
 
 
-export const Connect = connect(mapStateToProps, mapDispatchToProps)(App)
-export default App;
+const Connect = connect(mapStateToProps, mapDispatchToProps)(App)
+export default Connect;
 

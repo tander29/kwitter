@@ -1,6 +1,8 @@
-import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE } from './Types'
+import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGES } from './Types'
 
-const initialState = { a: 'hi' }
+const initialState = {
+    messages: []
+}
 export default function (state = initialState, action) {
 
     switch (action.type) {
@@ -19,5 +21,10 @@ export default function (state = initialState, action) {
 
         case DELETE_MESSAGE:
             break;
+
+        case GET_MESSAGES:
+            return state;
+        default:
+            return state;
     }
 }

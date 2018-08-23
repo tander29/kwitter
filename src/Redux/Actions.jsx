@@ -1,8 +1,29 @@
-import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE } from './Types'
+import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGES } from './Types'
 
 // export const addTodo = (title, keyNumber) => { return { type: ADD_TODO, title, keyNumber } }
 
-export const login = (username, password) => { return { type: LOGIN, username, password } }
+export const getMessages = () => (dispatch) => {
+
+
+    fetch("https://kwitter-api.herokuapp.com/messages")
+        .then(response => response.json())
+        .then(messagesResponse => {
+            console.log(messagesResponse);
+            dispatch({
+                type: GET_MESSAGES, messages: messagesResponse.messages
+            })
+        })
+
+
+}
+
+
+
+
+
+export const login = (username, password) => {
+    return { type: LOGIN, username, password }
+}
 
 export const register = (username, password, displayName) => { return { type: REGISTER, username, password, displayName } }
 
