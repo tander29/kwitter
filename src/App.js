@@ -32,6 +32,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export const Connect = connect(mapStateToProps, mapDispatchToProps)(App)
-export default App;
+const Connect = connect(mapStateToProps, mapDispatchToProps)(App)
+export default Connect;
 

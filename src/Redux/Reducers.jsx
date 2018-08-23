@@ -1,12 +1,11 @@
 import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE } from './Types'
 
-const initialState = { a: 'hi' }
+const initialState = { messages: [] }
 export default function (state = initialState, action) {
 
     switch (action.type) {
         case LOGIN:
             return console.log("are we getting here?")
-
 
         case REGISTER:
             break;
