@@ -10,16 +10,18 @@ class Auth extends Component {
     
     render() {
         return (
-            <header className="authheader" >
-                <Link to='/login' >Login</Link>
-                <Link to='/register' >Register</Link>
-            </header>
-            <section className="authmain" >
-                <Switch>
-                    <Route exact path='/login' component={Login} />
-                    <Route exact path='/register' component={Register} />
-                </Switch>
-            </section>
+            <React.Fragment>
+                <header className="authheader" >
+                    <Link to='/login' >Login</Link>
+                    <Link to='/register' >Register</Link>
+                </header>
+                <section className="authmain" >
+                    <Switch>
+                        <Route exact path='/login' component={Login} />
+                        <Route exact path='/register' component={Register} />
+                    </Switch>
+                </section>
+            </React.Fragment>
         );
     }
 }
@@ -27,12 +29,14 @@ class Auth extends Component {
 class Login extends Component {
     render() {
         return (
-            <header className='loginheader' >Login</header>
-            <form className='loginform' >
-                <input className='username' placeholder='Username' type='text' name='username' />
-                <input className='password' placeholder='Password' type='password' name='password' />
-                <button className='submit' onClick={submitForm} >Submit</button>
-            </form>
+            <React.Fragment>
+                <header className='loginheader' >Login</header>
+                <form className='loginform' >
+                    <input className='username' placeholder='Username' type='text' name='username' />
+                    <input className='password' placeholder='Password' type='password' name='password' />
+                    <button className='submit' onClick={submitForm} >Submit</button>
+                </form>
+            </React.Fragment>
         );
     }
 }
@@ -40,13 +44,15 @@ class Login extends Component {
 class Register extends Component {
     render() {
         return (
-            <header className='registerheader' >Register</header>
-            <form className='registerform' >
-                <input className='displayName' placeholder='Display Name' type='text' name='displayName' />
-                <input className='username' placeholder='Username' type='text' name='username' />
-                <input className='password' placeholder='Password' type='password' name='password' />
-                <button className='submit' onClick={registerForm} >Submit</button>
-            </form>
+            <React.Fragment>
+                <header className='registerheader' >Register</header>
+                <form className='registerform' >
+                    <input className='displayName' placeholder='Display Name' type='text' name='displayName' />
+                    <input className='username' placeholder='Username' type='text' name='username' />
+                    <input className='password' placeholder='Password' type='password' name='password' />
+                    <button className='submit' onClick={registerForm} >Submit</button>
+                </form>
+            </React.Fragment>
         );
     }
 }
