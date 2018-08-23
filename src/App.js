@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { login, register, like, newPost, deleteMessage, getMessages } from './Redux/Actions'
+import { login, register, like, newPost, deleteMessage, getMessages, getMessageID, getLogout, getUser } from './Redux/Actions'
 import Message from './Components/Message'
 
 
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <div>This is from APP</div>
-        <Message getMessages={this.props.getMessages}></Message>
+        <Message getMessages={this.props.getMessages} getMessageID={this.props.getMessageID} user={this.props.getUser}></Message>
       </div >
     );
   }
@@ -30,6 +30,9 @@ function mapDispatchToProps(dispatch) {
     like: () => { dispatch(like()) },
     deleteMessage: () => { dispatch(deleteMessage()) },
     getMessages: () => { dispatch(getMessages()) },
+    getMessageID: () => { dispatch(getMessageID()) },
+    getLogout: () => { dispatch(getLogout()) },
+    getUser: () => { dispatch(getUser()) }
   })
 }
 
