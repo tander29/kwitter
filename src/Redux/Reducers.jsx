@@ -1,23 +1,33 @@
-import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE } from './Types'
+import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, MESSAGES} from './Types'
 
-const initialState = { a: 'hi' }
+let initialState = []
+
 export default function (state = initialState, action) {
 
     switch (action.type) {
-        case LOGIN:
-            return console.log("are we getting here?")
+
+        case MESSAGES:
+
+            return[...state, action.payload]
+            default:
+                return state
+
+        // case LOGIN:
+        //     return;
 
 
-        case REGISTER:
-            break;
+        // case REGISTER:
+        //     break;
 
-        case NEW_POST:
-            break;
+        // case NEW_POST:
+        //     break;
 
-        case LIKE:
-            break;
+        // case LIKE:
+        //     break;
 
-        case DELETE_MESSAGE:
-            break;
+        // case DELETE_MESSAGE:
+        //     break;
+
+
     }
 }
