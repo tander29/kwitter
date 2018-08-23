@@ -5,7 +5,7 @@ const NavBar = () => (
     <Menu>
         <Menu.Menu>
             <Menu.Item>
-                Something <img src={logo} alt="logo" />>
+                Something <img src={logo} alt="logo" />
                 </Menu.Item>
 
         </Menu.Menu>
