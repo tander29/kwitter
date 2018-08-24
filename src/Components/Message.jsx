@@ -5,11 +5,9 @@ export default class Message extends Component {
     test = () => {
         console.log("hi taylr")
     }
-
     render() {
 
         return (
-
 
             <article>
                 <div className="displayName">Displayname</div>
@@ -22,7 +20,7 @@ export default class Message extends Component {
                     <label>Label that Like button, or make it a button?</label>
                     <input type="checkbox" />
 
-                    <button onClick={this.props.getMessageID}>Delete this post if I am the user</button>
+                    <button onClick={this.props.getMessageID} >Delete this post if I am the user</button>
                 </footer>
             </article >
 

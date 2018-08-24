@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-
-
+import {Container} from 'semantic-ui-react'
+import Message from './Message.jsx'
 
 class Messageboard extends React.Component {
 
@@ -8,10 +8,10 @@ class Messageboard extends React.Component {
     render() {
         return(
          <React.Fragment>
-            <div className="wrapper">
-               
+            <Container>
+                <Message getMessages={this.props.getMessages} getMessageID={this.props.getMessageID} user={this.props.getUser}/>
                 
-            </div>
+            </Container>
          </React.Fragment>
         )
     }
