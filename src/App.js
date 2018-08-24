@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login, register, like, newPost, deleteMessage, getMessages, getMessageID, getLogout, getUser } from './Redux/Actions'
 import Message from './Components/Message'
+import { Register, Auth, Login } from './Components/Login.jsx'
 
 
 // make skeleton leave header here, add footer, sections for each component
@@ -11,6 +12,9 @@ class App extends Component {
       <div className="App">
         <div>This is from APP</div>
         <Message getMessages={this.props.getMessages} getMessageID={this.props.getMessageID} user={this.props.getUser}></Message>
+        <Register></Register>
+        <Auth></Auth>
+        <Login></Login>
       </div >
     );
   }
