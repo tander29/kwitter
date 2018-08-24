@@ -18,7 +18,7 @@ export const getMessages = () => (dispatch) => {
 
 export const getLogout = () => (dispatch) => {
 
-
+    //this is a comment to bypass a merge issue
     fetch("https://kwitter-api.herokuapp.com/auth/logout")
         .then(response => response.json())
         .then(messagesResponse => {

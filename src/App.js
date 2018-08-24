@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Messageboard getMessageID={this.props.getMessageID}/>
-        suck my balls kyyyyyllle
+       
       </div >
     );
   }
