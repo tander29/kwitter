@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Footer extends React.Component {
+class CustomFooter extends React.Component {
     render() {
        return (
           <div>
@@ -11,4 +11,4 @@ class Footer extends React.Component {
     }
  }
 
- export default Footer;
+ export default CustomFooter;
