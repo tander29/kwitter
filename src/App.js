@@ -35,7 +35,7 @@ import {
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return <Home post={this.props.post} />;
+    return <Main />;
   }
 }
 

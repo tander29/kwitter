@@ -3,6 +3,7 @@ import CustomFooter from "./CustomFooter";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../App.css";
+import Profile from "./Profile";
 import {
   login,
   register,
@@ -39,77 +40,42 @@ class Main extends Component {
             <NavBar />
           </Sticky>
           <Grid centered>
-            <Grid.Row columns={2}>
-              <Grid.Column>
+            <Grid.Row columns={3}>
+              <Grid.Column width={4}>
                 <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                    onClick={this.props.post}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
+                  <Profile />
                 </Card>
               </Grid.Column>
-              <Divider vertical />
-              <Grid.Column centered>
+
+              <Grid.Column centered width={9}>
                 <Container className="register" textAlign={"center"}>
-                  <Sticky>
-                    <Card centered>
-                      <Modal trigger={<Button>Login</Button>} closeIcon>
-                        <Login />
-                      </Modal>
-                      <Divider horizontal>Or</Divider>
-                      <Modal />
-                      <Modal trigger={<Button>Register</Button>} closeIcon>
-                        <Register />
-                      </Modal>
-                    </Card>
-                  </Sticky>
+                  <Card centered>
+                    <Message
+                      getMessages={this.props.getMessages}
+                      getMessageID={this.props.getMessageID}
+                      user={this.props.getUser}
+                      onClick={this.props.post}
+                    />
+                  </Card>
+                  <Card centered>
+                    <Message
+                      getMessages={this.props.getMessages}
+                      getMessageID={this.props.getMessageID}
+                      user={this.props.getUser}
+                    />
+                  </Card>
+                  <Card centered>
+                    <Message
+                      getMessages={this.props.getMessages}
+                      getMessageID={this.props.getMessageID}
+                      user={this.props.getUser}
+                    />
+                  </Card>
                 </Container>
               </Grid.Column>
-              <CustomFooter />
+              <Grid.Column width={3}>
+                <CustomFooter />
+              </Grid.Column>
             </Grid.Row>
           </Grid>
         </div>
