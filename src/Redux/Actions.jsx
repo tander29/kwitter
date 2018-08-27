@@ -68,7 +68,7 @@ export const newPost = () => (dispatch) => {
     const postRequestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': authKey },
-        body: JSON.stringify({ "text": 'this is test stuff' })
+        body: JSON.stringify({ "text": 'this is test stuff1' })
 
     }
 
