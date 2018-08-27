@@ -77,7 +77,7 @@ class App extends Component {
                     <Divider horizontal>Or</Divider>
                     <Modal />
                     <Modal trigger={<Button>Register</Button>} closeIcon>
-                      <Register />
+                      <Register test={this.props.register} />
                     </Modal>
                   </Card>
                   </Sticky>
@@ -98,10 +98,10 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: () => {
-      dispatch(login());
+    login: (username, password) => {
+      dispatch(login(username, password));
     },
-    register: () => {
+    register: (displayName, username, password) => {
       dispatch(register());
     },
     newPost: () => {

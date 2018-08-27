@@ -63,14 +63,14 @@ export const getUser = (number) => (dispatch) => {
 
 
 
-export const login = () => (dispatch) => {
+export const login = (username, password) => (dispatch) => {
    
    let authKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY'
    
     const postRequestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({ "username": "edwin", "password": "edwin" })
+        body: JSON.stringify({ "username": username, "password": password })
 
     }
     
@@ -86,7 +86,7 @@ export const login = () => (dispatch) => {
     //  return { type: LOGIN, username, password }
 }
 
-export const register = (username, password, displayName) => (dispatch) => { 
+export const register = (displayName, username, password) => (dispatch) => { 
     fetch('https://kwitter-api.herokuapp.com/users')
         .then(res => res.json())
         .then(data => {
