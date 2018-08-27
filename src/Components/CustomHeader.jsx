@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import { Header } from "semantic-ui-react";
 
 class CustomHeader extends React.Component {
-    render() {
-       return (
-          <div>
-             <h1>This is an amazing header</h1>
-          </div>
-       );
-    }
- }
+  render() {
+    return (
+      <div>
+        <header>Kwitter</header>
+      </div>
+    );
+  }
+}
 
- export default CustomHeader;
+export default CustomHeader;

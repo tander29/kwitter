@@ -1,0 +1,11 @@
+header {
+  color: green;
+  background-color: black;
+  height: 20vh;
+}
+
+.rightColumn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
