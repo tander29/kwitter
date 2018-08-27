@@ -29,12 +29,12 @@ import {
   Divider
 } from "semantic-ui-react";
 
-class Main extends Component {
+class Home extends Component {
   render() {
     return (
       <Container>
         <div className="App">
-          <CustomHeader />
+          This is home page. <CustomHeader />
           <Sticky>
             <NavBar />
           </Sticky>
@@ -47,27 +47,6 @@ class Main extends Component {
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                     onClick={this.props.post}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
                   />
                 </Card>
                 <Card centered>
@@ -118,4 +97,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default Home;

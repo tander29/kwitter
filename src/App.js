@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import Main from "./Components/Main";
+import Home from "./Components/Home";
 import {
   login,
   register,
@@ -17,7 +18,8 @@ import {
 } from "./Redux/Actions";
 import Message from "./Components/Message";
 import NavBar from "./Components/NavBar";
-import { Login, Register, Auth } from "./Components/Login";
+import { Login, Register, Auth } from "./Components/Login.jsx";
+
 import {
   Container,
   Header,
@@ -33,7 +35,7 @@ import {
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return <Main />;
+    return <Home post={this.props.post} />;
   }
 }
 

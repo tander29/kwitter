@@ -7,13 +7,13 @@ export default function (state = initialState, action) {
 
     switch (action.type) {
         case LOGIN:
-            return console.log("are we getting here?")
+            return state;
 
         case REGISTER:
-            break;
+            return state;
 
         case NEW_POST:
-            break;
+            return state;
 
         case LIKE:
             break;
