@@ -34,7 +34,7 @@ export class Login extends Component {
     return (
       <React.Fragment>
         <header className="loginheader">Login</header>
-        <form className="loginform">
+        
           <input
             className="username"
             placeholder="Username"
@@ -47,8 +47,8 @@ export class Login extends Component {
             type="password"
             name="password"
           />
-          <button className="submit" onClick={this.props.login} >Submit</button>
-        </form>
+          <button className="submit" onClick={this.props.test} >Submit</button>
+        
       </React.Fragment>
     );
   }

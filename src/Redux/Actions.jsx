@@ -75,15 +75,12 @@ export const login = () => (dispatch) => {
     }
     
     fetch('https://kwitter-api.herokuapp.com/auth/login', postRequestOptions)
-    console.log("hi kyle!")
         .then(res => res.json())
         .then(data => {
             console.log(data);
             dispatch({
                 type: LOGIN, 
-                username: data.username, 
-                password: data.password, 
-                token: data.token
+                data: data
             })
         })
     //  return { type: LOGIN, username, password }
