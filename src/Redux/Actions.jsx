@@ -62,6 +62,25 @@ export const getUser = (number) => (dispatch) => {
 }
 
 
+export const newPost = () => (dispatch) => {
+
+    let authKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY'
+    const postRequestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': authKey },
+        body: JSON.stringify({ "text": 'this is test stuff1' })
+
+    }
+
+    fetch('https://kwitter-api.herokuapp.com/messages', postRequestOptions)
+        .then(response => response.json())
+        .then(confirmation => {
+            console.log(confirmation);
+            dispatch({ type: NEW_POST, test: confirmation })
+        })
+    // return { type: NEW_POST, text, createdAt, userId } 
+
+}
 
 export const login = (username, password) => {
     return { type: LOGIN, username, password }
@@ -69,7 +88,6 @@ export const login = (username, password) => {
 
 export const register = (username, password, displayName) => { return { type: REGISTER, username, password, displayName } }
 
-export const newPost = (text, createdAt, userId) => { return { type: NEW_POST, text, createdAt, userId } }
 
 export const like = () => { return { type: LIKE, } }
 

@@ -45,41 +45,44 @@ class App extends Component {
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Card centered>
-                    <Message
-                      getMessages={this.props.getMessages}
-                      getMessageID={this.props.getMessageID}
-                      user={this.props.getUser}
-                    />
-                  </Card>
-                  <Card centered>
-                    <Message
-                      getMessages={this.props.getMessages}
-                      getMessageID={this.props.getMessageID}
-                      user={this.props.getUser}
-                    />
-                  </Card>
-                  <Card centered>
-                    <Message
-                      getMessages={this.props.getMessages}
-                      getMessageID={this.props.getMessageID}
-                      user={this.props.getUser}
-                    />
-                  </Card>
+                  <Message
+                    getMessages={this.props.getMessages}
+                    getMessageID={this.props.getMessageID}
+                    user={this.props.getUser}
+                    post={this.props.newPost}
+                  />
+                </Card>
+                <Card centered>
+                  <Message
+                    getMessages={this.props.getMessages}
+                    getMessageID={this.props.getMessageID}
+                    user={this.props.getUser}
+                    post={this.props.newPost}
+                  />
+                </Card>
+                <Card centered>
+                  <Message
+                    getMessages={this.props.getMessages}
+                    getMessageID={this.props.getMessageID}
+                    user={this.props.getUser}
+                    post={this.props.newPost}
+                  />
+                </Card>
               </Grid.Column>
               <Divider vertical />
               <Grid.Column centered verticalAlign="middle">
                 <Container className="register" textAlign={"center"}>
-                <Sticky>
-                  <Card centered>
-                    <Modal trigger={<Button>Login</Button>} closeIcon>
-                      <Login />
-                    </Modal>
-                    <Divider horizontal>Or</Divider>
-                    <Modal />
-                    <Modal trigger={<Button>Register</Button>} closeIcon>
-                      <Register />
-                    </Modal>
-                  </Card>
+                  <Sticky>
+                    <Card centered>
+                      <Modal trigger={<Button>Login</Button>} closeIcon>
+                        <Login />
+                      </Modal>
+                      <Divider horizontal>Or</Divider>
+                      <Modal />
+                      <Modal trigger={<Button>Register</Button>} closeIcon>
+                        <Register />
+                      </Modal>
+                    </Card>
                   </Sticky>
                 </Container>
               </Grid.Column>
