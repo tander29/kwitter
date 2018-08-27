@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
             return state;
 
         case REGISTER:
-            break;
+            return state;
 
         case NEW_POST:
             return state;

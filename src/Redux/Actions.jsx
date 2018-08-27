@@ -82,11 +82,40 @@ export const newPost = () => (dispatch) => {
 
 }
 
-export const login = (username, password) => {
-    return { type: LOGIN, username, password }
+export const login = () => (dispatch) => {
+   
+   let authKey = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY'
+   
+    const postRequestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ "username": "edwin", "password": "edwin" })
+
+    }
+    
+    fetch('https://kwitter-api.herokuapp.com/auth/login', postRequestOptions)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            dispatch({
+                type: LOGIN, 
+                data: data
+            })
+        })
+    //  return { type: LOGIN, username, password }
 }
 
-export const register = (username, password, displayName) => { return { type: REGISTER, username, password, displayName } }
+export const register = (username, password, displayName) => (dispatch) => { 
+    fetch('https://kwitter-api.herokuapp.com/users')
+        .then(res => res.json())
+        .then(data => {
+            console.log("hey dog register this shit");
+            dispatch({
+                type: REGISTER, username, password, displayName
+            })
+        })
+    // return { type: REGISTER, username, password, displayName } 
+}
 
 
 export const like = () => { return { type: LIKE, } }

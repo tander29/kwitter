@@ -17,7 +17,7 @@ import {
 
 import Message from "./Components/Message";
 import NavBar from "./Components/NavBar";
-import { Login, Register, Auth } from "./Components/Login";
+import { Login, Register, Auth } from "./Components/Login.jsx";
 
 import {
   Container,
@@ -72,17 +72,17 @@ class App extends Component {
               <Divider vertical />
               <Grid.Column centered verticalAlign="middle">
                 <Container className="register" textAlign={"center"}>
-                  <Sticky>
-                    <Card centered>
-                      <Modal trigger={<Button>Login</Button>} closeIcon>
-                        <Login />
-                      </Modal>
-                      <Divider horizontal>Or</Divider>
-                      <Modal />
-                      <Modal trigger={<Button>Register</Button>} closeIcon>
-                        <Register />
-                      </Modal>
-                    </Card>
+                <Sticky>
+                  <Card centered>
+                    <Modal trigger={<Button>Login</Button>} closeIcon>
+                      <Login test={this.props.login}/>
+                    </Modal>
+                    <Divider horizontal>Or</Divider>
+                    <Modal />
+                    <Modal trigger={<Button>Register</Button>} closeIcon>
+                      <Register />
+                    </Modal>
+                  </Card>
                   </Sticky>
                 </Container>
               </Grid.Column>
