@@ -13,7 +13,7 @@ export default function (state = initialState, action) {
             return state;
 
         case NEW_POST:
-            break;
+            return state;
 
         case LIKE:
             break;
