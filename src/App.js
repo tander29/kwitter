@@ -32,6 +32,7 @@ class App extends Component {
           <Message
             getMessages={this.props.getMessages}
             getMessageID={this.props.getMessageID}
+            post={this.props.newPost}
             user={this.props.getUser}
           />
           <Register></Register>
