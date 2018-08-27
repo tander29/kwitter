@@ -5,14 +5,8 @@ export default class Message extends Component {
     test = () => {
         console.log("hi taylr")
     }
-
     render() {
-
-
-
         return (
-
-
             <article>
                 <div className="displayName">Displayname</div>
                 <div className="message">Text from the fetch backend will go here</div>

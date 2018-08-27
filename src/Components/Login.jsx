@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { login, register, like, newPost, deleteMessage } from './Redux/Actions'
+
+import { login, register, like, newPost, deleteMessage } from '../Redux/Actions'
 import { Switch, Route, Link } from 'react-router-dom'
 
-class Auth extends Component {
+export class Auth extends Component {
     state = {
         isLoggedIn: false
     }
@@ -26,7 +27,7 @@ class Auth extends Component {
     }
 }
 
-class Login extends Component {
+export class Login extends Component {
     render() {
         return (
             <React.Fragment>
@@ -34,14 +35,14 @@ class Login extends Component {
                 <form className='loginform' >
                     <input className='username' placeholder='Username' type='text' name='username' />
                     <input className='password' placeholder='Password' type='password' name='password' />
-                    <button className='submit' onClick={submitForm} >Submit</button>
+                    <button className='submit'  >Submit</button>
                 </form>
             </React.Fragment>
         );
     }
 }
 
-class Register extends Component {
+export class Register extends Component {
     render() {
         return (
             <React.Fragment>
@@ -50,9 +51,10 @@ class Register extends Component {
                     <input className='displayName' placeholder='Display Name' type='text' name='displayName' />
                     <input className='username' placeholder='Username' type='text' name='username' />
                     <input className='password' placeholder='Password' type='password' name='password' />
-                    <button className='submit' onClick={registerForm} >Submit</button>
+                    <button className='submit'  >Submit</button>
                 </form>
             </React.Fragment>
         );
     }
 }
+
