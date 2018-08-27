@@ -4,32 +4,12 @@ import {
   login,
   register
 } from "../Redux/Actions.jsx";
-import { Switch, Route, Link } from "react-router-dom";
-
-export class Auth extends Component {
-  state = {
-    isLoggedIn: false
-  };
-
-  render() {
-    return (
-      <React.Fragment>
-        <header className="authheader">
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </header>
-        <section className="authmain">
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-          </Switch>
-        </section>
-      </React.Fragment>
-    );
-  }
-}
+import { Switch, Route, Link } from "react-router";
 
 export class Login extends Component {
+  state = {
+    isLoggedIn: true 
+  }
   render() {
     return (
       <React.Fragment>

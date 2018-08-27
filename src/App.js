@@ -1,41 +1,19 @@
-import CustomHeader from "./Components/CustomHeader";
-import CustomFooter from "./Components/CustomFooter";
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import "./App.css";
-import Main from "./Components/Main";
-import Home from "./Components/Home";
-import {
-  login,
-  register,
-  like,
-  newPost,
-  deleteMessage,
-  getMessages,
-  getMessageID,
-  getLogout,
-  getUser
-} from "./Redux/Actions";
-import Message from "./Components/Message";
-import NavBar from "./Components/NavBar";
-import { Login, Register, Auth } from "./Components/Login.jsx";
-
-import {
-  Container,
-  Header,
-  List,
-  Sticky,
-  Modal,
-  Button,
-  Grid,
-  Card,
-  Divider
-} from "semantic-ui-react";
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { login, register, like, newPost, deleteMessage, getMessages, getMessageID, getLogout, getUser } from './Redux/Actions'
+import Messageboard from './Components/Messageboard.jsx'
+import Login from './Components/Login.jsx'
 
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return <Home post={this.props.post} />;
+    return (
+      <div className="App">
+        <div>This is from APP</div>
+        <Login/>
+        <Messageboard/>
+      </div >
+    );
   }
 }
 
