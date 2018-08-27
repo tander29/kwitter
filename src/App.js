@@ -16,7 +16,7 @@ import {
 
 import Message from "./Components/Message";
 import NavBar from "./Components/NavBar";
-import { Login, Register, Auth } from "./Components/Login";
+import { Login, Register, Auth } from "./Components/Login.jsx";
 
 import { Container, Header } from "semantic-ui-react";
 
@@ -36,7 +36,7 @@ class App extends Component {
           />
           <Register></Register>
           <Auth></Auth>
-          <Login></Login>
+          <Login login={this.props.login}></Login>
           <CustomFooter />
 
         </div>

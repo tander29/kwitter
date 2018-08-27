@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   login,
-  register,
-  like,
-  newPost,
-  deleteMessage
-} from "../Redux/Actions";
+  register
+} from "../Redux/Actions.jsx";
 import { Switch, Route, Link } from "react-router-dom";
 
 export class Auth extends Component {
@@ -50,7 +47,7 @@ export class Login extends Component {
             type="password"
             name="password"
           />
-          <button className="submit">Submit</button>
+          <button className="submit" onClick={this.props.login} >Submit</button>
         </form>
       </React.Fragment>
     );
@@ -81,7 +78,7 @@ export class Register extends Component {
             type="password"
             name="password"
           />
-          <button className="submit">Submit</button>
+          <button className="submit" onClick={this.props.register}>Submit</button>
         </form>
       </React.Fragment>
     );
