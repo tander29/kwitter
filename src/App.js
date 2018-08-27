@@ -3,6 +3,8 @@ import CustomFooter from "./Components/CustomFooter";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
+import Main from "./Components/Main";
+import Home from "./Components/Home";
 import {
   login,
   register,
@@ -14,7 +16,6 @@ import {
   getLogout,
   getUser
 } from "./Redux/Actions";
-
 import Message from "./Components/Message";
 import NavBar from "./Components/NavBar";
 import { Login, Register, Auth } from "./Components/Login.jsx";
@@ -34,64 +35,7 @@ import {
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return (
-      <Container>
-        <div className="App">
-          <CustomHeader />
-          <Sticky>
-            <NavBar />
-          </Sticky>
-          <Grid centered>
-            <Grid.Row columns={2}>
-              <Grid.Column>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                    post={this.props.newPost}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                    post={this.props.newPost}
-                  />
-                </Card>
-                <Card centered>
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                    post={this.props.newPost}
-                  />
-                </Card>
-              </Grid.Column>
-              <Divider vertical />
-              <Grid.Column centered verticalAlign="middle">
-                <Container className="register" textAlign={"center"}>
-                <Sticky>
-                  <Card centered>
-                    <Modal trigger={<Button>Login</Button>} closeIcon>
-                      <Login test={this.props.login}/>
-                    </Modal>
-                    <Divider horizontal>Or</Divider>
-                    <Modal />
-                    <Modal trigger={<Button>Register</Button>} closeIcon>
-                      <Register />
-                    </Modal>
-                  </Card>
-                  </Sticky>
-                </Container>
-              </Grid.Column>
-              <CustomFooter />
-            </Grid.Row>
-          </Grid>
-        </div>
-      </Container>
-    );
+    return <Home post={this.props.post} />;
   }
 }
 
