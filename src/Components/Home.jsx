@@ -36,42 +36,40 @@ class Home extends Component {
     return (
       <Container>
         <div className="App">
-          This is home page. <CustomHeader />
+          This is home page. 
+          <CustomHeader />
           <Sticky>
             <NavBar/>
           </Sticky>
           <Grid centered>
             <Grid.Row columns={2}>
               <Grid.Column>
-                <Card centered>
+                
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                     onClick={this.props.post}
                   />
-                </Card>
-                <Card centered>
+                
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                   />
-                </Card>
-                <Card centered>
+               
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                   />
-                </Card>
-                <Card centered>
+                
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                   />
-                </Card>
+                
               </Grid.Column>
               <Divider vertical />
               <Grid.Column centered>
