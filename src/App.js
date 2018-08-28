@@ -7,13 +7,7 @@ import Login from './Components/Login.jsx'
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <div>This is from APP</div>
-        <Login/>
-        <Messageboard/>
-      </div >
-    );
+    return <Main />;
   }
 }
 
@@ -23,10 +17,10 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: () => {
-      dispatch(login());
+    login: (username, password) => {
+      dispatch(login(username, password));
     },
-    register: () => {
+    register: (displayName, username, password) => {
       dispatch(register());
     },
     newPost: () => {

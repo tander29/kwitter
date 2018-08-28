@@ -34,42 +34,40 @@ class Home extends Component {
     return (
       <Container>
         <div className="App">
-          This is home page. <CustomHeader />
+          This is home page. 
+          <CustomHeader />
           <Sticky>
             <NavBar />
           </Sticky>
           <Grid centered>
             <Grid.Row columns={2}>
               <Grid.Column>
-                <Card centered>
+                
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                     onClick={this.props.post}
                   />
-                </Card>
-                <Card centered>
+                
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                   />
-                </Card>
-                <Card centered>
+               
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                   />
-                </Card>
-                <Card centered>
+                
                   <Message
                     getMessages={this.props.getMessages}
                     getMessageID={this.props.getMessageID}
                     user={this.props.getUser}
                   />
-                </Card>
+                
               </Grid.Column>
               <Divider vertical />
               <Grid.Column centered>
@@ -77,12 +75,12 @@ class Home extends Component {
                   <Sticky>
                     <Card centered>
                       <Modal trigger={<Button>Login</Button>} closeIcon>
-                        <Login />
+                        <Login test={this.props.login} />
                       </Modal>
                       <Divider horizontal>Or</Divider>
                       <Modal />
                       <Modal trigger={<Button>Register</Button>} closeIcon>
-                        <Register />
+                        <Register test={this.props.register} />
                       </Modal>
                     </Card>
                   </Sticky>

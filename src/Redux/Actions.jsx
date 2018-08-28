@@ -83,14 +83,14 @@ export const newPost = () => dispatch => {
   // return { type: NEW_POST, text, createdAt, userId }
 };
 
-export const login = () => dispatch => {
+export const login = (username, password) => dispatch => {
   let authKey =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY";
 
   const postRequestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username: "edwin", password: "edwin" })
+    body: JSON.stringify({ username: username, password: password })
   };
 
   fetch("https://kwitter-api.herokuapp.com/auth/login", postRequestOptions)
@@ -102,22 +102,26 @@ export const login = () => dispatch => {
         data: data
       });
     });
-  //  return { type: LOGIN, username, password }
 };
 
-export const register = (username, password, displayName) => dispatch => {
-  fetch("https://kwitter-api.herokuapp.com/users")
+export const register = (displayName, username, password) => dispatch => {
+  const postRequestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ displayName: displayName, username: username, password: password })
+  }
+  
+  fetch("https://kwitter-api.herokuapp.com/users", postRequestOptions)
     .then(res => res.json())
     .then(data => {
       console.log("hey dog register this shit");
       dispatch({
         type: REGISTER,
+        displayName,
         username,
-        password,
-        displayName
+        password
       });
     });
-  // return { type: REGISTER, username, password, displayName }
 };
 
 export const like = () => {
