@@ -6,7 +6,8 @@ import {
   DELETE_MESSAGE,
   GET_MESSAGE_ID,
   GET_LOGOUT,
-  GET_USER
+  GET_USER,
+  SET_ROUTE
 } from "./Types";
 const messagesAPI = "https://kwitter-api.herokuapp.com/messages";
 
@@ -119,6 +120,13 @@ export const register = (displayName, username, password) => dispatch => {
     });
   // return { type: REGISTER, username, password, displayName }
 };
+
+export const setRoute = (name) => dispatch => {
+    return {
+      type: SET_ROUTE,
+      name,
+    }
+} 
 
 export const like = () => {
   return { type: LIKE };

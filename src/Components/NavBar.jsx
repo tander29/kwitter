@@ -1,5 +1,8 @@
 import React from "react";
 import { Menu, Input, TextArea } from "semantic-ui-react";
+import FilterLink from '../containers/FilterLink'
+import {Link} from 'react-router-dom'
+
 
 const NavBar = () => (
   <Menu>
@@ -13,7 +16,13 @@ const NavBar = () => (
       
         <TextArea placeholder="New Kweet"/>
       
-    
+    <Menu.Menu>
+        <Link
+        to={'/Main/'}
+        
+        >Main</Link>
+
+    </Menu.Menu>
     <Menu.Menu position="right">
       <Menu.Item name="logout" />
     </Menu.Menu>

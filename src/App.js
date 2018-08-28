@@ -35,7 +35,17 @@ import {
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return <Main />;
+    return
+     <React.Fragment>
+    <header>
+        <Link to="/Home">Home</Link>
+        <Link to="Main">Main</Link>
+    </header>
+    <Main>
+      <Route exact path="/Home"></Route>
+      <Route exact path="/Main"></Route>
+    </Main>
+    </React.Fragment>
   }
 }
 
@@ -71,7 +81,8 @@ function mapDispatchToProps(dispatch) {
     },
     getUser: () => {
       dispatch(getUser());
-    }
+    },
+  
   };
 }
 

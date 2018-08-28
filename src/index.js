@@ -7,8 +7,7 @@ import { Provider } from 'react-redux'
 import store from './Redux/Store'
 
 const Index = () => (
-    <Root store={store}/>
-   
+    <Root store={store}/>   
 )
 
 

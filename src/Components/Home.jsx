@@ -29,6 +29,8 @@ import {
   Divider
 } from "semantic-ui-react";
 
+import {Link} from 'react-router-dom'
+
 class Home extends Component {
   render() {
     return (
@@ -36,7 +38,7 @@ class Home extends Component {
         <div className="App">
           This is home page. <CustomHeader />
           <Sticky>
-            <NavBar />
+            <NavBar/>
           </Sticky>
           <Grid centered>
             <Grid.Row columns={2}>
