@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './App'
 import Main from './Components/Main'
+import Home from './Components/Home'
+
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
