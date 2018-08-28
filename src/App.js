@@ -18,7 +18,7 @@ import {
 } from "./Redux/Actions";
 import Message from "./Components/Message";
 import NavBar from "./Components/NavBar";
-import { Login, Register, Auth } from "./Components/Login.jsx";
+import { Login, Register } from "./Components/Login";
 
 import {
   Container,
@@ -35,7 +35,7 @@ import {
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return <Main />;
+    return <Home />;
   }
 }
 

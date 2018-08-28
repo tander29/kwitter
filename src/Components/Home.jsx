@@ -16,7 +16,7 @@ import {
 } from "../Redux/Actions";
 import Message from "./Message";
 import NavBar from "./NavBar";
-import { Login, Register, Auth } from "./Login";
+import { Login, Register } from "./Login";
 import {
   Container,
   Header,
