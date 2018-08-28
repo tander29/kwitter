@@ -77,12 +77,12 @@ class Home extends Component {
                   <Sticky>
                     <Card centered>
                       <Modal trigger={<Button>Login</Button>} closeIcon>
-                        <Login />
+                        <Login test={this.props.login} />
                       </Modal>
                       <Divider horizontal>Or</Divider>
                       <Modal />
                       <Modal trigger={<Button>Register</Button>} closeIcon>
-                        <Register />
+                        <Register test={this.props.register} />
                       </Modal>
                     </Card>
                   </Sticky>
