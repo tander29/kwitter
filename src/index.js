@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Components/Home';
+import Main from './Components/Main'
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import store, {history} from './Redux/Store'
@@ -16,7 +17,7 @@ ReactDOM.render(
         <ConnectedRouter history={history}>
         <Switch>
           <Route exact path="/" render={() => (<Home/>)} />
-          <Route render={() => (<div>Miss</div>)} />
+          <Route exact path="/Main" render={() => (<Main/>)} />
         </Switch>
         </ConnectedRouter> 
     </Provider>,

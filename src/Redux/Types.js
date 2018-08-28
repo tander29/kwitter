@@ -7,5 +7,4 @@ export const GET_MESSAGES = 'GET_MESSAGES'
 export const GET_MESSAGE_ID = 'GET_MESSAGE_ID'
 export const GET_LOGOUT = 'GET_LOGOUT'
 export const GET_USER = 'GET_USER'
-export const SET_ROUTE = 'SET_ROUTE'
-
+export const MAIN_PAGE = 'MAIN_PAGE'
