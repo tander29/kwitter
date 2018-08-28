@@ -102,22 +102,26 @@ export const login = (username, password) => dispatch => {
         data: data
       });
     });
-  //  return { type: LOGIN, username, password }
 };
 
 export const register = (displayName, username, password) => dispatch => {
-  fetch("https://kwitter-api.herokuapp.com/users")
+  const postRequestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ displayName: displayName, username: username, password: password })
+  }
+  
+  fetch("https://kwitter-api.herokuapp.com/users", postRequestOptions)
     .then(res => res.json())
     .then(data => {
       console.log("hey dog register this shit");
       dispatch({
         type: REGISTER,
+        displayName,
         username,
-        password,
-        displayName
+        password
       });
     });
-  // return { type: REGISTER, username, password, displayName }
 };
 
 export const like = () => {
