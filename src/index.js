@@ -1,20 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Home from './Components/Home';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
-import store from './Redux/Store'
+import store, {history} from './Redux/Store'
 import {ConnectedRouter}   from 'connected-react-router'
-import history from './Redux/Store'
+import {Route, Switch} from 'react-router'
+
 
 
 
 //need to do router work here provider/store,index to be rendered
 ReactDOM.render(  
     <Provider store={store}>
-    <ConnectedRouter history={history}>
-    <p>s</p>
-    </ConnectedRouter> 
+        <ConnectedRouter history={history}>
+        <Switch>
+          <Route exact path="/" render={() => (<Home/>)} />
+          <Route render={() => (<div>Miss</div>)} />
+        </Switch>
+        </ConnectedRouter> 
     </Provider>,
      document.getElementById('root'));
 registerServiceWorker();
