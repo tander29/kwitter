@@ -84,8 +84,6 @@ export const newPost = () => dispatch => {
 };
 
 export const login = () => dispatch => {
-  let authKey =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY";
 
   const postRequestOptions = {
     method: "POST",

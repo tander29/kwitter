@@ -1,5 +1,3 @@
-import CustomHeader from "./Components/CustomHeader";
-import CustomFooter from "./Components/CustomFooter";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
@@ -16,26 +14,12 @@ import {
   getLogout,
   getUser
 } from "./Redux/Actions";
-import Message from "./Components/Message";
-import NavBar from "./Components/NavBar";
-import { Login, Register, Auth } from "./Components/Login.jsx";
 
-import {
-  Container,
-  Header,
-  List,
-  Sticky,
-  Modal,
-  Button,
-  Grid,
-  Card,
-  Divider
-} from "semantic-ui-react";
 
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return <Main />;
+    return <Home {...this.props} />;
   }
 }
 
