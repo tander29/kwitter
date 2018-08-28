@@ -31,7 +31,7 @@ import {
 
 import {Link} from 'react-router-dom'
 
-class Home extends Component {
+export class Home extends Component {
   render() {
     return (
       <Container>
@@ -77,7 +77,7 @@ class Home extends Component {
                   <Sticky>
                     <Card centered>
                       <Modal trigger={<Button>Login</Button>} closeIcon>
-                        <Login test={this.props.login} />
+                        <Login whatever={this.props.login} />
                       </Modal>
                       <Divider horizontal>Or</Divider>
                       <Modal />
@@ -97,4 +97,23 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return { messages: state.messages };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    login: (username, password) => {
+      dispatch(login(username, password));
+    },
+    register: (displayName, username, password) => {
+      dispatch(register(displayName, username, password));
+    },
+  };
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
+export default Connect;

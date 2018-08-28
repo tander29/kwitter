@@ -30,7 +30,7 @@ import {
   Divider
 } from "semantic-ui-react";
 
-class Main extends Component {
+export class Main extends Component {
   render() {
     return (
       <Container>
@@ -84,4 +84,44 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapStateToProps = state => {
+  return { messages: state.messages };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    login: (username, password) => {
+      dispatch(login(username, password));
+    },
+    register: (displayName, username, password) => {
+      dispatch(register());
+    },
+    newPost: () => {
+      dispatch(newPost());
+    },
+    like: () => {
+      dispatch(like());
+    },
+    deleteMessage: () => {
+      dispatch(deleteMessage());
+    },
+    getMessages: () => {
+      dispatch(getMessages());
+    },
+    getMessageID: () => {
+      dispatch(getMessageID());
+    },
+    getLogout: () => {
+      dispatch(getLogout());
+    },
+    getUser: () => {
+      dispatch(getUser());
+    }
+  };
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);
+export default Connect;

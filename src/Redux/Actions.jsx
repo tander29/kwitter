@@ -9,6 +9,7 @@ import {
   GET_USER,
   SET_ROUTE
 } from "./Types";
+import {push} from 'connected-react-router'
 const messagesAPI = "https://kwitter-api.herokuapp.com/messages";
 
 // export const addTodo = (title, keyNumber) => { return { type: ADD_TODO, title, keyNumber } }
@@ -102,6 +103,11 @@ export const login = (username, password) => dispatch => {
         type: LOGIN,
         data: data
       });
+      if(data.success === true) {
+        dispatch(push('/Main'))
+      } else {
+        alert("Wrong Username or Password")
+      }
     });
 };
 
@@ -125,13 +131,6 @@ export const register = (displayName, username, password) => dispatch => {
     });
 };
 
-export const setRoute = (name) => dispatch => {
-    return {
-      type: SET_ROUTE,
-      name,
-    }
-} 
-
 export const like = () => {
   return { type: LIKE };
 };
@@ -139,3 +138,9 @@ export const like = () => {
 export const deleteMessage = () => {
   return { type: DELETE_MESSAGE };
 };
+
+export const mainRoute =() => {
+  return
+
+
+}
