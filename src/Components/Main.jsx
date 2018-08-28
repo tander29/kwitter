@@ -35,10 +35,12 @@ class Main extends Component {
     return (
       <Container>
         <div className="App">
+        <Container className='headerNav' style={{marginBottom: '2vh'}}>
           <CustomHeader />
           <Sticky>
             <NavBar />
           </Sticky>
+          </Container>
           <Grid centered>
             <Grid.Row columns={3}>
               <Grid.Column width={4}>
@@ -49,28 +51,26 @@ class Main extends Component {
 
               <Grid.Column centered width={9}>
                 <Container className="register" textAlign={"center"}>
-                  <Card centered>
+                  
                     <Message
                       getMessages={this.props.getMessages}
                       getMessageID={this.props.getMessageID}
                       user={this.props.getUser}
                       onClick={this.props.post}
                     />
-                  </Card>
-                  <Card centered>
+                 
                     <Message
                       getMessages={this.props.getMessages}
                       getMessageID={this.props.getMessageID}
                       user={this.props.getUser}
                     />
-                  </Card>
-                  <Card centered>
+                
                     <Message
                       getMessages={this.props.getMessages}
                       getMessageID={this.props.getMessageID}
                       user={this.props.getUser}
                     />
-                  </Card>
+                  
                 </Container>
               </Grid.Column>
               <Grid.Column width={3}>

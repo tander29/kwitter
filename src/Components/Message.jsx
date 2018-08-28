@@ -1,24 +1,35 @@
 import React, { Component } from "react";
+import { Header, Icon, Button, Divider, Checkbox, Segment, Card } from "semantic-ui-react";
 
 export default class Message extends Component {
   render() {
     return (
-      <article>
-        <div className="displayName">Displayname</div>
-        <div className="message">Text from the fetch backend will go here</div>
+      <Card fluid centered>
+      <article style={{padding:'1vh'}}>
+        <div>
+          <Icon name="user secret" size="large" />
+          Displayname
+        </div>
+        
+          <div style={{float:'Left'}}>Likes</div>
+          <div style={{float:'Right'}}>TimeStamp</div>
+        
 
-        <div className="timePosted">Time posted here</div>
-        <div className="numberOfLikes">Likes: </div>
+        <Divider style={{marginBottom:'20px'}} />
+        <div className="message" style={{marginBottom:'20px'}}>re here</div>
+
+        
+        
 
         <footer>
-          <label>Label that Like button, or make it a button?</label>
-          <input type="checkbox" />
+          <Checkbox toggle style={{float:'left', marginLeft:'10px'}} />
 
-          <button onClick={this.props.post}>
-            Delete this post if I am the user
-          </button>
+          <Button onClick={this.props.post} floated="right" style={{marginRight: '10px', marginBottom: '10px'}}>
+            Delete
+          </Button>
         </footer>
       </article>
+      </Card>
     );
   }
 }
