@@ -36,11 +36,13 @@ export class Home extends Component {
     return (
       <Container>
         <div className="App">
-          This is home page. 
+          This is home page.
+          <Container className='headerNav' style={{marginBottom: '2vh'}}>
           <CustomHeader />
           <Sticky>
             <NavBar/>
           </Sticky>
+          </Container>
           <Grid centered>
             <Grid.Row columns={2}>
               <Grid.Column>
@@ -71,7 +73,7 @@ export class Home extends Component {
                   />
                 
               </Grid.Column>
-              <Divider vertical />
+              
               <Grid.Column centered>
                 <Container className="register" textAlign={"center"}>
                   <Sticky>

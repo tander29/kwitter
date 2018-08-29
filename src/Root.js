@@ -6,7 +6,10 @@ import App from './App'
 import Main from './Components/Main'
 import Home from './Components/Home'
 
+// <<<<<<< semantic-homepage
+// =======
 
+// >>>>>>> dev
 const Root = ({ store }) => (
  
       <div> 
