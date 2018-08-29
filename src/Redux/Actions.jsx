@@ -36,6 +36,10 @@ export const getLogout = () => dispatch => {
         message: messagesResponse.message,
         success: messagesResponse.success
       });
+      if(messagesResponse.success === true){
+      dispatch(push('/Home'))
+      alert(messagesResponse.message)
+      }
     });
 };
 
