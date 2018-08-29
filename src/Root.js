@@ -11,10 +11,10 @@ import Home from './Components/Home'
 
 // >>>>>>> dev
 const Root = ({ store }) => (
- 
-      <div> 
-       <Home/>
-       </div>
+
+  <div>
+    <Home />
+  </div>
 )
 
 Root.propTypes = {

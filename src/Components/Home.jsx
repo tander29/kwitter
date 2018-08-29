@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import "../App.css";
 import { login, register } from "../Redux/Actions";
 import Message from "./Message";
-import NavBar from "./NavBar";
 import { Login, Register } from "./Login";
 import {
   Container,
@@ -17,7 +16,7 @@ import {
   Divider
 } from "semantic-ui-react";
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export class Home extends Component {
   render() {
@@ -25,46 +24,43 @@ export class Home extends Component {
       <Container>
         <div className="App">
           This is home page.
-          <Container className='headerNav' style={{marginBottom: '2vh'}}>
-          <CustomHeader />
-          <Sticky>
-            <NavBar/>
-          </Sticky>
+          <Container className='headerNav' style={{ marginBottom: '2vh' }}>
+            <CustomHeader />
           </Container>
           <Grid centered>
             <Grid.Row columns={2}>
               <Grid.Column>
-                
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                    onClick={this.props.post}
-                  />
-                
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-               
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
-                
+
+                <Message
+                  getMessages={this.props.getMessages}
+                  getMessageID={this.props.getMessageID}
+                  user={this.props.getUser}
+                  onClick={this.props.post}
+                />
+
+                <Message
+                  getMessages={this.props.getMessages}
+                  getMessageID={this.props.getMessageID}
+                  user={this.props.getUser}
+                />
+
+                <Message
+                  getMessages={this.props.getMessages}
+                  getMessageID={this.props.getMessageID}
+                  user={this.props.getUser}
+                />
+
+                <Message
+                  getMessages={this.props.getMessages}
+                  getMessageID={this.props.getMessageID}
+                  user={this.props.getUser}
+                />
+
               </Grid.Column>
-              
-              <Grid.Column centered>
+
+              <Grid.Column>
                 <Container className="register" textAlign={"center"}>
-                  <Sticky>
+                  <Sticky offset={100}>
                     <Card centered>
                       <Modal trigger={<Button>Login</Button>} closeIcon>
                         <Login whatever={this.props.login} />
@@ -88,7 +84,7 @@ export class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  return { messages: state.messages };
+  return { messages: state.messages, profile: state.profile };
 };
 
 function mapDispatchToProps(dispatch) {
