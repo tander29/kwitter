@@ -17,75 +17,80 @@ import {
 } from "../Redux/Actions";
 import Message from "./Message";
 import NavBar from "./NavBar";
-import { Login, Register, Auth } from "./Login";
 import {
   Container,
-  Header,
-  List,
   Sticky,
-  Modal,
-  Button,
   Grid,
-  Card,
-  Divider
+  Card
 } from "semantic-ui-react";
 
 export class Main extends Component {
+
+  componentDidMount() {
+    console.log('I was triggered during componentDidMount', this.props.profile)
+  }
   render() {
     return (
       <Container>
         <div className="App">
-        <Container className='headerNav' style={{marginBottom: '2vh'}}>
-          <CustomHeader />
-          <Sticky>
-            <NavBar />
-          </Sticky>
+
+
+          < Container className='headerNav' style={{ marginBottom: '2vh' }}>
+            <CustomHeader />
+            <Sticky>
+              <NavBar />
+            </Sticky>
           </Container>
           <Grid centered>
             <Grid.Row columns={3}>
               <Grid.Column width={4}>
-                <Card centered>
-                  <Profile />
-                </Card>
+                <Sticky offset={75}>
+                  <Card centered>
+                    <Profile />
+                  </Card>
+                </Sticky>
               </Grid.Column>
 
-              <Grid.Column centered width={9}>
+              <Grid.Column width={9}>
                 <Container className="register" textAlign={"center"}>
-                  
-                    <Message
-                      getMessages={this.props.getMessages}
-                      getMessageID={this.props.getMessageID}
-                      user={this.props.getUser}
-                      onClick={this.props.post}
-                    />
-                 
-                    <Message
-                      getMessages={this.props.getMessages}
-                      getMessageID={this.props.getMessageID}
-                      user={this.props.getUser}
-                    />
-                
-                    <Message
-                      getMessages={this.props.getMessages}
-                      getMessageID={this.props.getMessageID}
-                      user={this.props.getUser}
-                    />
-                  
+
+                  <Message
+                    getMessages={this.props.getMessages}
+                    getMessageID={this.props.getMessageID}
+                    user={this.props.getUser}
+                    onClick={this.props.post}
+                  />
+
+                  <Message
+                    getMessages={this.props.getMessages}
+                    getMessageID={this.props.getMessageID}
+                    user={this.props.getUser}
+                  />
+
+                  <Message
+                    getMessages={this.props.getMessages}
+                    getMessageID={this.props.getMessageID}
+                    user={this.props.getUser}
+                  />
+
                 </Container>
               </Grid.Column>
               <Grid.Column width={3}>
-                <CustomFooter />
+                <Sticky offset={75}>
+                  <CustomFooter />
+                </Sticky>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </div>
-      </Container>
+      </Container >
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { messages: state.messages };
+
+  return { messages: state.messages, profile: state.profile };
 };
 
 function mapDispatchToProps(dispatch) {

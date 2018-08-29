@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Input, TextArea, Modal, Button } from "semantic-ui-react";
+import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
 
 
 const NavBar = () => (
