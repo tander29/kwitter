@@ -1,21 +1,82 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CustomHeader from "./Components/CustomHeader";
+import CustomFooter from "./Components/CustomFooter";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./App.css";
+import Main from "./Components/Main";
+import Home from "./Components/Home";
+import {
+  login,
+  register,
+  like,
+  newPost,
+  deleteMessage,
+  getMessages,
+  getMessageID,
+  getLogout,
+  getUser
+} from "./Redux/Actions";
+import Message from "./Components/Message";
+import NavBar from "./Components/NavBar";
+import { Login, Register } from "./Components/Login";
 
+import {
+  Container,
+  Header,
+  List,
+  Sticky,
+  Modal,
+  Button,
+  Grid,
+  Card,
+  Divider
+} from "semantic-ui-react";
+
+// make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <Home />;
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { messages: state.messages };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    login: (username, password) => {
+      dispatch(login(username, password));
+    },
+    register: (displayName, username, password) => {
+      dispatch(register());
+    },
+    newPost: () => {
+      dispatch(newPost());
+    },
+    like: () => {
+      dispatch(like());
+    },
+    deleteMessage: () => {
+      dispatch(deleteMessage());
+    },
+    getMessages: () => {
+      dispatch(getMessages());
+    },
+    getMessageID: () => {
+      dispatch(getMessageID());
+    },
+    getLogout: () => {
+      dispatch(getLogout());
+    },
+    getUser: () => {
+      dispatch(getUser());
+    }
+  };
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+export default Connect;
