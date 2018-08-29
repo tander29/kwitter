@@ -3,24 +3,12 @@ import CustomFooter from "./CustomFooter";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../App.css";
-import {
-  login,
-  register,
-  like,
-  newPost,
-  deleteMessage,
-  getMessages,
-  getMessageID,
-  getLogout,
-  getUser
-} from "../Redux/Actions";
+import { login, register } from "../Redux/Actions";
 import Message from "./Message";
 import NavBar from "./NavBar";
 import { Login, Register } from "./Login";
 import {
   Container,
-  Header,
-  List,
   Sticky,
   Modal,
   Button,

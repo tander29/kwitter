@@ -17,17 +17,11 @@ import {
 } from "../Redux/Actions";
 import Message from "./Message";
 import NavBar from "./NavBar";
-import { Login, Register, Auth } from "./Login";
 import {
   Container,
-  Header,
-  List,
   Sticky,
-  Modal,
-  Button,
   Grid,
-  Card,
-  Divider
+  Card
 } from "semantic-ui-react";
 
 export class Main extends Component {
@@ -49,7 +43,7 @@ export class Main extends Component {
                 </Card>
               </Grid.Column>
 
-              <Grid.Column centered width={9}>
+              <Grid.Column width={9}>
                 <Container className="register" textAlign={"center"}>
                   
                     <Message
