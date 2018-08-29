@@ -7,6 +7,7 @@ import {
   GET_MESSAGE_ID,
   GET_LOGOUT,
   GET_USER,
+  GET_MESSAGES
 } from "./Types";
 import { push } from 'connected-react-router'
 
@@ -17,12 +18,12 @@ export const getMessages = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/messages")
     .then(response => response.json())
     .then(messagesResponse => {
-      console.log(messagesResponse);
       dispatch({
-        type: GET_MESSAGE_ID,
+        type: GET_MESSAGES,
         messages: messagesResponse.messages
       });
     });
+
 };
 
 export const getLogout = () => dispatch => {
@@ -77,9 +78,9 @@ export const newPost = () => dispatch => {
 
   fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)
     .then(response => response.json())
-    .then(confirmation => {
-      console.log(confirmation);
-      dispatch({ type: NEW_POST, test: confirmation });
+    .then(messages => {
+      console.log(messages);
+      dispatch({ type: NEW_POST, messages: messages });
     });
   // return { type: NEW_POST, text, createdAt, userId }
 };
@@ -101,7 +102,6 @@ export const login = (username, password) => dispatch => {
         type: LOGIN,
         data: { token: data.token, id: data.id, success: data.success },
         username: username,
-        password: password
 
       });
       if (data.success === true) {

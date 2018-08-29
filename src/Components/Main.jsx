@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../App.css";
 import Profile from "./Profile";
+import Messageboard from './Messageboard'
 import {
   login,
   register,
@@ -27,14 +28,13 @@ import {
 export class Main extends Component {
 
   componentDidMount() {
-    console.log('I was triggered during componentDidMount', this.props.profile)
+
+    // console.log('I was triggered during componentDidMount', this.props.profile)
   }
   render() {
     return (
       <Container>
         <div className="App">
-
-
           < Container className='headerNav' style={{ marginBottom: '2vh' }}>
             <CustomHeader />
             <Sticky>
@@ -46,7 +46,7 @@ export class Main extends Component {
               <Grid.Column width={4}>
                 <Sticky offset={75}>
                   <Card centered>
-                    <Profile />
+                    <Profile name={this.props.profile.username} />
                   </Card>
                 </Sticky>
               </Grid.Column>
@@ -61,17 +61,9 @@ export class Main extends Component {
                     onClick={this.props.post}
                   />
 
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
+                  <Messageboard></Messageboard>
 
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                  />
+
 
                 </Container>
               </Grid.Column>
