@@ -29,10 +29,10 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: () => {
-      dispatch(login());
+    login: (username, password) => {
+      dispatch(login(username, password));
     },
-    register: () => {
+    register: (displayName, username, password) => {
       dispatch(register());
     },
     newPost: () => {
