@@ -54,12 +54,6 @@ export class Main extends Component {
               <Grid.Column width={9}>
                 <Container className="register" textAlign={"center"}>
 
-                  <Message
-                    getMessages={this.props.getMessages}
-                    getMessageID={this.props.getMessageID}
-                    user={this.props.getUser}
-                    onClick={this.props.post}
-                  />
 
                   <Messageboard></Messageboard>
 
