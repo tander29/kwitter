@@ -7,10 +7,9 @@ import {
   GET_MESSAGE_ID,
   GET_LOGOUT,
   GET_USER,
-  SET_ROUTE
 } from "./Types";
 import {push} from 'connected-react-router'
-const messagesAPI = "https://kwitter-api.herokuapp.com/messages";
+
 
 // export const addTodo = (title, keyNumber) => { return { type: ADD_TODO, title, keyNumber } }
 
@@ -118,17 +117,18 @@ export const register = (displayName, username, password) => dispatch => {
     body: JSON.stringify({ displayName: displayName, username: username, password: password })
   }
   
-  fetch("https://kwitter-api.herokuapp.com/users", postRequestOptions)
+  fetch("https://kwitter-api.herokuapp.com/auth/register", postRequestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("hey dog register this shit");
       dispatch({
         type: REGISTER,
         displayName,
         username,
         password
-      });
+      })
+      dispatch(push('/Main'))
     });
+    
 };
 
 export const like = () => {
@@ -139,8 +139,3 @@ export const deleteMessage = () => {
   return { type: DELETE_MESSAGE };
 };
 
-export const mainRoute =() => {
-  return
-
-
-}
