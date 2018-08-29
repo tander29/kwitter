@@ -9,7 +9,7 @@ import {
   GET_USER,
   SET_ROUTE
 } from "./Types";
-import {push} from 'connected-react-router'
+import { push } from 'connected-react-router'
 const messagesAPI = "https://kwitter-api.herokuapp.com/messages";
 
 // export const addTodo = (title, keyNumber) => { return { type: ADD_TODO, title, keyNumber } }
@@ -86,8 +86,6 @@ export const newPost = () => dispatch => {
 };
 
 export const login = (username, password) => dispatch => {
-  let authKey =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY";
 
   const postRequestOptions = {
     method: "POST",
@@ -104,7 +102,7 @@ export const login = (username, password) => dispatch => {
         type: LOGIN,
         data: data
       });
-      if(data.success === true) {
+      if (data.success === true) {
         dispatch(push('/Main'))
       } else {
         alert("Wrong Username or Password")
@@ -118,7 +116,7 @@ export const register = (displayName, username, password) => dispatch => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ displayName: displayName, username: username, password: password })
   }
-  
+
   fetch("https://kwitter-api.herokuapp.com/users", postRequestOptions)
     .then(res => res.json())
     .then(data => {
@@ -140,7 +138,7 @@ export const deleteMessage = () => {
   return { type: DELETE_MESSAGE };
 };
 
-export const mainRoute =() => {
+export const mainRoute = () => {
   return
 
 
