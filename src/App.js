@@ -14,12 +14,15 @@ import {
   getLogout,
   getUser
 } from "./Redux/Actions";
+import Message from "./Components/Message";
+import NavBar from "./Components/NavBar";
+import { Login, Register } from "./Components/Login";
 
 
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
-    return <Home {...this.props} />;
+    return <Home />;
   }
 }
 

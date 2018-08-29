@@ -1,24 +1,39 @@
 import React, { Component } from "react";
+import { Header, Icon, Button, Divider, Checkbox, Segment, Card, Container, Grid } from "semantic-ui-react";
 
 export default class Message extends Component {
   render() {
     return (
-      <article>
-        <div className="displayName">Displayname</div>
-        <div className="message">Text from the fetch backend will go here</div>
+      <Card fluid centered>
+      <article style={{padding:'2vh'}}>
+        <div style={{paddingBottom:'1vh'}}>
+          <Icon name="user secret" size="large" />
+          Displayname
+        </div>
+        
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column textAlign="left">Like</Grid.Column>
+              <Grid.Column textAlign="right">TimeStamp</Grid.Column>
+            </Grid.Row>
+          </Grid>
+        
 
-        <div className="timePosted">Time posted here</div>
-        <div className="numberOfLikes">Likes: </div>
+        <Divider style={{marginBottom:'20px'}} />
+        <div className="message" style={{marginBottom:'20px'}}>Someone help me!!!I'm stuck in the computer and this app is the only way I have to communicate.</div>
+
+        
+        
 
         <footer>
-          <label>Label that Like button, or make it a button?</label>
-          <input type="checkbox" />
+          <Checkbox toggle style={{float:'left'}} />
 
-          <button onClick={this.props.post}>
-            Delete this post if I am the user
-          </button>
+          <Button onClick={this.props.post} floated="right">
+            Delete
+          </Button>
         </footer>
       </article>
+      </Card>
     );
   }
 }

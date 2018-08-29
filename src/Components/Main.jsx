@@ -30,15 +30,17 @@ import {
   Divider
 } from "semantic-ui-react";
 
-class Main extends Component {
+export class Main extends Component {
   render() {
     return (
       <Container>
         <div className="App">
+        <Container className='headerNav' style={{marginBottom: '2vh'}}>
           <CustomHeader />
           <Sticky>
             <NavBar />
           </Sticky>
+          </Container>
           <Grid centered>
             <Grid.Row columns={3}>
               <Grid.Column width={4}>
@@ -49,28 +51,26 @@ class Main extends Component {
 
               <Grid.Column centered width={9}>
                 <Container className="register" textAlign={"center"}>
-                  <Card centered>
+                  
                     <Message
                       getMessages={this.props.getMessages}
                       getMessageID={this.props.getMessageID}
                       user={this.props.getUser}
                       onClick={this.props.post}
                     />
-                  </Card>
-                  <Card centered>
+                 
                     <Message
                       getMessages={this.props.getMessages}
                       getMessageID={this.props.getMessageID}
                       user={this.props.getUser}
                     />
-                  </Card>
-                  <Card centered>
+                
                     <Message
                       getMessages={this.props.getMessages}
                       getMessageID={this.props.getMessageID}
                       user={this.props.getUser}
                     />
-                  </Card>
+                  
                 </Container>
               </Grid.Column>
               <Grid.Column width={3}>
@@ -84,4 +84,44 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapStateToProps = state => {
+  return { messages: state.messages };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    login: (username, password) => {
+      dispatch(login(username, password));
+    },
+    register: (displayName, username, password) => {
+      dispatch(register());
+    },
+    newPost: () => {
+      dispatch(newPost());
+    },
+    like: () => {
+      dispatch(like());
+    },
+    deleteMessage: () => {
+      dispatch(deleteMessage());
+    },
+    getMessages: () => {
+      dispatch(getMessages());
+    },
+    getMessageID: () => {
+      dispatch(getMessageID());
+    },
+    getLogout: () => {
+      dispatch(getLogout());
+    },
+    getUser: () => {
+      dispatch(getUser());
+    }
+  };
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);
+export default Connect;

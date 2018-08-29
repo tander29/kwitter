@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Home from './Components/Home';
+import Main from './Components/Main'
 import registerServiceWorker from './registerServiceWorker';
-import Root from './Root'
 import { Provider } from 'react-redux'
-import store from './Redux/Store'
+import store, {history} from './Redux/Store'
+import {ConnectedRouter}   from 'connected-react-router'
+import {Route, Switch} from 'react-router'
 
-const Index = () => (
-    <Root store={store}/>
-   
-)
+
 
 
 //need to do router work here provider/store,index to be rendered
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(  
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+        <Switch>
+          <Route exact path="/" render={() => (<Home/>)} />
+          <Route exact path="/Main" render={() => (<Main/>)} />
+        </Switch>
+        </ConnectedRouter> 
+    </Provider>,
+     document.getElementById('root'));
 registerServiceWorker();
