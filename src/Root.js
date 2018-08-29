@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import App from './App'
 import Main from './Components/Main'
 import Home from './Components/Home'
 
+// <<<<<<< semantic-homepage
+// =======
+
+// >>>>>>> dev
 const Root = ({ store }) => (
-  <Provider store={store}>
-    <Router>
-      <Route path="/Main" component={Main} />
-    </Router>
-  </Provider>
+ 
+      <div> 
+       <Home/>
+       </div>
 )
 
 Root.propTypes = {

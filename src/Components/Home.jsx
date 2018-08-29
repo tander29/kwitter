@@ -16,7 +16,7 @@ import {
 } from "../Redux/Actions";
 import Message from "./Message";
 import NavBar from "./NavBar";
-import { Login, Register, Auth } from "./Login";
+import { Login, Register } from "./Login";
 import {
   Container,
   Header,
@@ -29,7 +29,9 @@ import {
   Divider
 } from "semantic-ui-react";
 
-class Home extends Component {
+import {Link} from 'react-router-dom'
+
+export class Home extends Component {
   render() {
     return (
       <Container>
@@ -38,7 +40,7 @@ class Home extends Component {
           <Container className='headerNav' style={{marginBottom: '2vh'}}>
           <CustomHeader />
           <Sticky>
-            <NavBar />
+            <NavBar/>
           </Sticky>
           </Container>
           <Grid centered>
@@ -77,7 +79,7 @@ class Home extends Component {
                   <Sticky>
                     <Card centered>
                       <Modal trigger={<Button>Login</Button>} closeIcon>
-                        <Login test={this.props.login} />
+                        <Login whatever={this.props.login} />
                       </Modal>
                       <Divider horizontal>Or</Divider>
                       <Modal />
@@ -97,4 +99,23 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return { messages: state.messages };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    login: (username, password) => {
+      dispatch(login(username, password));
+    },
+    register: (displayName, username, password) => {
+      dispatch(register(displayName, username, password));
+    },
+  };
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
+export default Connect;

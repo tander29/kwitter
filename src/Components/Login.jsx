@@ -7,7 +7,7 @@ export class Login extends Component {
   }
   
   handleSubmit = () => {
-    this.props.test(this.state.username, this.state.password)
+    this.props.whatever(this.state.username, this.state.password)
   }
   
   updateUsername = (event) => {
