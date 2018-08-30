@@ -29,13 +29,14 @@ export const getLogout = () => dispatch => {
   //this is a comment to bypass a merge issue
   fetch("https://kwitter-api.herokuapp.com/auth/logout")
     .then(response => response.json())
-    .then(messagesResponse => {
-      console.log(messagesResponse);
+    .then(data => {
+      console.log(data);
       dispatch({
         type: GET_LOGOUT,
-        message: messagesResponse.message,
-        success: messagesResponse.success
+        message: data.message,
+        success: data.success
       });
+      dispatch(push('/Home'))
     });
 };
 
