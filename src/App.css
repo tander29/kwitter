@@ -13,3 +13,7 @@ header {
 .custFooter{
     background-color: black;
 }
+
+.headerDiv{
+    background-image: url("./images/kwitter_logo.png") !important;
+}

@@ -1,12 +1,19 @@
 import React from "react";
-import { Image } from "semantic-ui-react";
+import { Image, Container } from "semantic-ui-react";
+
 
 class CustomHeader extends React.Component {
   render() {
     return (
-      <div>
-        <header>Kwitter</header>
-      </div>
+      <container>
+      <img 
+      className="banner"
+      src={require("../images/kwitter_logo.png")}
+      style={{backgroundColor: 'black'}}
+      
+      />
+      </container>
+      
     );
   }
 }
