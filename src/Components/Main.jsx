@@ -33,10 +33,12 @@ export class Main extends Component {
   }
   render() {
     return (
-      <Container fluid>
+        
+        
+        <Container>
         <div className="App">
-          < Container className='headerNav' style={{ marginBottom: '2vh', }} fluid>
-            <CustomHeader />
+          < Container className='headerNav' style={{ marginBottom: '2vh', }} >
+        <CustomHeader />
             <Sticky>
               <NavBar />
             </Sticky>
