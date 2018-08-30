@@ -13,7 +13,9 @@ import {
 } from "../Redux/Actions";
 import { connect } from "react-redux";
 
+
 export const NavBar = (props) => (
+
   <Menu>
     <Menu.Menu>
       <Menu.Item><Button>Profile Page</Button></Menu.Item>
@@ -23,7 +25,7 @@ export const NavBar = (props) => (
     </Menu.Menu>
 
       <Menu.Item>
-        <Modal trigger={<Button>Register</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }}/></Modal>
+        <Modal trigger={<Button>New Kweet</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }}/></Modal>
         </Menu.Item>
     
     <Menu.Menu position="right">
@@ -31,6 +33,10 @@ export const NavBar = (props) => (
     </Menu.Menu>
   </Menu>
 );
+
+
+ 
+
 
 const mapStateToProps = state => {
   return {
@@ -40,6 +46,8 @@ const mapStateToProps = state => {
   }
   };
 };
+
+
 
 function mapDispatchToProps(dispatch) {
   return {

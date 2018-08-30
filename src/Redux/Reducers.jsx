@@ -35,7 +35,8 @@ export default function (state = initialState, action) {
             }
 
         case NEW_POST:
-            return state;
+            return{ ...state,
+                    message: action}
 
         case LIKE:
             break;

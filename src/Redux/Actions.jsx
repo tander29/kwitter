@@ -79,11 +79,10 @@ export const newPost = () => dispatch => {
 
   fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)
     .then(response => response.json())
-    .then(messages => {
-      console.log(messages);
-      dispatch({ type: NEW_POST, messages: messages });
+    .then(data => {
+      console.log(data);
+      dispatch({ type: NEW_POST, messages: data });
     });
-  // return { type: NEW_POST, text, createdAt, userId }
 };
 
 export const login = (username, password) => dispatch => {
@@ -130,9 +129,8 @@ export const register = (displayName, username, password, errors) => dispatch =>
         displayName: displayName,
         username: username,
         password: password,
-
-      
       })
+      dispatch(login(username,password))
     });
 
 };
