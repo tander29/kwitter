@@ -1,34 +1,38 @@
 import React, { Component } from "react";
-import { Header, Icon, Button, Divider, Checkbox, Segment, Card } from "semantic-ui-react";
+import { Icon, Button, Divider, Checkbox, Card, Grid } from "semantic-ui-react";
 
 export default class Message extends Component {
   render() {
     return (
       <Card fluid centered>
-      <article style={{padding:'1vh'}}>
-        <div>
-          <Icon name="user secret" size="large" />
-          Displayname
-        </div>
-        
-          <div style={{float:'Left'}}>Likes</div>
-          <div style={{float:'Right'}}>TimeStamp</div>
-        
+        <article style={{ padding: '2vh' }}>
+          <div style={{ paddingBottom: '1vh' }}>
+            <Icon name="user secret" size="large"/> 
+            {this.props.displayName}
+          </div>
 
-        <Divider style={{marginBottom:'20px'}} />
-        <div className="message" style={{marginBottom:'20px'}}>re here</div>
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column textAlign="left">Likes: {this.props.likes}</Grid.Column>
+              <Grid.Column textAlign="right">{this.props.time}</Grid.Column>
+            </Grid.Row>
+          </Grid>
 
-        
-        
 
-        <footer>
-          <Checkbox toggle style={{float:'left', marginLeft:'10px'}} />
+          <Divider style={{ marginBottom: '20px' }} />
+          <div className="message" style={{ marginBottom: '20px' }}>{this.props.text}</div>
 
-          <Button onClick={this.props.post} floated="right" style={{marginRight: '10px', marginBottom: '10px'}}>
-            Delete
+
+
+
+          <footer>
+            <Checkbox toggle style={{ float: 'left' }} />
+
+            <Button onClick={this.props.post} floated="right">
+              Delete
           </Button>
-        </footer>
-      </article>
+          </footer>
+        </article>
       </Card>
     );
   }

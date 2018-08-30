@@ -6,9 +6,11 @@ import {
   DELETE_MESSAGE,
   GET_MESSAGE_ID,
   GET_LOGOUT,
-  GET_USER
+  GET_USER,
+  GET_MESSAGES
 } from "./Types";
-const messagesAPI = "https://kwitter-api.herokuapp.com/messages";
+import { push } from 'connected-react-router'
+
 
 // export const addTodo = (title, keyNumber) => { return { type: ADD_TODO, title, keyNumber } }
 
@@ -16,12 +18,12 @@ export const getMessages = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/messages")
     .then(response => response.json())
     .then(messagesResponse => {
-      console.log(messagesResponse);
       dispatch({
-        type: GET_MESSAGE_ID,
+        type: GET_MESSAGES,
         messages: messagesResponse.messages
       });
     });
+
 };
 
 export const getLogout = () => dispatch => {
@@ -76,16 +78,14 @@ export const newPost = () => dispatch => {
 
   fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)
     .then(response => response.json())
-    .then(confirmation => {
-      console.log(confirmation);
-      dispatch({ type: NEW_POST, test: confirmation });
+    .then(messages => {
+      console.log(messages);
+      dispatch({ type: NEW_POST, messages: messages });
     });
   // return { type: NEW_POST, text, createdAt, userId }
 };
 
 export const login = (username, password) => dispatch => {
-  let authKey =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY";
 
   const postRequestOptions = {
     method: "POST",
@@ -93,35 +93,47 @@ export const login = (username, password) => dispatch => {
     body: JSON.stringify({ username: username, password: password })
   };
 
+
   fetch("https://kwitter-api.herokuapp.com/auth/login", postRequestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       dispatch({
         type: LOGIN,
-        data: data
+        data: { token: data.token, id: data.id, success: data.success },
+        username: username,
+        password:password
+
       });
+      if (data.success === true) {
+        dispatch(push('/Main'))
+      } else {
+        alert("Wrong Username or Password")
+      }
     });
 };
 
-export const register = (displayName, username, password) => dispatch => {
+export const register = (displayName, username, password, errors) => dispatch => {
   const postRequestOptions = {
     method: "POST",
+    Authorization: {...errors},
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ displayName: displayName, username: username, password: password })
+    body: JSON.stringify({username: username, password: password, displayName:displayName })
   }
-  
-  fetch("https://kwitter-api.herokuapp.com/users", postRequestOptions)
+
+  fetch("https://kwitter-api.herokuapp.com/auth/register", postRequestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("hey dog register this shit");
       dispatch({
         type: REGISTER,
-        displayName,
-        username,
-        password
-      });
+        Authorization: data.errors,
+        displayName: displayName,
+        username: username,
+        password: password,
+
+      
+      })
     });
+
 };
 
 export const like = () => {
@@ -131,3 +143,4 @@ export const like = () => {
 export const deleteMessage = () => {
   return { type: DELETE_MESSAGE };
 };
+
