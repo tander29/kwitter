@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Icon, Button, Divider, Checkbox, Segment, Card, Container, Grid } from "semantic-ui-react";
+import { Icon, Button, Divider, Checkbox, Card, Grid } from "semantic-ui-react";
 
 export default class Message extends Component {
   render() {

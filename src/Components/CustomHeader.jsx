@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Header } from "semantic-ui-react";
+import React from "react";
+
 
 class CustomHeader extends React.Component {
   render() {

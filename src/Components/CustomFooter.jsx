@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Icon, Card } from 'semantic-ui-react';
 
 class CustomFooter extends React.Component {

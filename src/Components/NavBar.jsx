@@ -1,19 +1,7 @@
 import React from "react";
-import { Menu, Input, TextArea, Modal, Button } from "semantic-ui-react";
-import { connect } from "react-redux";
-import {
-  login,
-  register,
-  like,
-  newPost,
-  deleteMessage,
-  getMessages,
-  getMessageID,
-  getLogout,
-  getUser
-} from "../Redux/Actions";
-
-
+import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
+import {connect} from 'react-redux'
+import {getLogout} from '../Redux/Actions'
 
 
 export const NavBar = () => (
@@ -31,7 +19,7 @@ export const NavBar = () => (
         </Menu.Item>
     
     <Menu.Menu position="right">
-      <Menu.Item><Button onClick={getLogout}>Logout</Button></Menu.Item>
+      <Menu.Item><Button onClick={this.props.getLogout}>Logout</Button></Menu.Item>
     </Menu.Menu>
   </Menu>
 );
@@ -42,32 +30,10 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: (username, password) => {
-      dispatch(login(username, password));
-    },
-    register: (displayName, username, password) => {
-      dispatch(register());
-    },
-    newPost: () => {
-      dispatch(newPost());
-    },
-    like: () => {
-      dispatch(like());
-    },
-    deleteMessage: () => {
-      dispatch(deleteMessage());
-    },
-    getMessages: () => {
-      dispatch(getMessages());
-    },
-    getMessageID: () => {
-      dispatch(getMessageID());
-    },
+
     getLogout: () => {
       dispatch(getLogout());
-    },
-    getUser: () => {
-      dispatch(getUser());
+    
     }
   };
 }
