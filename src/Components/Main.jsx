@@ -33,10 +33,12 @@ export class Main extends Component {
   }
   render() {
     return (
-      <Container>
+        
+        
+        <Container>
         <div className="App">
-          < Container className='headerNav' style={{ marginBottom: '2vh' }}>
-            <CustomHeader />
+          < Container className='headerNav' style={{ marginBottom: '2vh', }} >
+        <CustomHeader />
             <Sticky>
               <NavBar />
             </Sticky>
@@ -101,9 +103,6 @@ function mapDispatchToProps(dispatch) {
     },
     getMessageID: () => {
       dispatch(getMessageID());
-    },
-    getLogout: () => {
-      dispatch(getLogout());
     },
     getUser: () => {
       dispatch(getUser());
