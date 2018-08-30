@@ -13,7 +13,7 @@ import {
 } from "../Redux/Actions";
 import { connect } from "react-redux";
 
-export const NavBar = () => (
+export const NavBar = (props) => (
   <Menu>
     <Menu.Menu>
       <Menu.Item><Button>Profile Page</Button></Menu.Item>
@@ -27,13 +27,18 @@ export const NavBar = () => (
         </Menu.Item>
     
     <Menu.Menu position="right">
-      <Menu.Item><Button onClick={this.props.getLogout} >Logout</Button></Menu.Item>
+      <Menu.Item><Button onClick={props.getLogout} >Logout</Button></Menu.Item>
     </Menu.Menu>
   </Menu>
 );
 
 const mapStateToProps = state => {
-  return { messages: state.messages };
+  return {
+    logout: {
+      success: state.success,
+      message: state.message
+  }
+  };
 };
 
 function mapDispatchToProps(dispatch) {
