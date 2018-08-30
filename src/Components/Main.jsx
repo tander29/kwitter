@@ -104,9 +104,6 @@ function mapDispatchToProps(dispatch) {
     getMessageID: () => {
       dispatch(getMessageID());
     },
-    getLogout: () => {
-      dispatch(getLogout());
-    },
     getUser: () => {
       dispatch(getUser());
     }
