@@ -37,7 +37,7 @@ export const getLogout = () => dispatch => {
         message: data.message,
         success: data.success
       });
-      dispatch(push('/Home'))
+      dispatch(push('/'))
     });
 };
 

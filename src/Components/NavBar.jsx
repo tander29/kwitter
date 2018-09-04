@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ProfileInfo from "./ProfileInfo";
 import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
 import {
   login,
@@ -12,7 +13,6 @@ import { connect } from "react-redux";
 
 
 export class NavBar extends Component {
-  // export const NavBar = (props) => {
 
   state = {
     text: "",
