@@ -1,10 +1,12 @@
 import React from "react";
 import { Icon, Card } from 'semantic-ui-react';
+import "../App.css";
+
 
 class CustomFooter extends React.Component {
     render() {
        return (
-           <Card className='custFooter' centered>
+           <Card className='custFooter' color='green' centered>
           <div>
             By ScrumTeam1: <Icon name ='copyright' size="small" />
              
