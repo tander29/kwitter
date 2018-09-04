@@ -42,7 +42,11 @@ export class NavBar extends Component {
     return (
       <Menu>
         <Menu.Menu>
-          <Menu.Item><Button color='facebook'>Profile Page</Button></Menu.Item>
+          <Menu.Item>
+              <Modal trigger={<Button >Profile</Button>}> 
+                <ProfileInfo></ProfileInfo>
+              </Modal>
+        </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
           <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
