@@ -7,16 +7,13 @@ import Profile from "./Profile";
 import Messageboard from './Messageboard'
 import {
   login,
-  register,
   like,
   newPost,
   deleteMessage,
   getMessages,
   getMessageID,
-  getLogout,
   getUser
 } from "../Redux/Actions";
-import Message from "./Message";
 import NavBar from "./NavBar";
 import {
   Container,

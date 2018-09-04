@@ -7,7 +7,6 @@ import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
 import {
   login,
   register,
-  newPost,
   getLogout,
   getUser
 } from "../Redux/Actions";

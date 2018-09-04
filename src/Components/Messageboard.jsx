@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Icon, Button, Divider, Checkbox, Card, Grid } from "semantic-ui-react";
 import Message from './Message.jsx'
 import { getMessages} from "../Redux/Actions";
 

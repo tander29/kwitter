@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Button, Divider, Card, Label, Image, Modal, TextArea } from "semantic-ui-react"
+import { Icon, Button,Card, Image, Modal, TextArea } from "semantic-ui-react"
 
 export default class ProfileInfo extends Component {
  render() {
@@ -28,9 +28,7 @@ export default class ProfileInfo extends Component {
         <Modal trigger={<Button>Change Password</Button>}> 
         <TextArea placeholder="New Password"></TextArea>
         </Modal>
-        <Modal trigger={<Button>Delete Profile</Button>}> 
-            
-        </Modal>
+       <Button>Delete Profile</Button>   
   </Card>
 
  )}}

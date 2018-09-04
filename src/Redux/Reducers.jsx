@@ -1,9 +1,10 @@
-import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGE_ID, GET_MESSAGES, GET_LOGOUT, GET_USER } from './Types'
+import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGE_ID, GET_MESSAGES, GET_LOGOUT, GET_USER, DELETE_USER } from './Types'
 
 
 const initialState = { 
     messages: [], 
     profile: { username: null, password: null, token: null, id: null, success: null }, 
+    users: [],
     logout: {success: false, message: ''} }
 
 export default function (state = initialState, action) {
@@ -60,7 +61,15 @@ export default function (state = initialState, action) {
                 }
             }
         case GET_USER:
-            return state
+            return{ ...state,
+                        users: action.users
+            
+            }
+
+        case DELETE_USER:
+            return{
+             ...state,
+            }
 
         default:
             return state;

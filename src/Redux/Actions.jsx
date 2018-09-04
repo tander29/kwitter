@@ -3,7 +3,6 @@ import {
   REGISTER,
   NEW_POST,
   LIKE,
-  DELETE_MESSAGE,
   GET_MESSAGE_ID,
   GET_LOGOUT,
   GET_USER,
@@ -54,14 +53,14 @@ export const getMessageID = () => dispatch => {
     });
 };
 
-export const getUser = number => dispatch => {
+export const getUser = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/users")
     .then(response => response.json())
-    .then(users => {
-      console.log(users);
+    .then(data => {
+      console.log(data);
       dispatch({
         type: GET_USER,
-        user: users.user
+        users: data.users
       });
     });
 };
@@ -110,6 +109,7 @@ export const login = (username, password) => dispatch => {
       } else {
         alert("Wrong Username or Password")
       }
+        dispatch(getUser())
     });
 };
 
@@ -141,17 +141,24 @@ export const like = () => {
 };
 
 export const deleteMessage = () => dispatch => {
-  let authKey = 
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEyMTQsImlhdCI6MTUzNjA2OTg2OX0.7vUc67pjFrIKWlZjEP3PMEd7EajadbNxIHyDIkfQBx8'
+  let authKey = ''
   const deleteRequest = {
     method: "DELETE",
     headers: {"Content-Type": "application/json", Authorization: authKey},
   } 
   
-  fetch("https://kwitter-api.herokuapp.com/messages/1")
-    .then()
+
+};
+
+export const deleteUser = (token) => dispatch => {
+  let authKey =`Bearer ${token}`
+
+
+  fetch('https://kwitter-api.herokuapp.com/user')
     .then()
 
-   { type: DELETE_MESSAGE };
-};
+
+}
+
+
 
