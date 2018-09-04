@@ -44,9 +44,9 @@ export class Main extends Component {
           <CustomHeader />
 
           <Container>
-            <Sticky>
+            {/* <Sticky> */}
               <NavBar postMessage={this.props.newPost} token={this.props.profile.token} />
-            </Sticky>
+            {/* </Sticky> */}
             <Grid centered>
               <Grid.Row columns={3}>
                 <Grid.Column width={4}>

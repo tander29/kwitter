@@ -4,7 +4,7 @@ import { Icon, Button, Divider, Card, Label, Image, Modal, TextArea } from "sema
 export default class ProfileInfo extends Component {
  render() {
  return (
-<Card>
+<Card fluid>
     <Image src='' />
     <Card.Content>
       <Card.Header>Display Name</Card.Header>
@@ -28,9 +28,9 @@ export default class ProfileInfo extends Component {
         <Modal trigger={<Button>Change Password</Button>}> 
         <TextArea placeholder="New Password"></TextArea>
         </Modal>
-        <Modal trigger={<Button>Delete Profile</Button>}> 
+        <Button>Delete Profile</Button> 
             
-        </Modal>
+       
   </Card>
 
  )}}
