@@ -26,47 +26,54 @@ import {
 } from "semantic-ui-react";
 
 export class Main extends Component {
-  
+
+  componentDidMount() {
+
+    // console.log('I was triggered during componentDidMount', this.props.profile)
+  }
+
+  postMessage() {
+
+  }
   render() {
     return (
-        
-        
-        <Container fluid>
+
+      <Container fluid>
         <div className="App">
-         
-        <CustomHeader />
-          
+
+          <CustomHeader />
+
           <Container>
             <Sticky>
-              <NavBar />
+              <NavBar postMessage={this.props.newPost} token={this.props.profile.token} />
             </Sticky>
-          <Grid centered>
-            <Grid.Row columns={3}>
-              <Grid.Column width={4}>
-                <Sticky offset={75}>
-                  <Card centered>
-                    <Profile name={this.props.profile.username} />
-                  </Card>
-                </Sticky>
-              </Grid.Column>
+            <Grid centered>
+              <Grid.Row columns={3}>
+                <Grid.Column width={4}>
+                  <Sticky offset={75}>
+                    <Card centered>
+                      <Profile name={this.props.profile.username} />
+                    </Card>
+                  </Sticky>
+                </Grid.Column>
 
-              <Grid.Column width={9}>
-                <Container className="register" textAlign={"center"}>
-
-
-                  <Messageboard></Messageboard>
+                <Grid.Column width={9}>
+                  <Container className="register" textAlign={"center"}>
 
 
+                    <Messageboard></Messageboard>
 
-                </Container>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Sticky offset={75}>
-                  <CustomFooter />
-                </Sticky>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+
+
+                  </Container>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Sticky offset={75}>
+                    <CustomFooter />
+                  </Sticky>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Container>
         </div>
       </Container >
@@ -84,11 +91,8 @@ function mapDispatchToProps(dispatch) {
     login: (username, password) => {
       dispatch(login(username, password));
     },
-    register: (displayName, username, password) => {
-      dispatch(register());
-    },
-    newPost: () => {
-      dispatch(newPost());
+    newPost: (text, token) => {
+      dispatch(newPost(text, token));
     },
     like: () => {
       dispatch(like());

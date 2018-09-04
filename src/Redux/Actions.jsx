@@ -66,13 +66,16 @@ export const getUser = number => dispatch => {
     });
 };
 
-export const newPost = () => dispatch => {
-  let authKey =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY";
+export const newPost = (text, token) => dispatch => {
+  console.log("action", text, token)
+  // let authKeyTest =
+  //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY";
+  //the one above works
+  let authKey = `Bearer ${token}`
   const postRequestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: authKey },
-    body: JSON.stringify({ text: "this is test stuff1" })
+    body: JSON.stringify({ text: text })
   };
 
   fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)

@@ -15,8 +15,6 @@ class MessageBoard extends Component {
 
     componentDidMount() {
         this.props.getMessages()
-
-
     }
 
     render() {
