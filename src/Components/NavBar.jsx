@@ -16,18 +16,18 @@ import { connect } from "react-redux";
 export const NavBar = (props) => (
   <Menu>
     <Menu.Menu>
-      <Menu.Item><Button>Profile Page</Button></Menu.Item>
+      <Menu.Item><Button color='facebook'>Profile Page</Button></Menu.Item>
     </Menu.Menu>
     <Menu.Menu>
-      <Menu.Item><Button>Aboot Kwitter</Button></Menu.Item>
+      <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
     </Menu.Menu>
 
       <Menu.Item>
-        <Modal trigger={<Button>Register</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }}/></Modal>
+        <Modal trigger={<Button color='twitter'>Register</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }}/></Modal>
         </Menu.Item>
     
     <Menu.Menu position="right">
-      <Menu.Item><Button onClick={props.getLogout} >Logout</Button></Menu.Item>
+      <Menu.Item><Button onClick={props.getLogout} color='teal'>Logout</Button></Menu.Item>
     </Menu.Menu>
   </Menu>
 );
