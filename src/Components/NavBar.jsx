@@ -49,8 +49,11 @@ export class NavBar extends Component {
           <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onKeyDown={this.handleKey} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
           </Menu.Item>
 
+        <Menu.Menu position="right">
           <Menu.Item><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
+        </Menu.Menu>
           </Menu>
+
  )
   }
 }

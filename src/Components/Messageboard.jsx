@@ -27,7 +27,7 @@ class MessageBoard extends Component {
                 text={messages.text} 
                 likes={messages.likes.length} 
                 time={messages.createdAt} 
-                id={messages.id} 
+                key={messages.id} 
                 type="string">
                 </Message>)
                 }

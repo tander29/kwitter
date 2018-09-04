@@ -78,7 +78,7 @@ export const newPost = (text, token) => dispatch => {
     body: JSON.stringify({ text: text })
   };
 
-  fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)
+  fetch("https://kwitter-api.herokuapp.com/messages?limit=1000", postRequestOptions)
     .then(response => response.json())
     .then(data => {
       console.log(data);
