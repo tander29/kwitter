@@ -29,8 +29,6 @@ export default class ProfileInfo extends Component {
         <TextArea placeholder="New Password"></TextArea>
         </Modal>
         <Button>Delete Profile</Button> 
-            
-       
   </Card>
 
  )}}

@@ -9,7 +9,7 @@ import {
   login,
   like,
   newPost,
-  deleteMessage,
+ 
   getMessages,
   getMessageID,
   getUser
@@ -94,9 +94,7 @@ function mapDispatchToProps(dispatch) {
     like: () => {
       dispatch(like());
     },
-    deleteMessage: () => {
-      dispatch(deleteMessage());
-    },
+  
     getMessages: () => {
       dispatch(getMessages());
     },

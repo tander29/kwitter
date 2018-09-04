@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Icon, Button, Divider, Checkbox, Card, Grid, Label } from "semantic-ui-react";
-import { like, unlike } from "../Redux/Actions"
-import { connect } from "react-redux";
+import  {like}  from '../Redux/Actions'
+import {connect} from 'react-redux'
+import { Icon, Button, Divider, Card, Grid} from "semantic-ui-react";
+
 
 export class Message extends Component {
   
