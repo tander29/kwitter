@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Card, Modul, Container, Button} from "semantic-ui-react";
 
 export default class Profile extends Component {
   render() {

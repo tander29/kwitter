@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../App.css";
 import { login, register } from "../Redux/Actions";
-import Message from "./Message";
+import Messageboard from "./Messageboard";
 import { Login, Register } from "./Login";
 import {
   Container,
@@ -23,59 +23,36 @@ export class Home extends Component {
     return (
       <Container fluid>
         <div className="App">
-          
-            <CustomHeader />
+
+          <CustomHeader />
           <Container>
-          <Grid centered>
-            <Grid.Row columns={2}>
-              <Grid.Column>
+            <Grid centered>
+              <Grid.Row columns={2}>
+                <Grid.Column>
 
-                <Message
-                  getMessages={this.props.getMessages}
-                  getMessageID={this.props.getMessageID}
-                  user={this.props.getUser}
-                  onClick={this.props.post}
-                />
+                  <Messageboard></Messageboard>
 
-                <Message
-                  getMessages={this.props.getMessages}
-                  getMessageID={this.props.getMessageID}
-                  user={this.props.getUser}
-                />
+                </Grid.Column>
 
-                <Message
-                  getMessages={this.props.getMessages}
-                  getMessageID={this.props.getMessageID}
-                  user={this.props.getUser}
-                />
-
-                <Message
-                  getMessages={this.props.getMessages}
-                  getMessageID={this.props.getMessageID}
-                  user={this.props.getUser}
-                />
-
-              </Grid.Column>
-
-              <Grid.Column>
-                <Container className="register" textAlign={"center"}>
-                  <Sticky offset={100}>
-                    <Card centered>
-                      <Modal trigger={<Button color='teal'>Login</Button>} closeIcon>
-                        <Login whatever={this.props.login} />
-                      </Modal>
-                      <Divider horizontal>Or</Divider>
-                      <Modal />
-                      <Modal trigger={<Button color='teal'>Register</Button>} closeIcon>
-                        <Register test={this.props.register} />
-                      </Modal>
-                    </Card>
-                  </Sticky>
-                </Container>
-              </Grid.Column>
-              <CustomFooter />
-            </Grid.Row>
-          </Grid>
+                <Grid.Column>
+                  <Container className="register" textAlign={"center"}>
+                    <Sticky pushing>
+                      <Card centered>
+                        <Modal trigger={<Button color='teal'>Login</Button>} closeIcon>
+                          <Login whatever={this.props.login} />
+                        </Modal>
+                        <Divider horizontal>Or</Divider>
+                        <Modal />
+                        <Modal trigger={<Button color='teal'>Register</Button>} closeIcon>
+                          <Register test={this.props.register} />
+                        </Modal>
+                      </Card>
+                    </Sticky>
+                  </Container>
+                </Grid.Column>
+                <CustomFooter />
+              </Grid.Row>
+            </Grid>
           </Container>
         </div>
       </Container>
