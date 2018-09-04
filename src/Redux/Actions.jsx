@@ -6,7 +6,8 @@ import {
   GET_MESSAGE_ID,
   GET_LOGOUT,
   GET_USER,
-  GET_MESSAGES
+  GET_MESSAGES,
+  UNLIKE
 } from "./Types";
 import { push } from 'connected-react-router'
 
@@ -136,29 +137,60 @@ export const register = (displayName, username, password, errors) => dispatch =>
 
 };
 
-export const like = () => {
-  return { type: LIKE };
-};
-
-export const deleteMessage = () => dispatch => {
-  let authKey = ''
-  const deleteRequest = {
-    method: "DELETE",
-    headers: {"Content-Type": "application/json", Authorization: authKey},
-  } 
+export const like = (messageId) => (dispatch, getState) => {
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
   
+  const postLike = {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ messageId: messageId })
+  }
 
+  fetch("https://kwitter-api.herokuapp.com/likes", postLike)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: LIKE,
+        messageId: data.like.messageId
+      })
+      dispatch(getMessages())
+    })
 };
 
-export const deleteUser = (token) => dispatch => {
-  let authKey =`Bearer ${token}`
+export const unlike = (messageId) => (dispatch, getState) => {
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+  
+  const deleteLike = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ messageId: messageId })
+  }
 
-
-  fetch('https://kwitter-api.herokuapp.com/user')
-    .then()
-
-
+  fetch("https://kwitter-api.herokuapp.com/likes/")
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: UNLIKE,
+        messageId: data.like.messageId
+      })
+    })
 }
 
+export const deleteMessage = () => {
+  return { type: DELETE_MESSAGE };
+// export const deleteMessage = () => dispatch => {
+//   let authKey = 
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEyMTQsImlhdCI6MTUzNjA2OTg2OX0.7vUc67pjFrIKWlZjEP3PMEd7EajadbNxIHyDIkfQBx8'
+//   const deleteRequest = {
+//     method: "DELETE",
+//     headers: {"Content-Type": "application/json", Authorization: authKey},
+//   } 
+  
+//   fetch("https://kwitter-api.herokuapp.com/messages/1")
+//     .then()
+//     .then()
 
-
+//    { type: DELETE_MESSAGE };
+};

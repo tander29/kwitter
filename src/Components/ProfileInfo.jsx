@@ -4,7 +4,7 @@ import { Icon, Button,Card, Image, Modal, TextArea } from "semantic-ui-react"
 export default class ProfileInfo extends Component {
  render() {
  return (
-<Card>
+<Card fluid>
     <Image src='' />
     <Card.Content>
       <Card.Header>Display Name</Card.Header>
@@ -28,7 +28,9 @@ export default class ProfileInfo extends Component {
         <Modal trigger={<Button>Change Password</Button>}> 
         <TextArea placeholder="New Password"></TextArea>
         </Modal>
-       <Button>Delete Profile</Button>   
+        <Button>Delete Profile</Button> 
+            
+       
   </Card>
 
  )}}
