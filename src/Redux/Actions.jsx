@@ -13,7 +13,7 @@ import { push } from 'connected-react-router'
 
 
 export const getMessages = () => dispatch => {
-  fetch("https://kwitter-api.herokuapp.com/messages")
+  fetch("https://kwitter-api.herokuapp.com/messages?limit=1000")
     .then(response => response.json())
     .then(messagesResponse => {
       dispatch({
@@ -78,7 +78,7 @@ export const newPost = (text, token) => dispatch => {
     body: JSON.stringify({ text: text })
   };
 
-  fetch("https://kwitter-api.herokuapp.com/messages?limit=1000", postRequestOptions)
+  fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)
     .then(response => response.json())
     .then(data => {
       console.log(data);

@@ -4,11 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Icon, Button, Divider, Checkbox, Card, Grid } from "semantic-ui-react";
 import Message from './Message.jsx'
-
-import {
-
-    getMessages,
-} from "../Redux/Actions";
+import { getMessages} from "../Redux/Actions";
 
 
 class MessageBoard extends Component {
@@ -22,16 +18,17 @@ class MessageBoard extends Component {
         return (
             <React.Fragment>
 
-                {messageInfo.map(messages => <Message 
-                displayName={messages.displayName} 
-                text={messages.text} 
-                likes={messages.likes.length} 
-                time={messages.createdAt} 
-                key={messages.id} 
-                type="string">
+                {messageInfo.map(messages => 
+                <Message
+                    key={messages.id}
+                    displayName={messages.displayName}
+                    text={messages.text}
+                    likes={messages.likes.length}
+                    time={messages.createdAt}
+                    id={messages.id}
+                    type="string">
                 </Message>)
                 }
-
             </React.Fragment>
         );
     }
