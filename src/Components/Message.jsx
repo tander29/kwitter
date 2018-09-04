@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Button, Divider, Checkbox, Card, Grid } from "semantic-ui-react";
+import { Icon, Button, Divider, Checkbox, Card, Grid, Label } from "semantic-ui-react";
 
 export default class Message extends Component {
   render() {
@@ -26,7 +26,12 @@ export default class Message extends Component {
 
 
           <footer>
-            <Checkbox toggle style={{ float: 'left' }} />
+          <Button
+          content='Like'
+          icon='heart'
+           label={{ as: 'a', basic: true, content: '2,048' }}
+            labelPosition='right'
+           style={{ float: 'left' }} />
 
             <Button onClick={this.props.post} floated="right">
               Delete
