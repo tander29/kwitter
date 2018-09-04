@@ -23,7 +23,7 @@ export const NavBar = (props) => (
     </Menu.Menu>
 
       <Menu.Item>
-        <Modal trigger={<Button color='twitter'>Register</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }}/></Modal>
+        <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }}/></Modal>
         </Menu.Item>
     
     <Menu.Menu position="right">
