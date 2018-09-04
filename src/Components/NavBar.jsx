@@ -1,4 +1,5 @@
 import React from "react";
+import ProfileInfo from "./ProfileInfo";
 import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
 import {
   login,
@@ -13,10 +14,17 @@ import {
 } from "../Redux/Actions";
 import { connect } from "react-redux";
 
+
 export const NavBar = (props) => (
   <Menu>
     <Menu.Menu>
-      <Menu.Item><Button color='facebook'>Profile Page</Button></Menu.Item>
+    
+    <Menu.Item>
+        <Modal trigger={<Button >Profile</Button>}> 
+            <ProfileInfo></ProfileInfo>
+        
+        </Modal>
+    </Menu.Item>
     </Menu.Menu>
     <Menu.Menu>
       <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
