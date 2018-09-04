@@ -63,8 +63,7 @@ const mapStateToProps = state => {
     }
   };
 };
-  
-  console.log("fix")
+
 
 function mapDispatchToProps(dispatch) {
   return {
