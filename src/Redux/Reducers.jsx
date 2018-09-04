@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGE_ID, GET_MESSAGES, GET_LOGOUT, GET_USER } from './Types'
+import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGE_ID, GET_MESSAGES, GET_LOGOUT, GET_USER, UNLIKE } from './Types'
 
 
 const initialState = { 
@@ -42,7 +42,10 @@ export default function (state = initialState, action) {
                     message: action}
 
         case LIKE:
-            break;
+            return {
+                ...state,
+                messageId: action.messageId
+            }
 
         case DELETE_MESSAGE:
             return state;
@@ -60,6 +63,9 @@ export default function (state = initialState, action) {
                 }
             }
         case GET_USER:
+            return state
+
+        case UNLIKE:
             return state
 
         default:
