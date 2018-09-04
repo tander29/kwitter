@@ -158,7 +158,6 @@ export const like = (messageId) => (dispatch, getState) => {
     })
 };
 
-
 export const unlike = (messageId) => (dispatch, getState) => {
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
@@ -179,18 +178,4 @@ export const unlike = (messageId) => (dispatch, getState) => {
     })
 }
 
-export const deleteMessage = () => {
-  return { type: DELETE_MESSAGE };
-// export const deleteMessage = () => dispatch => {
-//   let authKey = 
-//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEyMTQsImlhdCI6MTUzNjA2OTg2OX0.7vUc67pjFrIKWlZjEP3PMEd7EajadbNxIHyDIkfQBx8'
-//   const deleteRequest = {
-//     method: "DELETE",
-//     headers: {"Content-Type": "application/json", Authorization: authKey},
-//   } 
-//   fetch("https://kwitter-api.herokuapp.com/messages/1")
-//     .then()
-//     .then()
 
-//    { type: DELETE_MESSAGE };
-};
