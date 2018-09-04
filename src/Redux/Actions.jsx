@@ -7,7 +7,8 @@ import {
   GET_MESSAGE_ID,
   GET_LOGOUT,
   GET_USER,
-  GET_MESSAGES
+  GET_MESSAGES,
+  UNLIKE
 } from "./Types";
 import { push } from 'connected-react-router'
 
@@ -134,11 +135,28 @@ export const register = (displayName, username, password) => dispatch => {
 
 };
 
-export const like = () => {
-  return { type: LIKE };
+export const like = (username, messageId) => (dispatch) => {
+  const postLike = {
+    method: "POST",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify({ username: username, messageId: messageId })
+  }
+
+  fetch("https://kwitter-api.herokuapp.com/likes", postLike)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: LIKE,
+        username,
+        messageId
+      })
+    })
 };
+
+export const unlike = () => {
+  return { type: UNLIKE };
+}
 
 export const deleteMessage = () => {
   return { type: DELETE_MESSAGE };
 };
-
