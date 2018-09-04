@@ -12,7 +12,6 @@ class MessageBoard extends Component {
     componentDidMount() {
         this.props.getMessages()
     }
-
     render() {
         const messageInfo = this.props.messages
         return (
