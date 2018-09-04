@@ -1,5 +1,9 @@
+body {
+   background-color: rgb(204, 226, 207);
+}
+
 header {
-  /* background-color: black; */
+  
   height: 5vh;
 }
 

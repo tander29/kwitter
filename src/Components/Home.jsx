@@ -21,12 +21,11 @@ import { Link } from 'react-router-dom'
 export class Home extends Component {
   render() {
     return (
-      <Container>
+      <Container fluid>
         <div className="App">
-          This is home page.
-          <Container className='headerNav' style={{ marginBottom: '2vh' }}>
+          
             <CustomHeader />
-          </Container>
+          <Container>
           <Grid centered>
             <Grid.Row columns={2}>
               <Grid.Column>
@@ -62,12 +61,12 @@ export class Home extends Component {
                 <Container className="register" textAlign={"center"}>
                   <Sticky offset={100}>
                     <Card centered>
-                      <Modal trigger={<Button>Login</Button>} closeIcon>
+                      <Modal trigger={<Button color='teal'>Login</Button>} closeIcon>
                         <Login whatever={this.props.login} />
                       </Modal>
                       <Divider horizontal>Or</Divider>
                       <Modal />
-                      <Modal trigger={<Button>Register</Button>} closeIcon>
+                      <Modal trigger={<Button color='teal'>Register</Button>} closeIcon>
                         <Register test={this.props.register} />
                       </Modal>
                     </Card>
@@ -77,6 +76,7 @@ export class Home extends Component {
               <CustomFooter />
             </Grid.Row>
           </Grid>
+          </Container>
         </div>
       </Container>
     );
