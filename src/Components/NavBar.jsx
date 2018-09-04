@@ -1,43 +1,64 @@
-import React from "react";
+import React, { Component } from "react";
 import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
 import {
   login,
   register,
-  like,
   newPost,
-  deleteMessage,
-  getMessages,
-  getMessageID,
   getLogout,
   getUser
 } from "../Redux/Actions";
 import { connect } from "react-redux";
 
-export const NavBar = (props) => (
-  <Menu>
-    <Menu.Menu>
-      <Menu.Item><Button>Profile Page</Button></Menu.Item>
-    </Menu.Menu>
-    <Menu.Menu>
-      <Menu.Item><Button>Aboot Kwitter</Button></Menu.Item>
-    </Menu.Menu>
 
-    <Menu.Item>
-      <Modal trigger={<Button>New Kweet</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
-    </Menu.Item>
 
-    <Menu.Menu position="right">
-      <Menu.Item><Button onClick={props.getLogout} >Logout</Button></Menu.Item>
-    </Menu.Menu>
-  </Menu>
-);
+export class NavBar extends Component {
+  // export const NavBar = (props) => {
+
+  state = {
+    text: "",
+  }
+
+  handleKey = (event) => {
+    if (event.key === 'Enter') {
+      this.props.postMessage(this.state.text, this.props.token)
+    } else {
+      // console.log(event.key, this.props.postMessage, this.props.token)
+      this.setState({ text: event.target.value })
+    }
+
+  }
+
+
+
+  render() {
+    return (
+      <Menu>
+        <Menu.Menu>
+          <Menu.Item><Button color='facebook'>Profile Page</Button></Menu.Item>
+        </Menu.Menu>
+        <Menu.Menu>
+          <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
+        </Menu.Menu>
+
+        <Menu.Item>
+          <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onKeyDown={this.handleKey} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
+        </Menu.Item>
+
+        <Menu.Menu position="right">
+          <Menu.Item><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
+        </Menu.Menu>
+      </Menu>
+
+    )
+  }
+};
 
 const mapStateToProps = state => {
   return {
     logout: {
       success: state.success,
       message: state.message
-  }
+    }
   };
 };
 

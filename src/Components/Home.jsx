@@ -21,38 +21,39 @@ import { Link } from 'react-router-dom'
 export class Home extends Component {
   render() {
     return (
-      <Container>
+      <Container fluid>
         <div className="App">
-          <Container className='headerNav' style={{ marginBottom: '2vh' }}>
-            <CustomHeader />
+
+          <CustomHeader />
+          <Container>
+            <Grid centered>
+              <Grid.Row columns={2}>
+                <Grid.Column>
+
+                  <Messageboard></Messageboard>
+
+                </Grid.Column>
+
+                <Grid.Column>
+                  <Container className="register" textAlign={"center"}>
+                    <Sticky pushing>
+                      <Card centered>
+                        <Modal trigger={<Button color='teal'>Login</Button>} closeIcon>
+                          <Login whatever={this.props.login} />
+                        </Modal>
+                        <Divider horizontal>Or</Divider>
+                        <Modal />
+                        <Modal trigger={<Button color='teal'>Register</Button>} closeIcon>
+                          <Register test={this.props.register} />
+                        </Modal>
+                      </Card>
+                    </Sticky>
+                  </Container>
+                </Grid.Column>
+                <CustomFooter />
+              </Grid.Row>
+            </Grid>
           </Container>
-          <Grid centered>
-            <Grid.Row columns={2}>
-              <Grid.Column>
-
-                <Messageboard></Messageboard>
-
-              </Grid.Column>
-
-              <Grid.Column>
-                <Container className="register" textAlign={"center"}>
-                  <Sticky pushing>
-                    <Card centered>
-                      <Modal trigger={<Button>Login</Button>} closeIcon>
-                        <Login whatever={this.props.login} />
-                      </Modal>
-                      <Divider horizontal>Or</Divider>
-                      <Modal />
-                      <Modal trigger={<Button>Register</Button>} closeIcon>
-                        <Register test={this.props.register} />
-                      </Modal>
-                    </Card>
-                  </Sticky>
-                </Container>
-              </Grid.Column>
-              <CustomFooter />
-            </Grid.Row>
-          </Grid>
         </div>
       </Container>
     );

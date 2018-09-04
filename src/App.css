@@ -1,19 +1,14 @@
+body {
+   background-color: rgb(204, 226, 207);
+}
+
 header {
-  color: green;
-  background-color: black;
-  height: 20vh;
+  
+  height: 5vh;
 }
 
 .rightColumn {
   display: flex;
   justify-content: center;
   align-content: center;
-}
-
-.custFooter{
-    background-color: black;
-}
-
-.banner{
-    margin: auto;
 }
