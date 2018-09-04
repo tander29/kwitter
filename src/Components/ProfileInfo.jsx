@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Icon, Button, Divider, Card, Label, Image, Modal, TextArea } from "semantic-ui-react"
 
-
 export default class ProfileInfo extends Component {
  render() {
  return (

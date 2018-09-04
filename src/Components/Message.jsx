@@ -7,8 +7,8 @@ export default class Message extends Component {
       <Card fluid centered>
         <article style={{ padding: '2vh' }}>
           <div style={{ paddingBottom: '1vh' }}>
-            <Icon name="user secret" size="large" />
-            Displayname {this.props.id}
+            <Icon name="user secret" size="large"/> 
+            {this.props.displayName}
           </div>
 
           <Grid>
