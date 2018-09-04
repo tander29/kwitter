@@ -3,7 +3,6 @@ import {
   REGISTER,
   NEW_POST,
   LIKE,
-  DELETE_MESSAGE,
   GET_MESSAGE_ID,
   GET_LOGOUT,
   GET_USER,
@@ -14,7 +13,7 @@ import { push } from 'connected-react-router'
 
 
 export const getMessages = () => dispatch => {
-  fetch("https://kwitter-api.herokuapp.com/messages")
+  fetch("https://kwitter-api.herokuapp.com/messages?limit=1000")
     .then(response => response.json())
     .then(messagesResponse => {
       dispatch({
@@ -55,14 +54,14 @@ export const getMessageID = () => dispatch => {
     });
 };
 
-export const getUser = number => dispatch => {
+export const getUser = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/users")
     .then(response => response.json())
-    .then(users => {
-      console.log(users);
+    .then(data => {
+      console.log(data);
       dispatch({
         type: GET_USER,
-        user: users.user
+        users: data.users
       });
     });
 };
@@ -111,6 +110,7 @@ export const login = (username, password) => dispatch => {
       } else {
         alert("Wrong Username or Password")
       }
+        dispatch(getUser())
     });
 };
 
@@ -158,6 +158,7 @@ export const like = (messageId) => (dispatch, getState) => {
     })
 };
 
+
 export const unlike = (messageId) => (dispatch, getState) => {
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
@@ -187,7 +188,6 @@ export const deleteMessage = () => {
 //     method: "DELETE",
 //     headers: {"Content-Type": "application/json", Authorization: authKey},
 //   } 
-  
 //   fetch("https://kwitter-api.herokuapp.com/messages/1")
 //     .then()
 //     .then()

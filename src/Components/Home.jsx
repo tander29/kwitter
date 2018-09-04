@@ -16,7 +16,7 @@ import {
   Divider
 } from "semantic-ui-react";
 
-import { Link } from 'react-router-dom'
+
 
 export class Home extends Component {
   render() {
