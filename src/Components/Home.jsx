@@ -36,7 +36,7 @@ export class Home extends Component {
 
                 <Grid.Column>
                   <Container className="register" textAlign={"center"}>
-                    <Sticky pushing>
+                    <Sticky>
                       <Card centered>
                         <Modal trigger={<Button color='teal'>Login</Button>} closeIcon>
                           <Login whatever={this.props.login} />
