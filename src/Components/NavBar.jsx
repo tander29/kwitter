@@ -23,15 +23,18 @@ export class NavBar extends Component {
     text: "",
   }
 
-  handleKey = (event) => {
+  handlePost = (event) => {
     if (event.key === 'Enter') {
       this.props.postMessage(this.state.text, this.props.token)
-    } else {
-      // console.log(event.key, this.props.postMessage, this.props.token)
-      this.setState({ text: event.target.value })
     }
-
   }
+
+  handleChange = (event) => {
+    console.log(event.target.value)
+    this.setState({ text: event.target.value })
+  }
+
+
 
 
 
@@ -46,16 +49,16 @@ export class NavBar extends Component {
         </Menu.Menu>
 
         <Menu.Item>
-          <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onKeyDown={this.handleKey} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
-          </Menu.Item>
+          <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
+        </Menu.Item>
 
-          <Menu.Item><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
-          </Menu>
- )
+        <Menu.Item><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
+      </Menu>
+    )
   }
 }
-  
-  
+
+
 
 const mapStateToProps = state => {
   return {

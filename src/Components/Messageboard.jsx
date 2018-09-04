@@ -22,13 +22,15 @@ class MessageBoard extends Component {
         return (
             <React.Fragment>
 
-                {messageInfo.map(messages => <Message 
-                displayName={messages.displayName} 
-                text={messages.text} 
-                likes={messages.likes.length} 
-                time={messages.createdAt} 
-                id={messages.id} 
-                type="string">
+                {messageInfo.map(messages => <Message
+                    key={messages.id}
+                    displayName={messages.displayName}
+                    text={messages.text}
+                    likes={messages.likes.length}
+                    time={messages.createdAt}
+                    id={messages.id}
+                    type="string">
+
                 </Message>)
                 }
 
