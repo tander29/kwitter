@@ -137,27 +137,45 @@ export const register = (displayName, username, password, errors) => dispatch =>
 
 };
 
-export const like = (username, messageId) => (dispatch) => {
+export const like = (messageId) => (dispatch, getState) => {
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+  
   const postLike = {
     method: "POST",
-    headers: { "Content-Type": "application/json"},
-    body: JSON.stringify({ username: username, messageId: messageId })
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ messageId: messageId })
   }
 
   fetch("https://kwitter-api.herokuapp.com/likes", postLike)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       dispatch({
         type: LIKE,
-        username,
-        messageId
+        messageId: data.like.messageId
       })
+      dispatch(getMessages())
     })
 };
 
-export const unlike = () => {
-  return { type: UNLIKE };
+export const unlike = (messageId) => (dispatch, getState) => {
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+  
+  const deleteLike = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ messageId: messageId })
+  }
+
+  fetch("https://kwitter-api.herokuapp.com/likes/")
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: UNLIKE,
+        messageId: data.like.messageId
+      })
+    })
 }
 
 export const deleteMessage = () => {

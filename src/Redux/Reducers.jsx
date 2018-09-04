@@ -42,7 +42,10 @@ export default function (state = initialState, action) {
                     message: action}
 
         case LIKE:
-            break;
+            return {
+                ...state,
+                messageId: action.messageId
+            }
 
         case DELETE_MESSAGE:
             return state;

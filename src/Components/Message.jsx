@@ -4,9 +4,6 @@ import { like, unlike } from "../Redux/Actions"
 import { connect } from "react-redux";
 
 export class Message extends Component {
-  likeMessage = (messageId) => {
-    this.props.login
-  }
   
   render() {
     return (
@@ -32,14 +29,14 @@ export class Message extends Component {
 
 
           <footer>
-          <Button
-            content='Like'
-            icon='heart'
-            label={{ as: 'a', basic: true, content: this.props.likes }}
-            labelPosition='right'
-            style={{ float: 'left' }} 
-            onClick={ this.likeMessage }
-          />
+            <Button
+              content='Like'
+              icon='heart'
+              label={{ as: 'a', basic: true, content: this.props.likes }}
+              labelPosition='right'
+              style={{ float: 'left' }} 
+              onClick={ () => this.props.like(this.props.id) }
+            />
 
             <Button onClick={this.props.post} floated="right">
               Delete
@@ -57,8 +54,8 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    like: (username, messageId) => {
-      dispatch(like(username, messageId));
+    like: (messageId) => {
+      dispatch(like(messageId));
     },
   };
 }
