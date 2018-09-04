@@ -4,6 +4,10 @@ import { like, unlike } from "../Redux/Actions"
 import { connect } from "react-redux";
 
 export class Message extends Component {
+  likeMessage = (messageId) => {
+    this.props.login
+  }
+  
   render() {
     return (
       <Card fluid centered>
@@ -34,6 +38,7 @@ export class Message extends Component {
             label={{ as: 'a', basic: true, content: this.props.likes }}
             labelPosition='right'
             style={{ float: 'left' }} 
+            onClick={ this.likeMessage }
           />
 
             <Button onClick={this.props.post} floated="right">

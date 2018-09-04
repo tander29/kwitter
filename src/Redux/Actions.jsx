@@ -147,6 +147,7 @@ export const like = (username, messageId) => (dispatch) => {
   fetch("https://kwitter-api.herokuapp.com/likes", postLike)
     .then(res => res.json())
     .then(data => {
+      console.log(data)
       dispatch({
         type: LIKE,
         username,
