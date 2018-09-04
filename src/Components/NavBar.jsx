@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
-=======
-import React from "react";
+
 import ProfileInfo from "./ProfileInfo";
 
 import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
@@ -48,36 +47,13 @@ export class NavBar extends Component {
 
         <Menu.Item>
           <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onKeyDown={this.handleKey} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
-=======
-
-export const NavBar = (props) => (
-  <Menu>
-    <Menu.Menu>
-    
-    <Menu.Item>
-        <Modal trigger={<Button >Profile</Button>}> 
-            <ProfileInfo></ProfileInfo>
-        
-        </Modal>
-    </Menu.Item>
-    </Menu.Menu>
-    <Menu.Menu>
-      <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
-    </Menu.Menu>
-
-      <Menu.Item>
-        <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea placeholder="New Kweet" style={{ width: '100%' }}/></Modal>
-
-        </Menu.Item>
-
-        <Menu.Menu position="right">
-          <Menu.Item><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
-        </Menu.Menu>
-      </Menu>
-
-    )
+          </Menu.Item>
+          </Menu>
+ )
   }
-};
+}
+  
+  
 
 const mapStateToProps = state => {
   return {
@@ -87,6 +63,8 @@ const mapStateToProps = state => {
     }
   };
 };
+  
+  
 
 function mapDispatchToProps(dispatch) {
   return {
