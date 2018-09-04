@@ -1,0 +1,14 @@
+body {
+   background-color: rgb(204, 226, 207);
+}
+
+header {
+  
+  height: 5vh;
+}
+
+.rightColumn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

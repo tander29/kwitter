@@ -1,21 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Home from './Components/Home';
+import Main from './Components/Main'
+import Profile from './Components/Profile'
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from './Redux/Store'
+import store, { history } from './Redux/Store'
+import { ConnectedRouter } from 'connected-react-router'
+import { Route, Switch } from 'react-router'
 
-const Index = () => (
 
-    <Provider store={store}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <App />
-        </BrowserRouter>
-    </Provider>
-)
+
+
 
 
 //need to do router work here provider/store,index to be rendered
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <Switch>
+                <Route exact path="/" render={() => (<Home />)} />
+                <Route exact path="/Main" render={() => (<Main />)} />
+                <Route exact path="/Profile" render={() => (<Profile />)} />
+            </Switch>
+        </ConnectedRouter>
+    </Provider>,
+    document.getElementById('root'));
 registerServiceWorker();

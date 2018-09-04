@@ -1,33 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Icon, Button, Divider, Checkbox, Card, Grid, Label } from "semantic-ui-react";
 
 export default class Message extends Component {
+  render() {
+    return (
+      <Card fluid centered>
+        <article style={{ padding: '2vh' }}>
+          <div style={{ paddingBottom: '1vh' }}>
+            <Icon name="user secret" size="large"/> 
+            {this.props.displayName}
+          </div>
 
-    test = () => {
-        console.log("hi taylr")
-    }
-
-    render() {
-
-
-
-        return (
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column textAlign="left">Likes: {this.props.likes}</Grid.Column>
+              <Grid.Column textAlign="right">{this.props.time}</Grid.Column>
+            </Grid.Row>
+          </Grid>
 
 
-            <article>
-                <div className="displayName">Displayname</div>
-                <div className="message">Text from the fetch backend will go here</div>
+          <Divider style={{ marginBottom: '20px' }} />
+          <div className="message" style={{ marginBottom: '20px' }}>{this.props.text}</div>
 
-                <div className="timePosted">Time posted here</div>
-                <div className="numberOfLikes">Likes: </div >
 
-                <footer>
-                    <label>Label that Like button, or make it a button?</label>
-                    <input type="checkbox" />
 
-                    <button onClick={this.props.getMessageID}>Delete this post if I am the user</button>
-                </footer>
-            </article >
 
-        )
-    }
+          <footer>
+          <Button
+          content='Like'
+          icon='heart'
+           label={{ as: 'a', basic: true, content: '2,048' }}
+            labelPosition='right'
+           style={{ float: 'left' }} />
+
+            <Button onClick={this.props.post} floated="right">
+              Delete
+          </Button>
+          </footer>
+        </article>
+      </Card>
+    );
+  }
 }

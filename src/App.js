@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login, register, like, newPost, deleteMessage, getMessages, getMessageID, getLogout, getUser } from './Redux/Actions'
@@ -5,12 +6,33 @@ import Message from './Components/Message'
 import { Register, Auth, Login } from './Components/Login.jsx'
 import NavBar from "./Components/NavBar";
 
+=======
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./App.css";
+import Main from "./Components/Main";
+import Home from "./Components/Home";
+import {
+  login,
+  register,
+  like,
+  newPost,
+  deleteMessage,
+  getMessages,
+  getMessageID,
+  getLogout,
+  getUser
+} from "./Redux/Actions";
+import Message from "./Components/Message";
+import NavBar from "./Components/NavBar";
+import { Login, Register } from "./Components/Login";
+>>>>>>> 9bf983a1bc00d289826865fc15683b610456697c
 
-import { Container, Header } from "semantic-ui-react";
 
 // make skeleton leave header here, add footer, sections for each component
 class App extends Component {
   render() {
+<<<<<<< HEAD
     return (
       <div className="App">
         <div>This is from APP</div>
@@ -24,6 +46,9 @@ class App extends Component {
         </Container>
       </div >
     );
+=======
+    return <Home />;
+>>>>>>> 9bf983a1bc00d289826865fc15683b610456697c
   }
 }
 
@@ -33,10 +58,10 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: () => {
-      dispatch(login());
+    login: (username, password) => {
+      dispatch(login(username, password));
     },
-    register: () => {
+    register: (displayName, username, password) => {
       dispatch(register());
     },
     newPost: () => {
