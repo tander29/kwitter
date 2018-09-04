@@ -35,14 +35,15 @@ export class Main extends Component {
     return (
         
         
-        <Container>
+        <Container fluid>
         <div className="App">
-          < Container className='headerNav' style={{ marginBottom: '2vh', }} >
+         
         <CustomHeader />
+          
+          <Container>
             <Sticky>
               <NavBar />
             </Sticky>
-          </Container>
           <Grid centered>
             <Grid.Row columns={3}>
               <Grid.Column width={4}>
@@ -70,6 +71,7 @@ export class Main extends Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
+          </Container>
         </div>
       </Container >
     );
