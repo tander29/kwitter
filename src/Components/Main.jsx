@@ -26,11 +26,7 @@ import {
 } from "semantic-ui-react";
 
 export class Main extends Component {
-
-  componentDidMount() {
-
-    // console.log('I was triggered during componentDidMount', this.props.profile)
-  }
+  
   render() {
     return (
         

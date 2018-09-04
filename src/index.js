@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Components/Home';
 import Main from './Components/Main'
+import Profile from './Components/Profile'
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import store, { history } from './Redux/Store'
 import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
+
 
 
 
@@ -19,6 +21,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" render={() => (<Home />)} />
                 <Route exact path="/Main" render={() => (<Main />)} />
+                <Route exact path="/Profile" render={() => (<Profile />)} />
             </Switch>
         </ConnectedRouter>
     </Provider>,

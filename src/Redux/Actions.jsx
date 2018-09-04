@@ -12,8 +12,6 @@ import {
 import { push } from 'connected-react-router'
 
 
-// export const addTodo = (title, keyNumber) => { return { type: ADD_TODO, title, keyNumber } }
-
 export const getMessages = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/messages")
     .then(response => response.json())

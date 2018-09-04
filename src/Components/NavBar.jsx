@@ -1,4 +1,5 @@
 import React from "react";
+import ProfileInfo from "./ProfileInfo";
 import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
 import {
   login,
@@ -18,7 +19,13 @@ export const NavBar = (props) => (
 
   <Menu>
     <Menu.Menu>
-      <Menu.Item><Button color='facebook'>Profile Page</Button></Menu.Item>
+    
+    <Menu.Item>
+        <Modal trigger={<Button >Profile</Button>}> 
+            <ProfileInfo></ProfileInfo>
+        
+        </Modal>
+    </Menu.Item>
     </Menu.Menu>
     <Menu.Menu>
       <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
@@ -34,10 +41,6 @@ export const NavBar = (props) => (
   </Menu>
 );
 
-
- 
-
-
 const mapStateToProps = state => {
   return {
     logout: {
@@ -46,8 +49,6 @@ const mapStateToProps = state => {
   }
   };
 };
-
-
 
 function mapDispatchToProps(dispatch) {
   return {
