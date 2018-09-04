@@ -161,17 +161,17 @@ export const unlike = () => {
 
 export const deleteMessage = () => {
   return { type: DELETE_MESSAGE };
-export const deleteMessage = () => dispatch => {
-  let authKey = 
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEyMTQsImlhdCI6MTUzNjA2OTg2OX0.7vUc67pjFrIKWlZjEP3PMEd7EajadbNxIHyDIkfQBx8'
-  const deleteRequest = {
-    method: "DELETE",
-    headers: {"Content-Type": "application/json", Authorization: authKey},
-  } 
+// export const deleteMessage = () => dispatch => {
+//   let authKey = 
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEyMTQsImlhdCI6MTUzNjA2OTg2OX0.7vUc67pjFrIKWlZjEP3PMEd7EajadbNxIHyDIkfQBx8'
+//   const deleteRequest = {
+//     method: "DELETE",
+//     headers: {"Content-Type": "application/json", Authorization: authKey},
+//   } 
   
-  fetch("https://kwitter-api.herokuapp.com/messages/1")
-    .then()
-    .then()
+//   fetch("https://kwitter-api.herokuapp.com/messages/1")
+//     .then()
+//     .then()
 
-   { type: DELETE_MESSAGE };
+//    { type: DELETE_MESSAGE };
 };
