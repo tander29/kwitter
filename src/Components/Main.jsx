@@ -9,7 +9,7 @@ import {
   login,
   like,
   newPost,
- 
+
   getMessages,
   getMessageID,
   getUser
@@ -42,7 +42,7 @@ export class Main extends Component {
 
           <Container>
             {/* <Sticky> */}
-              <NavBar postMessage={this.props.newPost} token={this.props.profile.token} />
+            <NavBar postMessage={this.props.newPost} token={this.props.profile.token} reloadMessages={this.props.getMessages} />
             {/* </Sticky> */}
             <Grid centered>
               <Grid.Row columns={3}>
@@ -94,7 +94,7 @@ function mapDispatchToProps(dispatch) {
     like: () => {
       dispatch(like());
     },
-  
+
     getMessages: () => {
       dispatch(getMessages());
     },
