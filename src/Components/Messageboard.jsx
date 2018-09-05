@@ -41,7 +41,10 @@ class MessageBoard extends Component {
                 likes={messages.likes.length}
                 time={messages.createdAt}
                 id={messages.id}
-                type="string">
+                type="string"
+                isLiked={this.props.likes.some(messageId => messageId === messages.id) }
+                >
+
 
             </Message>)
 
@@ -67,7 +70,7 @@ class MessageBoard extends Component {
 }
 
 const mapStateToProps = state => {
-    return { messages: state.messages, profile: state.profile };
+    return { messages: state.messages, profile: state.profile, likes: state.likes };
 };
 
 function mapDispatchToProps(dispatch) {

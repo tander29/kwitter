@@ -12,14 +12,22 @@ import {
 import { push } from 'connected-react-router'
 
 
-export const getMessages = () => dispatch => {
+export const getMessages = () => (dispatch, getState) => {
+  
   fetch("https://kwitter-api.herokuapp.com/messages?limit=1000")
     .then(response => response.json())
     .then(messagesResponse => {
+      const userId = getState().profile.id
+      const allLikes = messagesResponse.messages.map(message => message.likes)
+      const likes = [].concat(...allLikes)
+      const userLikes = likes.filter(like => like.userId === userId)
+      const userLikeMessageId = userLikes.map(userLike => userLike.messageId)
       dispatch({
         type: GET_MESSAGES,
-        messages: messagesResponse.messages
+        messages: messagesResponse.messages,
+        userLikeMessageId: userLikeMessageId
       });
+
     });
 
 };
@@ -39,20 +47,34 @@ export const getLogout = () => dispatch => {
     });
 };
 
-export const getMessageID = () => dispatch => {
-  //this will need to use a parameternumber pass down to get a specific message
-  const singleMessage = "https://kwitter-api.herokuapp.com/messages/336";
+export const getMessageID = (id) => (dispatch, getState) => {
+// const ourID = getState().profile.id
 
-  fetch("https://kwitter-api.herokuapp.com/messages/336")
+  fetch("https://kwitter-api.herokuapp.com/messages/" + id)
     .then(response => response.json())
     .then(messageID => {
-      console.log(messageID);
+      
+      // console.log(messageID)
+      console.log(messageID.message.id)
+      // console.log(messageID.message.likes.filter(messages => messages.userId === ourID))
       dispatch({
         type: GET_MESSAGE_ID,
-        message: messageID
+        message: messageID.message.id,
       });
     });
 };
+
+export const getLikeId = (messageId, userId, messages) => {
+
+  const message = messages.find(message => message.id === messageId)
+  const like = message.likes.find(like => like.userId === userId)
+  
+  if(like === undefined) {
+    return undefined
+  } else {
+    return like.id
+  }
+}
 
 export const getUser = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/users")
@@ -160,23 +182,25 @@ export const like = (messageId) => (dispatch, getState) => {
 };
 
 export const unlike = (messageId) => (dispatch, getState) => {
+  const userId = getState().profile.id
+  const messages = getState().messages
+  const likeId = getLikeId(messageId, userId, messages)
+
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
 
   const deleteLike = {
     method: "DELETE",
     headers: { "Content-Type": "application/json", Authorization: authKey },
-    body: JSON.stringify({ messageId: messageId })
   }
 
-  fetch("https://kwitter-api.herokuapp.com/likes/")
+  fetch("https://kwitter-api.herokuapp.com/likes/" + likeId, deleteLike)
     .then(res => res.json())
     .then(data => {
       dispatch({
         type: UNLIKE,
-        messageId: data.like.messageId
+        messageId: messageId
       })
+      dispatch(getMessages())
     })
 }
-
-

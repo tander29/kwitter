@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import  {like}  from '../Redux/Actions'
-import {connect} from 'react-redux'
+import  { like, unlike, getMessageID }  from '../Redux/Actions'
+import { connect } from 'react-redux'
 import { Icon, Button, Divider, Card, Grid} from "semantic-ui-react";
 
 
 export class Message extends Component {
-  
+
   render() {
     return (
       <Card fluid centered>
@@ -33,16 +33,26 @@ export class Message extends Component {
 
 
           <footer>
-            <Button
-              content='Like'
-              toggle
-              icon='heart'
-              label={{ as: 'a', basic: true, content: this.props.likes }}
-              labelPosition='right'
-              size='tiny'
-              style={{ float: 'left' }} 
-              onClick={ () => this.props.like(this.props.id) }
-            />
+            {(this.props.isLiked === true)? 
+              <Button
+                content='Like'
+                icon='heart'
+                label={{ as: 'a', basic: true, content: this.props.likes }}
+                labelPosition='right'
+                style={{ float: 'left' }} 
+                color='red'
+                onClick={ () => this.props.unlike(this.props.id) }
+              />
+            :
+              <Button
+                content='Like'
+                icon='heart'
+                label={{ as: 'a', basic: true, content: this.props.likes }}
+                labelPosition='right'
+                style={{ float: 'left' }} 
+                onClick={ () => this.props.like(this.props.id) }
+              />
+            }
 
             <Button onClick={this.props.post} floated="right" size='tiny'>
               Delete
@@ -62,6 +72,12 @@ function mapDispatchToProps(dispatch) {
   return {
     like: (messageId) => {
       dispatch(like(messageId));
+    },
+    unlike: (messageId) => {
+      dispatch(unlike(messageId))
+    },
+    getMessageID: (id) => {
+      dispatch(getMessageID(id))
     },
   };
 }

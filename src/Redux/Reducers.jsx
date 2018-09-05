@@ -7,7 +7,9 @@ const initialState = {
     messages: [], 
     profile: { username: null, password: null, token: null, id: null, success: null }, 
     users: [],
-    logout: {success: false, message: ''} }
+    logout: {success: false, message: ''},
+    likes: []
+ }
 
 export default function (state = initialState, action) {
 
@@ -28,8 +30,10 @@ export default function (state = initialState, action) {
         case GET_MESSAGES:
             return {
                 ...state,
-                messages: action.messages
+                messages: action.messages,
+                likes: action.userLikeMessageId
             }
+        
         case REGISTER:
             return{
                 ...state,
@@ -47,7 +51,8 @@ export default function (state = initialState, action) {
         case LIKE:
             return {
                 ...state,
-                messageId: action.messageId
+                messageId: action.messageId,
+                likes: [...state.likes, action.messageId]
             }
 
         case DELETE_MESSAGE:
@@ -55,7 +60,12 @@ export default function (state = initialState, action) {
 
 
         case GET_MESSAGE_ID:
-            return state;
+            return {
+                ...state,
+                likes: {
+                    liked: action.message
+                }
+            };
 
         case GET_LOGOUT:
             return {
@@ -77,7 +87,10 @@ export default function (state = initialState, action) {
             }
 
         case UNLIKE:
-            return state
+            return {
+                ...state,
+                likes: state.likes.filter(messageId => messageId !== action.messageId)
+            }
 
         default:
             return state;
