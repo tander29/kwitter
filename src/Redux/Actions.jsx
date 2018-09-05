@@ -3,17 +3,17 @@ import {
   REGISTER,
   NEW_POST,
   LIKE,
-  DELETE_MESSAGE,
   GET_MESSAGE_ID,
   GET_LOGOUT,
   GET_USER,
-  GET_MESSAGES
+  GET_MESSAGES,
+  UNLIKE
 } from "./Types";
 import { push } from 'connected-react-router'
 
 
 export const getMessages = () => dispatch => {
-  fetch("https://kwitter-api.herokuapp.com/messages")
+  fetch("https://kwitter-api.herokuapp.com/messages?limit=1000")
     .then(response => response.json())
     .then(messagesResponse => {
       dispatch({
@@ -54,14 +54,14 @@ export const getMessageID = () => dispatch => {
     });
 };
 
-export const getUser = number => dispatch => {
+export const getUser = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/users")
     .then(response => response.json())
-    .then(users => {
-      console.log(users);
+    .then(data => {
+      console.log(data);
       dispatch({
         type: GET_USER,
-        user: users.user
+        users: data.users
       });
     });
 };
@@ -83,6 +83,7 @@ export const newPost = (text, token) => dispatch => {
     .then(data => {
       console.log(data);
       dispatch({ type: NEW_POST, messages: data });
+      dispatch(getMessages())
     });
 };
 
@@ -102,7 +103,7 @@ export const login = (username, password) => dispatch => {
         type: LOGIN,
         data: { token: data.token, id: data.id, success: data.success },
         username: username,
-        password:password
+        password: password
 
       });
       if (data.success === true) {
@@ -110,15 +111,16 @@ export const login = (username, password) => dispatch => {
       } else {
         alert("Wrong Username or Password")
       }
+      dispatch(getUser())
     });
 };
 
 export const register = (displayName, username, password, errors) => dispatch => {
   const postRequestOptions = {
     method: "POST",
-    Authorization: {...errors},
+    Authorization: { ...errors },
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({username: username, password: password, displayName:displayName })
+    body: JSON.stringify({ username: username, password: password, displayName: displayName })
   }
 
   fetch("https://kwitter-api.herokuapp.com/auth/register", postRequestOptions)
@@ -131,27 +133,50 @@ export const register = (displayName, username, password, errors) => dispatch =>
         username: username,
         password: password,
       })
-      dispatch(login(username,password))
+      dispatch(login(username, password))
     });
 
 };
 
-export const like = () => {
-  return { type: LIKE };
+export const like = (messageId) => (dispatch, getState) => {
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+
+  const postLike = {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ messageId: messageId })
+  }
+
+  fetch("https://kwitter-api.herokuapp.com/likes", postLike)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: LIKE,
+        messageId: data.like.messageId
+      })
+      dispatch(getMessages())
+    })
 };
 
-export const deleteMessage = () => dispatch => {
-  let authKey = 
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEyMTQsImlhdCI6MTUzNjA2OTg2OX0.7vUc67pjFrIKWlZjEP3PMEd7EajadbNxIHyDIkfQBx8'
-  const deleteRequest = {
+export const unlike = (messageId) => (dispatch, getState) => {
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+
+  const deleteLike = {
     method: "DELETE",
-    headers: {"Content-Type": "application/json", Authorization: authKey},
-  } 
-  
-  fetch("https://kwitter-api.herokuapp.com/messages/1")
-    .then()
-    .then()
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ messageId: messageId })
+  }
 
-   { type: DELETE_MESSAGE };
-};
+  fetch("https://kwitter-api.herokuapp.com/likes/")
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: UNLIKE,
+        messageId: data.like.messageId
+      })
+    })
+}
+
 

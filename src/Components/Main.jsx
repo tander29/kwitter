@@ -7,16 +7,13 @@ import Profile from "./Profile";
 import Messageboard from './Messageboard'
 import {
   login,
-  register,
   like,
   newPost,
-  deleteMessage,
+
   getMessages,
   getMessageID,
-  getLogout,
   getUser
 } from "../Redux/Actions";
-import Message from "./Message";
 import NavBar from "./NavBar";
 import {
   Container,
@@ -44,9 +41,9 @@ export class Main extends Component {
           <CustomHeader />
 
           <Container>
-            <Sticky>
-              <NavBar postMessage={this.props.newPost} token={this.props.profile.token} />
-            </Sticky>
+            {/* <Sticky> */}
+            <NavBar postMessage={this.props.newPost} token={this.props.profile.token} reloadMessages={this.props.getMessages} />
+            {/* </Sticky> */}
             <Grid centered>
               <Grid.Row columns={3}>
                 <Grid.Column width={4}>
@@ -97,9 +94,7 @@ function mapDispatchToProps(dispatch) {
     like: () => {
       dispatch(like());
     },
-    deleteMessage: () => {
-      dispatch(deleteMessage());
-    },
+
     getMessages: () => {
       dispatch(getMessages());
     },

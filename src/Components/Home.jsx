@@ -16,7 +16,7 @@ import {
   Divider
 } from "semantic-ui-react";
 
-import { Link } from 'react-router-dom'
+
 
 export class Home extends Component {
   render() {
@@ -36,7 +36,7 @@ export class Home extends Component {
 
                 <Grid.Column>
                   <Container className="register" textAlign={"center"}>
-                    <Sticky pushing>
+                    <Sticky>
                       <Card centered>
                         <Modal trigger={<Button color='teal'>Login</Button>} closeIcon>
                           <Login whatever={this.props.login} />

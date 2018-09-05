@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { Icon, Button, Divider, Checkbox, Card, Grid, Label } from "semantic-ui-react";
+import  {like}  from '../Redux/Actions'
+import {connect} from 'react-redux'
+import { Icon, Button, Divider, Card, Grid} from "semantic-ui-react";
 
-export default class Message extends Component {
+
+export class Message extends Component {
+  
   render() {
     return (
       <Card fluid centered>
@@ -12,9 +16,9 @@ export default class Message extends Component {
           </div>
 
           <Grid>
-            <Grid.Row columns={2}>
-              <Grid.Column textAlign="left">Likes: {this.props.likes}</Grid.Column>
-              <Grid.Column textAlign="right">{this.props.time}</Grid.Column>
+            <Grid.Row columns={1}>
+             
+              <Grid.Column textAlign="center">{this.props.time}</Grid.Column>
             </Grid.Row>
           </Grid>
 
@@ -26,19 +30,39 @@ export default class Message extends Component {
 
 
           <footer>
-          <Button
-          content='Like'
-          icon='heart'
-           label={{ as: 'a', basic: true, content: '2,048' }}
-            labelPosition='right'
-           style={{ float: 'left' }} />
+            <Button
+              content='Like'
+              icon='heart'
+              label={{ as: 'a', basic: true, content: this.props.likes }}
+              labelPosition='right'
+              style={{ float: 'left' }} 
+              onClick={ () => this.props.like(this.props.id) }
+            />
 
             <Button onClick={this.props.post} floated="right">
               Delete
-          </Button>
+            </Button>
           </footer>
         </article>
       </Card>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { messages: state.messages, profile: state.profile };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    like: (messageId) => {
+      dispatch(like(messageId));
+    },
+  };
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Message);
+export default Connect;
