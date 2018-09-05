@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 
 import ProfileInfo from "./ProfileInfo";
@@ -11,7 +10,6 @@ import {
   getUser
 } from "../Redux/Actions";
 import { connect } from "react-redux";
-
 
 
 
@@ -32,6 +30,8 @@ export class NavBar extends Component {
   handlePost = (event) => {
     if (event.key === 'Enter') {
       this.props.postMessage(this.state.text, this.props.token)
+      event.target.value = null
+      this.setState({ text: "" })
     }
   }
 
@@ -45,7 +45,7 @@ export class NavBar extends Component {
  
   render() {
     return (
-      <Menu>
+      <Menu style={{ marginBottom: '2vh' }}>
         <Menu.Menu>
           <Menu.Item>
               <Modal trigger={<Button >Profile</Button>}> 
@@ -68,7 +68,7 @@ export class NavBar extends Component {
           <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
         </Menu.Item>
 
-        <Menu.Item><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
+        <Menu.Item position='right'><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
       </Menu>
     )
   }

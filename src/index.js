@@ -19,8 +19,8 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <Switch>
-                <Route exact path="/" render={() => (<Home />)} />
-                <Route exact path="/Main" render={() => (<Main />)} />
+                <Route exact path="/" render={(props) => (<Home location={props.location.pathname} />)} />
+                <Route exact path="/Main" render={(props) => (<Main location={props.location.pathname} />)} />
                 <Route exact path="/Profile" render={() => (<Profile />)} />
             </Switch>
         </ConnectedRouter>
