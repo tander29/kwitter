@@ -39,10 +39,10 @@ export class NavBar extends Component {
 
   render() {
     return (
-      <Menu>
+      <Menu style={{ marginBottom: '2vh' }}>
         <Menu.Menu>
           <Menu.Item>
-              <Modal trigger={<Button >Profile</Button>}> 
+              <Modal trigger={<Button inverted color='red'>Profile</Button>}> 
                 <ProfileInfo></ProfileInfo>
               </Modal>
         </Menu.Item>
