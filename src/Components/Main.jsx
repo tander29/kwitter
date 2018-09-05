@@ -42,7 +42,7 @@ export class Main extends Component {
 
           <Container>
             {/* <Sticky> */}
-            <NavBar postMessage={this.props.newPost} token={this.props.profile.token} reloadMessages={this.props.getMessages} />
+            <NavBar postMessage={this.props.newPost} token={this.props.profile.token} reloadMessages={this.props.getMessages} location={this.props.location} />
             {/* </Sticky> */}
             <Grid centered>
               <Grid.Row columns={3}>
