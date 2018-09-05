@@ -16,15 +16,17 @@ class MessageBoard extends Component {
         return (
             <React.Fragment>
 
-                {messageInfo.map(messages => 
+                {messageInfo.map(message => 
                 <Message
-                    key={messages.id}
-                    displayName={messages.displayName}
-                    text={messages.text}
-                    likes={messages.likes.length}
-                    time={messages.createdAt}
-                    id={messages.id}
-                    type="string">
+                    key={message.id}
+                    displayName={message.displayName}
+                    text={message.text}
+                    likes={message.likes.length}
+                    time={message.createdAt}
+                    id={message.id}
+                    type="string"
+                    isLiked={this.props.likes.some(messageId => messageId === message.id) }
+                    >
                 </Message>)
                 }
             </React.Fragment>
@@ -33,7 +35,7 @@ class MessageBoard extends Component {
 }
 
 const mapStateToProps = state => {
-    return { messages: state.messages, profile: state.profile };
+    return { messages: state.messages, profile: state.profile, likes: state.likes };
 };
 
 function mapDispatchToProps(dispatch) {
