@@ -9,7 +9,7 @@ import {
   login,
   like,
   newPost,
-  deleteMessage,
+ 
   getMessages,
   getMessageID,
   getUser
@@ -47,11 +47,11 @@ export class Main extends Component {
             <Grid centered>
               <Grid.Row columns={3}>
                 <Grid.Column width={4}>
-                  <Sticky offset={75}>
+                  {/* <Sticky offset={75}> */}
                     <Card centered>
                       <Profile name={this.props.profile.username} />
                     </Card>
-                  </Sticky>
+                  {/* </Sticky> */}
                 </Grid.Column>
 
                 <Grid.Column width={9}>
@@ -65,9 +65,9 @@ export class Main extends Component {
                   </Container>
                 </Grid.Column>
                 <Grid.Column width={3}>
-                  <Sticky offset={75}>
+                  {/* <Sticky offset={75}> */}
                     <CustomFooter />
-                  </Sticky>
+                  {/* </Sticky> */}
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -94,9 +94,7 @@ function mapDispatchToProps(dispatch) {
     like: () => {
       dispatch(like());
     },
-    deleteMessage: () => {
-      dispatch(deleteMessage());
-    },
+  
     getMessages: () => {
       dispatch(getMessages());
     },

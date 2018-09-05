@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import  {like}  from '../Redux/Actions'
+import {connect} from 'react-redux'
 import { Icon, Button, Divider, Card, Grid} from "semantic-ui-react";
 
 
