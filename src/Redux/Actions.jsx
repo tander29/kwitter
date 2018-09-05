@@ -13,7 +13,7 @@ import { push } from 'connected-react-router'
 
 
 export const getMessages = () => (dispatch, getState) => {
-  
+
   fetch("https://kwitter-api.herokuapp.com/messages?limit=1000")
     .then(response => response.json())
     .then(messagesResponse => {
@@ -48,12 +48,12 @@ export const getLogout = () => dispatch => {
 };
 
 export const getMessageID = (id) => (dispatch, getState) => {
-// const ourID = getState().profile.id
+  // const ourID = getState().profile.id
 
   fetch("https://kwitter-api.herokuapp.com/messages/" + id)
     .then(response => response.json())
     .then(messageID => {
-      
+
       // console.log(messageID)
       console.log(messageID.message.id)
       // console.log(messageID.message.likes.filter(messages => messages.userId === ourID))
@@ -68,8 +68,8 @@ export const getLikeId = (messageId, userId, messages) => {
 
   const message = messages.find(message => message.id === messageId)
   const like = message.likes.find(like => like.userId === userId)
-  
-  if(like === undefined) {
+
+  if (like === undefined) {
     return undefined
   } else {
     return like.id
@@ -89,10 +89,6 @@ export const getUser = () => dispatch => {
 };
 
 export const newPost = (text, token) => dispatch => {
-  console.log("action", text, token)
-  // let authKeyTest =
-  //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTM2LCJpYXQiOjE1MzUwMzY3NjZ9.z0QM0IEmHRmdu93aOQ5qGwE-GUknK_OJevK5yz-zhfY";
-  //the one above works
   let authKey = `Bearer ${token}`
   const postRequestOptions = {
     method: "POST",
@@ -161,6 +157,8 @@ export const register = (displayName, username, password, errors) => dispatch =>
 };
 
 export const like = (messageId) => (dispatch, getState) => {
+  const loggedIn = getState().profile.success
+  if (!loggedIn) { return }
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
 
@@ -182,6 +180,8 @@ export const like = (messageId) => (dispatch, getState) => {
 };
 
 export const unlike = (messageId) => (dispatch, getState) => {
+  const loggedIn = getState().profile.success
+  if (!loggedIn) { return }
   const userId = getState().profile.id
   const messages = getState().messages
   const likeId = getLikeId(messageId, userId, messages)

@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 
 
 export class NavBar extends Component {
-  // export const NavBar = (props) => {
+
 
   state = {
     text: "",
@@ -23,7 +23,7 @@ export class NavBar extends Component {
       createdAt: '',
       displayName: '',
       username: '',
-      id: null, 
+      id: null,
     }
   }
 
@@ -42,23 +42,23 @@ export class NavBar extends Component {
   componentDidMount() {
     this.props.getUser()
   }
- 
+
   render() {
     return (
       <Menu style={{ marginBottom: '2vh' }}>
         <Menu.Menu>
           <Menu.Item>
-              <Modal trigger={<Button color='red'>Profile</Button>}> 
-                {this.props.userInfo !== undefined?
+            <Modal trigger={<Button color='red'>Profile</Button>}>
+              {this.props.userInfo !== undefined ?
                 <ProfileInfo
-                  key = {this.props.userInfo.id}
+                  key={this.props.userInfo.id}
                   displayName={this.props.userInfo.displayName}
                   username={this.props.userInfo.username}
                   about={this.props.userInfo.about}
                   createdAt={this.props.userInfo.createdAt}
-                  /> : null}
-              </Modal>
-        </Menu.Item>
+                /> : null}
+            </Modal>
+          </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
           <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
@@ -75,10 +75,10 @@ export class NavBar extends Component {
 }
 
 const mapStateToProps = state => {
- const userFilter = () => {
-    let userInfo = state.users.filter(user => 
-      user.id === state.profile.id 
-    )[0]   
+  const userFilter = () => {
+    let userInfo = state.users.filter(user =>
+      user.id === state.profile.id
+    )[0]
     console.log(userInfo)
     return userInfo
   }
@@ -88,8 +88,9 @@ const mapStateToProps = state => {
       message: state.message
     },
     userInfo: userFilter(),
-    profile: state.profile  }
-  };
+    profile: state.profile
+  }
+};
 
 
 function mapDispatchToProps(dispatch) {
