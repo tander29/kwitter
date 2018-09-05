@@ -3,47 +3,46 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Message from './Message.jsx'
-import { getMessages } from "../Redux/Actions";
+import { getMessages, getUser } from "../Redux/Actions";
 
 
 class MessageBoard extends Component {
 
     componentDidMount() {
         this.props.getMessages()
+        this.props.getUsers()
 
 
     }
 
     homepageMessages = (messageInfo) => {
 
-        // console.log("hi", messageInfo)
         let mountArray = []
         for (let i = 0; i < 5; i++) {
             let randomNumber = Math.floor(Math.random() * messageInfo.length)
             mountArray[i] = messageInfo[randomNumber]
-
         }
         return this.makeMessages(mountArray)
-
     }
 
     mainpageMessages = (messageInfo) => {
-
         return this.makeMessages(messageInfo)
     }
 
     makeMessages = (messageInfo) => {
+        console.log("message info", messageInfo)
+
         return messageInfo.map(messages =>
             <Message
                 key={messages.id}
-                displayName={messages.displayName}
+                displayName={this.displayName(messages)}
                 text={messages.text}
                 likes={messages.likes.length}
                 time={messages.createdAt}
                 id={messages.id}
                 type="string"
-                isLiked={this.props.likes.some(messageId => messageId === messages.id) }
-                >
+                isLiked={this.props.likes.some(messageId => messageId === messages.id)}
+            >
 
 
             </Message>)
@@ -51,6 +50,14 @@ class MessageBoard extends Component {
 
     }
 
+    displayName = (message) => {
+        if (this.props.users.length) {
+            let desiredUser = this.props.users.filter(user => user.id === message.userId)
+            console.log(desiredUser[0])
+            return desiredUser[0].displayName ? desiredUser[0].displayName : "Sneaky"
+        }
+
+    }
 
     render() {
         const messageInfo = this.props.messages
@@ -70,14 +77,18 @@ class MessageBoard extends Component {
 }
 
 const mapStateToProps = state => {
-    return { messages: state.messages, profile: state.profile, likes: state.likes };
+    return { messages: state.messages, profile: state.profile, likes: state.likes, users: state.users };
 };
 
 function mapDispatchToProps(dispatch) {
     return {
         getMessages: () => {
-            dispatch(getMessages());
+            dispatch(getMessages())
         },
+        getUsers: () => {
+            dispatch(getUser());
+        },
+
     };
 }
 

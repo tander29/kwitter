@@ -48,15 +48,10 @@ export const getLogout = () => dispatch => {
 };
 
 export const getMessageID = (id) => (dispatch, getState) => {
-  // const ourID = getState().profile.id
-
   fetch("https://kwitter-api.herokuapp.com/messages/" + id)
     .then(response => response.json())
     .then(messageID => {
-
-      // console.log(messageID)
       console.log(messageID.message.id)
-      // console.log(messageID.message.likes.filter(messages => messages.userId === ourID))
       dispatch({
         type: GET_MESSAGE_ID,
         message: messageID.message.id,
@@ -80,7 +75,7 @@ export const getUser = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/users")
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      console.log("hi data", data.users)
       dispatch({
         type: GET_USER,
         users: data.users
