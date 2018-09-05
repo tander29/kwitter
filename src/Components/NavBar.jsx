@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 
 import ProfileInfo from "./ProfileInfo";
@@ -14,7 +13,6 @@ import { connect } from "react-redux";
 
 
 
-
 export class NavBar extends Component {
   // export const NavBar = (props) => {
 
@@ -25,6 +23,8 @@ export class NavBar extends Component {
   handlePost = (event) => {
     if (event.key === 'Enter') {
       this.props.postMessage(this.state.text, this.props.token)
+      event.target.value = null
+      this.setState({ text: "" })
     }
   }
 
@@ -42,10 +42,10 @@ export class NavBar extends Component {
       <Menu style={{ marginBottom: '2vh' }}>
         <Menu.Menu>
           <Menu.Item>
-              <Modal trigger={<Button inverted color='red'>Profile</Button>}> 
-                <ProfileInfo></ProfileInfo>
-              </Modal>
-        </Menu.Item>
+            <Modal trigger={<Button inverted color='red'>Profile</Button>}>
+              <ProfileInfo></ProfileInfo>
+            </Modal>
+          </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
           <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>

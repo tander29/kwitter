@@ -19,6 +19,8 @@ import {
 
 
 export class Home extends Component {
+
+
   render() {
     return (
       <Container fluid>
@@ -30,7 +32,7 @@ export class Home extends Component {
               <Grid.Row columns={2}>
                 <Grid.Column>
 
-                  <Messageboard></Messageboard>
+                  <Messageboard location={this.props.location}></Messageboard>
 
                 </Grid.Column>
 

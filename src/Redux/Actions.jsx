@@ -83,6 +83,7 @@ export const newPost = (text, token) => dispatch => {
     .then(data => {
       console.log(data);
       dispatch({ type: NEW_POST, messages: data });
+      dispatch(getMessages())
     });
 };
 
@@ -102,7 +103,7 @@ export const login = (username, password) => dispatch => {
         type: LOGIN,
         data: { token: data.token, id: data.id, success: data.success },
         username: username,
-        password:password
+        password: password
 
       });
       if (data.success === true) {
@@ -110,16 +111,16 @@ export const login = (username, password) => dispatch => {
       } else {
         alert("Wrong Username or Password")
       }
-        dispatch(getUser())
+      dispatch(getUser())
     });
 };
 
 export const register = (displayName, username, password, errors) => dispatch => {
   const postRequestOptions = {
     method: "POST",
-    Authorization: {...errors},
+    Authorization: { ...errors },
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({username: username, password: password, displayName:displayName })
+    body: JSON.stringify({ username: username, password: password, displayName: displayName })
   }
 
   fetch("https://kwitter-api.herokuapp.com/auth/register", postRequestOptions)
@@ -132,7 +133,7 @@ export const register = (displayName, username, password, errors) => dispatch =>
         username: username,
         password: password,
       })
-      dispatch(login(username,password))
+      dispatch(login(username, password))
     });
 
 };
@@ -140,7 +141,7 @@ export const register = (displayName, username, password, errors) => dispatch =>
 export const like = (messageId) => (dispatch, getState) => {
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
-  
+
   const postLike = {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: authKey },
@@ -161,7 +162,7 @@ export const like = (messageId) => (dispatch, getState) => {
 export const unlike = (messageId) => (dispatch, getState) => {
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
-  
+
   const deleteLike = {
     method: "DELETE",
     headers: { "Content-Type": "application/json", Authorization: authKey },

@@ -9,7 +9,7 @@ import {
   login,
   like,
   newPost,
- 
+
   getMessages,
   getMessageID,
   getUser
@@ -24,14 +24,6 @@ import {
 
 export class Main extends Component {
 
-  componentDidMount() {
-
-    // console.log('I was triggered during componentDidMount', this.props.profile)
-  }
-
-  postMessage() {
-
-  }
   render() {
     return (
 
@@ -40,9 +32,9 @@ export class Main extends Component {
 
           <CustomHeader />
 
-            <Sticky>
-              <NavBar postMessage={this.props.newPost} token={this.props.profile.token} />
-            </Sticky>
+          <Sticky>
+            <NavBar postMessage={this.props.newPost} token={this.props.profile.token} reloadMessages={this.props.getMessages} location={this.props.location} />
+          </Sticky>
           <Container>
             <Grid centered>
               <Grid.Row columns={3}>
@@ -94,7 +86,7 @@ function mapDispatchToProps(dispatch) {
     like: () => {
       dispatch(like());
     },
-  
+
     getMessages: () => {
       dispatch(getMessages());
     },
