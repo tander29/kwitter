@@ -1,5 +1,6 @@
 body {
    background-color: rgb(204, 226, 207);
+   height: auto;
 }
 
 header {
@@ -7,8 +8,9 @@ header {
   height: 5vh;
 }
 
-.rightColumn {
+/* .rightColumn {
   display: flex;
   justify-content: center;
   align-content: center;
-}
+} */
+

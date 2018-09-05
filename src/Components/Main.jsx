@@ -40,13 +40,13 @@ export class Main extends Component {
 
           <CustomHeader />
 
-          <Container>
-            {/* <Sticky> */}
+            <Sticky className='sticking'>
               <NavBar postMessage={this.props.newPost} token={this.props.profile.token} />
-            {/* </Sticky> */}
+            </Sticky>
+          <Container>
             <Grid centered>
               <Grid.Row columns={3}>
-                <Grid.Column width={4}>
+                <Grid.Column width={3}>
                   <Sticky offset={75}>
                     <Card centered>
                       <Profile name={this.props.profile.username} />
@@ -54,7 +54,7 @@ export class Main extends Component {
                   </Sticky>
                 </Grid.Column>
 
-                <Grid.Column width={9}>
+                <Grid.Column width={8}>
                   <Container className="register" textAlign={"center"}>
 
 
