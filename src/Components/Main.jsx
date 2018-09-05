@@ -40,7 +40,7 @@ export class Main extends Component {
 
           <CustomHeader />
 
-            <Sticky className='sticking'>
+            <Sticky>
               <NavBar postMessage={this.props.newPost} token={this.props.profile.token} />
             </Sticky>
           <Container>
@@ -55,7 +55,7 @@ export class Main extends Component {
                 </Grid.Column>
 
                 <Grid.Column width={8}>
-                  <Container className="register" textAlign={"center"}>
+                  <Container className="register">
 
 
                     <Messageboard></Messageboard>

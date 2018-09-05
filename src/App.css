@@ -8,9 +8,7 @@ header {
   height: 5vh;
 }
 
-/* .rightColumn {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-} */
-
+.timestamp {
+    font-size: 11px;
+    color: gray;
+}
