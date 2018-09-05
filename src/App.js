@@ -27,7 +27,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { messages: state.messages };
+  return { messages: state.messages,
+          users: state.users };
 };
 
 function mapDispatchToProps(dispatch) {

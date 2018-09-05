@@ -10,8 +10,12 @@ export class Message extends Component {
     return (
       <Card fluid centered>
         <article style={{ padding: '2vh' }}>
-          
-            
+          <div style={{ paddingBottom: '1vh' }}>
+            <Icon name="user secret" size="large"/> 
+            {this.props.displayName}
+            {this.props.username}
+          </div>
+
           <Grid>
             <Grid.Row columns={2}>
               <Grid.Column textAlign='Left'><Icon name="user secret" size="large"/> 

@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import { Icon, Button,Card, Image, Modal, TextArea } from "semantic-ui-react"
+import {getUser} from '../Redux/Actions' 
+import { connect } from "react-redux";
 
-export default class ProfileInfo extends Component {
+
+export class ProfileInfo extends Component {
+ 
  render() {
  return (
+
+
 <Card fluid>
     <Image src='' />
     <Card.Content>
-      <Card.Header>Display Name</Card.Header>
+      <Card.Header>{this.props.displayName}</Card.Header>
       <Card.Meta>
-        <span className='date'>Date Created</span>
+        <span className='date'>{this.props.createdAt}</span>
       </Card.Meta>
-      <Card.Description>Bio</Card.Description>
+      <Card.Description>{this.props.about}</Card.Description>
     </Card.Content>
     <Card.Content extra>
       <a>
@@ -34,3 +40,24 @@ export default class ProfileInfo extends Component {
  )}}
 
 
+ const mapStateToProps = state => {
+  return { messages: state.messages, profile: state.profile,
+            users: state.users };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    
+    getUser: () => {
+      dispatch(getUser());
+    }
+    }
+  }
+
+
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileInfo);
+export default Connect;
