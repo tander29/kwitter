@@ -48,7 +48,7 @@ export class NavBar extends Component {
       <Menu style={{ marginBottom: '2vh' }}>
         <Menu.Menu>
           <Menu.Item>
-              <Modal trigger={<Button >Profile</Button>}> 
+              <Modal trigger={<Button color='red'>Profile</Button>}> 
                 {this.props.userInfo !== undefined?
                 <ProfileInfo
                   key = {this.props.userInfo.id}
