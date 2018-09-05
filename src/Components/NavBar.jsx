@@ -39,10 +39,10 @@ export class NavBar extends Component {
 
   render() {
     return (
-      <Menu>
+      <Menu style={{ marginBottom: '2vh' }}>
         <Menu.Menu>
           <Menu.Item>
-            <Modal trigger={<Button >Profile</Button>}>
+            <Modal trigger={<Button inverted color='red'>Profile</Button>}>
               <ProfileInfo></ProfileInfo>
             </Modal>
           </Menu.Item>
@@ -55,8 +55,8 @@ export class NavBar extends Component {
           <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
         </Menu.Item>
 
-        <Menu.Item><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
-      </Menu >
+        <Menu.Item position='right'><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
+      </Menu>
     )
   }
 }

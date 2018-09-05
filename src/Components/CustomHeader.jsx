@@ -6,7 +6,7 @@ import kwitter_logo from '../images/kwitter_logo.png';
 class CustomHeader extends React.Component {
   render() {
     return (
-      <Container className='headerNav' style={{ marginBottom: '2vh', backgroundColor:'rgb(47, 219, 249)' }} fluid>
+      <Container className='headerNav' style={{ backgroundColor:'rgb(47, 219, 249)' }} fluid>
       <Image src={ kwitter_logo } size='large' centered />
       
       </Container>
