@@ -20,6 +20,13 @@ export class NavBar extends Component {
 
   state = {
     text: "",
+    user: {
+      about: '',
+      createdAt: '',
+      displayName: '',
+      username: '',
+      id: null, 
+    }
   }
 
   handlePost = (event) => {
@@ -32,18 +39,24 @@ export class NavBar extends Component {
     console.log(event.target.value)
     this.setState({ text: event.target.value })
   }
-
-
-
-
-
+  componentDidMount() {
+    this.props.getUser()
+  }
+ 
   render() {
     return (
       <Menu>
         <Menu.Menu>
           <Menu.Item>
               <Modal trigger={<Button >Profile</Button>}> 
-                <ProfileInfo></ProfileInfo>
+                {this.props.userInfo !== undefined?
+                <ProfileInfo
+                  key = {this.props.userInfo.id}
+                  displayName={this.props.userInfo.displayName}
+                  username={this.props.userInfo.username}
+                  about={this.props.userInfo.about}
+                  createdAt={this.props.userInfo.createdAt}
+                  /> : null}
               </Modal>
         </Menu.Item>
         </Menu.Menu>
@@ -61,16 +74,22 @@ export class NavBar extends Component {
   }
 }
 
-
-
 const mapStateToProps = state => {
+ const userFilter = () => {
+    let userInfo = state.users.filter(user => 
+      user.id === state.profile.id 
+    )[0]   
+    console.log(userInfo)
+    return userInfo
+  }
   return {
     logout: {
       success: state.success,
       message: state.message
-    }
+    },
+    userInfo: userFilter(),
+    profile: state.profile  }
   };
-};
 
 
 function mapDispatchToProps(dispatch) {

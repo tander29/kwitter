@@ -13,6 +13,7 @@ export class Message extends Component {
           <div style={{ paddingBottom: '1vh' }}>
             <Icon name="user secret" size="large"/> 
             {this.props.displayName}
+            {this.props.username}
           </div>
 
           <Grid>
@@ -21,8 +22,6 @@ export class Message extends Component {
               <Grid.Column textAlign="center">{this.props.time}</Grid.Column>
             </Grid.Row>
           </Grid>
-
-
           <Divider style={{ marginBottom: '20px' }} />
           <div className="message" style={{ marginBottom: '20px' }}>{this.props.text}</div>
 
