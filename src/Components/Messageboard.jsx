@@ -30,7 +30,7 @@ class MessageBoard extends Component {
     }
 
     makeMessages = (messageInfo) => {
-        console.log("message info", messageInfo)
+        // console.log("message info on", this.props.likes)
         if (!messageInfo.length) { return }
 
         let sortArray = messageInfo.sort((a, b) => { return Date.parse(b.createdAt) - Date.parse(a.createdAt) })
