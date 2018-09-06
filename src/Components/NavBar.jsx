@@ -76,7 +76,7 @@ export class NavBar extends Component {
         </Menu.Menu>
 
         <Menu.Item>
-          <Modal open={open} onClose={this.close} trigger={<Button onClick={this.showModal} color='twitter'>New Kweet</Button>} closeIcon><TextArea onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
+          <Modal open={open} onClose={this.close} trigger={<Button onClick={this.showModal} color='twitter'>New Kweet</Button>} closeIcon><TextArea autoFocus='true' onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
         </Menu.Item>
 
         <Menu.Item position='right'><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
