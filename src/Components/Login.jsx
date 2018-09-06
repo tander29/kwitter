@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Card } from "semantic-ui-react";
+import "../App.css";
 
 export class Login extends Component {
   state = {
@@ -29,7 +31,7 @@ export class Login extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Card style={{padding:'1vh'}} fluid>
         <header className="loginheader">Login</header>
         <input
           autoFocus='true'
@@ -51,7 +53,7 @@ export class Login extends Component {
           onKeyPress={this.handleEnter}
         />
         <button className="submit" onClick={this.handleSubmit} >Submit</button>
-      </React.Fragment>
+        </Card>
     );
   }
 }
@@ -91,8 +93,8 @@ export class Register extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <header className="registerheader">Register</header>
+      <Card style={{padding:'1vh'}} fluid>
+        <Card.Header className="profileHeader">Register</Card.Header>
         <input
           autoFocus='true'
           className="displayName"
@@ -121,7 +123,7 @@ export class Register extends Component {
           onKeyPress={this.handleEnter}
         />
         <button className="submit" onClick={this.handleSubmit}>Submit</button>
-      </React.Fragment>
+        </Card>
     );
   }
 }

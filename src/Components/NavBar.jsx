@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
 import ProfileInfo from "./ProfileInfo";
+import CustomFooter from "./CustomFooter";
 
-import { Menu, TextArea, Modal, Button } from "semantic-ui-react";
+import { Menu, TextArea, Modal, Button, Card } from "semantic-ui-react";
 import {
   login,
   register,
@@ -73,12 +74,17 @@ export class NavBar extends Component {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
-          <Menu.Item><Button color='vk'>Aboot Kwitter</Button></Menu.Item>
+              <Menu.Item> <Modal size ='tiny' trigger={<Button color='vk'>Aboot Kwitter</Button>}> 
+              <Card><CustomFooter></CustomFooter></Card>
+              </Modal></Menu.Item>
         </Menu.Menu>
 
         <Menu.Item>
-          <Modal open={open} onClose={this.close} trigger={<Button onClick={this.showModal} color='twitter'>New Kweet</Button>} closeIcon>
-            <TextArea autoFocus='true' onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
+          <Modal size ='tiny' open={open} onClose={this.close} trigger={<Button onClick={this.showModal} color='twitter'>New Kweet</Button>} closeIcon>
+                <Card fluid>
+          <TextArea autoFocus='true' onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" />
+          </Card>
+          </Modal>
         </Menu.Item>
 
         <Menu.Item position='right'><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>
