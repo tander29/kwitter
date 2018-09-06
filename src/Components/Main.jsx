@@ -38,10 +38,10 @@ export class Main extends Component {
           <Container>
             <Grid centered>
               <Grid.Row columns={3}>
-                <Grid.Column width={3}>
+                <Grid.Column width={4}>
                   <Sticky offset={75}>
                     <Card centered>
-                      <Profile name={this.props.profile.username} />
+                      <Profile name={this.props.profile.username} about={this.props.profile.about} />
                     </Card>
                   </Sticky>
                 </Grid.Column>
