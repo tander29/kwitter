@@ -7,6 +7,7 @@ export class Login extends Component {
   }
 
   handleSubmit = () => {
+
     this.props.whatever(this.state.username, this.state.password)
   }
 
@@ -20,6 +21,10 @@ export class Login extends Component {
     this.setState({
       password: event.target.value
     })
+  }
+
+  handleEnter = (event) => {
+    event.key === 'Enter' ? this.props.whatever(this.state.username, this.state.password) : null
   }
 
   render() {
@@ -41,6 +46,7 @@ export class Login extends Component {
           value={this.state.password}
           name="password"
           onChange={this.updatePassword}
+          onKeyPress={this.handleEnter}
         />
         <button className="submit" onClick={this.handleSubmit} >Submit</button>
       </React.Fragment>
