@@ -27,7 +27,7 @@ export class Home extends Component {
         <div className="App">
 
           <CustomHeader />
-          <Container>
+          <Container style={{ marginTop: '2vh' }}>
             <Grid centered>
               <Grid.Row columns={2}>
                 <Grid.Column>
@@ -52,10 +52,10 @@ export class Home extends Component {
                     </Sticky>
                   </Container>
                 </Grid.Column>
-                <CustomFooter />
               </Grid.Row>
             </Grid>
           </Container>
+                <CustomFooter />
         </div>
       </Container>
     );

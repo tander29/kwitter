@@ -12,3 +12,11 @@ header {
     font-size: 11px;
     color: gray;
 }
+
+.profileHeader{
+    font-size: 16px !important;
+}
+
+.date{
+    font-size: 12px !important;
+}
