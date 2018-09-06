@@ -98,7 +98,7 @@ const mapStateToProps = state => {
     let userInfo = state.users.filter(user =>
       user.id === state.profile.id
     )[0]
-    console.log(userInfo)
+
     return userInfo
   }
   return {

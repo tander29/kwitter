@@ -1,5 +1,5 @@
 
-import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGE_ID, GET_MESSAGES, GET_LOGOUT, GET_USER, DELETE_USER, UNLIKE } from './Types'
+import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGE_ID, GET_MESSAGES, GET_LOGOUT, GET_USER, DELETE_USER, UNLIKE, PATCH_PASSWORD, PATCH_ABOUT } from './Types'
 
 
 
@@ -93,6 +93,18 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 likes: state.likes.filter(messageId => messageId !== action.messageId)
+            }
+        case PATCH_PASSWORD:
+
+            return {
+                ...state,
+
+            }
+        case PATCH_ABOUT:
+
+            return {
+                ...state,
+
             }
 
         default:

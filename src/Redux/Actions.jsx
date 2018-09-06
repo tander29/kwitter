@@ -9,7 +9,9 @@ import {
   GET_MESSAGES,
   UNLIKE,
   DELETE_MESSAGE,
-  DELETE_USER
+  DELETE_USER,
+  PATCH_PASSWORD,
+  PATCH_ABOUT
 } from "./Types";
 import { push } from 'connected-react-router'
 
@@ -222,7 +224,7 @@ export const deleteMessage = (messageId) => (dispatch, getState) => {
     })
 }
 
-export const deleteUser = () => (dispatch, getState) =>{
+export const deleteUser = () => (dispatch, getState) => {
 
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
@@ -232,15 +234,59 @@ export const deleteUser = () => (dispatch, getState) =>{
     method: "DELETE",
     headers: { "Content-Type": "application/json", Authorization: authKey },
   }
-  fetch("https://kwitter-api.herokuapp.com/users/"  , deleteUser)
+  fetch("https://kwitter-api.herokuapp.com/users/", deleteUser)
     .then(res => res.json())
     .then(data => {
-      console.log("delete this bitch", data)
+
       dispatch({
         type: DELETE_USER,
         payload: data
       })
       dispatch(getLogout())
+    })
+
+}
+
+export const patchPassword = (password) => (dispatch, getState) => {
+
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+  const patchUser = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ password: password })
+  }
+  fetch("https://kwitter-api.herokuapp.com/users/", patchUser)
+    .then(res => res.json())
+    .then(data => {
+      console.log("patching", data)
+      dispatch({
+        type: PATCH_PASSWORD,
+        payload: data
+      })
+
+    })
+
+}
+
+export const patchAbout = (about) => (dispatch, getState) => {
+
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+  const patchUser = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+    body: JSON.stringify({ about: about })
+  }
+  fetch("https://kwitter-api.herokuapp.com/users/", patchUser)
+    .then(res => res.json())
+    .then(data => {
+      console.log("patching about section", data)
+      dispatch({
+        type: PATCH_ABOUT,
+        payload: data
+      })
+      dispatch(getUser())
     })
 
 }
