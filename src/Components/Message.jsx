@@ -1,28 +1,34 @@
 import React, { Component } from "react";
-import  { like, unlike, getMessageID }  from '../Redux/Actions'
+import { like, unlike, getMessageID } from '../Redux/Actions'
 import { connect } from 'react-redux'
-import { Icon, Button, Divider, Card, Grid} from "semantic-ui-react";
+import { Icon, Button, Divider, Card, Grid } from "semantic-ui-react";
 
 
 export class Message extends Component {
+
+  timeConversion = (messageTime) => {
+    let time = new Date(messageTime)
+    console.log(this.props)
+    return time.toLocaleString()
+  }
 
   render() {
     return (
       <Card fluid centered>
         <article style={{ padding: '2vh' }}>
-          
+
 
           <Grid>
             <Grid.Row columns={2}>
               <Grid.Column textAlign='left'>
-              <Icon name="user secret" size="large"/> 
-            {this.props.displayName}
-            {this.props.username}
-            </Grid.Column>
-              <Grid.Column textAlign="right" className="timestamp">{this.props.time}</Grid.Column>
+                <Icon name="user secret" size="large" />
+                {this.props.displayName}
+                {this.props.username}
+              </Grid.Column>
+              <Grid.Column textAlign="right" className="timestamp">{this.timeConversion(this.props.time)}</Grid.Column>
             </Grid.Row>
           </Grid>
-          
+
 
 
 
@@ -33,24 +39,24 @@ export class Message extends Component {
 
 
           <footer>
-            {(this.props.isLiked === true)? 
+            {(this.props.isLiked === true) ?
               <Button
                 content='Like'
                 icon='heart'
                 label={{ as: 'a', basic: true, content: this.props.likes }}
                 labelPosition='right'
-                style={{ float: 'left' }} 
+                style={{ float: 'left' }}
                 color='red'
-                onClick={ () => this.props.unlike(this.props.id) }
+                onClick={() => this.props.unlike(this.props.id)}
               />
-            :
+              :
               <Button
                 content='Like'
                 icon='heart'
                 label={{ as: 'a', basic: true, content: this.props.likes }}
                 labelPosition='right'
-                style={{ float: 'left' }} 
-                onClick={ () => this.props.like(this.props.id) }
+                style={{ float: 'left' }}
+                onClick={() => this.props.like(this.props.id)}
               />
             }
 
