@@ -34,3 +34,6 @@ header {
     color: gray;
 }
 
+.wordwrap {
+    word-wrap: break-word;
+}
