@@ -19,7 +19,7 @@ export class Message extends Component {
 
   render() {
     return (
-      <Card fluid centered>
+      <Card style={{backgroundColor:"#EDF5E1"}} fluid centered>
         <article style={{ padding: '2vh' }}>
 
 
