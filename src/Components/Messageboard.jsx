@@ -31,8 +31,10 @@ class MessageBoard extends Component {
 
     makeMessages = (messageInfo) => {
         console.log("message info", messageInfo)
+        if (!messageInfo.length) { return }
 
-        return messageInfo.map(messages =>
+        let sortArray = messageInfo.sort((a, b) => { return Date.parse(b.createdAt) - Date.parse(a.createdAt) })
+        return sortArray.map(messages =>
             <Message
                 key={messages.id}
                 displayName={this.displayName(messages)}
@@ -53,8 +55,8 @@ class MessageBoard extends Component {
     displayName = (message) => {
         if (this.props.users.length) {
             let desiredUser = this.props.users.filter(user => user.id === message.userId)
-            console.log(desiredUser[0])
-            return desiredUser[0].displayName ? desiredUser[0].displayName : "Sneaky"
+            // console.log(desiredUser[0])
+            return desiredUser[0].displayName ? desiredUser[0].displayName : "Sneakster"
         }
 
     }
