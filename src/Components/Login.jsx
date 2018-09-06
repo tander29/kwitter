@@ -7,6 +7,7 @@ export class Login extends Component {
   }
 
   handleSubmit = () => {
+
     this.props.whatever(this.state.username, this.state.password)
   }
 
@@ -22,17 +23,23 @@ export class Login extends Component {
     })
   }
 
+  handleEnter = (event) => {
+    event.key === 'Enter' ? this.props.whatever(this.state.username, this.state.password) : null
+  }
+
   render() {
     return (
       <React.Fragment>
         <header className="loginheader">Login</header>
         <input
+          autoFocus='true'
           className="username"
           placeholder="Username"
           type="text"
           value={this.state.username}
           name="username"
           onChange={this.updateUsername}
+
         />
         <input
           className="password"
@@ -41,6 +48,7 @@ export class Login extends Component {
           value={this.state.password}
           name="password"
           onChange={this.updatePassword}
+          onKeyPress={this.handleEnter}
         />
         <button className="submit" onClick={this.handleSubmit} >Submit</button>
       </React.Fragment>
@@ -77,17 +85,23 @@ export class Register extends Component {
     })
   }
 
+  handleEnter = (event) => {
+    event.key === 'Enter' ? this.props.test(this.state.displayName, this.state.username, this.state.password) : null
+  }
+
   render() {
     return (
       <React.Fragment>
         <header className="registerheader">Register</header>
         <input
+          autoFocus='true'
           className="displayName"
           placeholder="Display Name"
           type="text"
           name="displayName"
           value={this.state.displayName}
           onChange={this.updateDisplayName}
+          autoFocus='true'
         />
         <input
           className="username"
@@ -104,6 +118,7 @@ export class Register extends Component {
           name="password"
           value={this.state.password}
           onChange={this.updatePassword}
+          onKeyPress={this.handleEnter}
         />
         <button className="submit" onClick={this.handleSubmit}>Submit</button>
       </React.Fragment>

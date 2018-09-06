@@ -7,7 +7,9 @@ import {
   GET_LOGOUT,
   GET_USER,
   GET_MESSAGES,
-  UNLIKE
+  UNLIKE,
+  DELETE_MESSAGE,
+  DELETE_USER
 } from "./Types";
 import { push } from 'connected-react-router'
 
@@ -198,4 +200,47 @@ export const unlike = (messageId) => (dispatch, getState) => {
       })
       dispatch(getMessages())
     })
+}
+
+export const deleteMessage = (messageId) => (dispatch, getState) => {
+  console.log("arewe getting here?")
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+  const deleteMessage = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+  }
+  fetch("https://kwitter-api.herokuapp.com/messages/" + messageId, deleteMessage)
+    .then(res => res.json())
+    .then(data => {
+      console.log("delete message", data)
+      dispatch({
+        type: DELETE_MESSAGE,
+        payload: data
+      })
+      dispatch(getMessages())
+    })
+}
+
+export const deleteUser = () => (dispatch, getState) =>{
+
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+
+
+  const deleteUser = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+  }
+  fetch("https://kwitter-api.herokuapp.com/users/"  , deleteUser)
+    .then(res => res.json())
+    .then(data => {
+      console.log("delete this bitch", data)
+      dispatch({
+        type: DELETE_USER,
+        payload: data
+      })
+      dispatch(getLogout())
+    })
+
 }
