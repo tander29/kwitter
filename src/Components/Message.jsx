@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { like, unlike, getMessageID } from '../Redux/Actions'
+import { like, unlike, getMessageID, deleteMessage } from '../Redux/Actions'
 import { connect } from 'react-redux'
 import { Icon, Button, Divider, Card, Grid } from "semantic-ui-react";
 
@@ -8,8 +8,13 @@ export class Message extends Component {
 
   timeConversion = (messageTime) => {
     let time = new Date(messageTime)
-    console.log(this.props)
     return time.toLocaleString()
+  }
+
+  removeMessage = (id) => {
+    console.log("test this stuff please!!", id)
+    this.props.deleteMessage(id)
+
   }
 
   render() {
@@ -60,7 +65,7 @@ export class Message extends Component {
               />
             }
 
-            <Button onClick={this.props.post} floated="right" size='tiny'>
+            <Button onClick={() => this.removeMessage(this.props.id)} floated="right" size='tiny'>
               Delete
             </Button>
           </footer>
@@ -84,6 +89,9 @@ function mapDispatchToProps(dispatch) {
     },
     getMessageID: (id) => {
       dispatch(getMessageID(id))
+    },
+    deleteMessage: (id) => {
+      dispatch(deleteMessage(id))
     },
   };
 }

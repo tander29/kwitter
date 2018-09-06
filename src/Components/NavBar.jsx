@@ -62,6 +62,7 @@ export class NavBar extends Component {
             <Modal trigger={<Button color='red'>Profile</Button>}>
               {this.props.userInfo !== undefined ?
                 <ProfileInfo
+
                   key={this.props.userInfo.id}
                   displayName={this.props.userInfo.displayName}
                   username={this.props.userInfo.username}
