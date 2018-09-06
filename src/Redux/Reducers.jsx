@@ -3,13 +3,13 @@ import { LOGIN, REGISTER, NEW_POST, LIKE, DELETE_MESSAGE, GET_MESSAGE_ID, GET_ME
 
 
 
-const initialState = { 
-    messages: [], 
-    profile: { username: null, password: null, token: null, id: null, success: null }, 
+const initialState = {
+    messages: [],
+    profile: { username: null, password: null, token: null, id: null, success: null },
     users: [],
-    logout: {success: false, message: ''},
+    logout: { success: false, message: '' },
     likes: []
- }
+}
 
 export default function (state = initialState, action) {
 
@@ -33,20 +33,22 @@ export default function (state = initialState, action) {
                 messages: action.messages,
                 likes: action.userLikeMessageId
             }
-        
+
         case REGISTER:
-            return{
+            return {
                 ...state,
-                
+
                 displayName: action.displayName,
                 username: action.username,
                 password: action.password
-                
+
             }
 
         case NEW_POST:
-            return{ ...state,
-                    message: action}
+            return {
+                ...state,
+                message: action
+            }
 
         case LIKE:
             return {
@@ -56,7 +58,7 @@ export default function (state = initialState, action) {
             }
 
         case DELETE_MESSAGE:
-            return state;
+            return { ...state }
 
 
         case GET_MESSAGE_ID:
@@ -76,14 +78,15 @@ export default function (state = initialState, action) {
                 }
             }
         case GET_USER:
-            return{ ...state,
-                        users: action.users
-            
+            return {
+                ...state,
+                users: action.users
+
             }
 
         case DELETE_USER:
-            return{
-             ...state,
+            return {
+                ...state,
             }
 
         case UNLIKE:

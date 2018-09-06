@@ -7,7 +7,8 @@ import {
   GET_LOGOUT,
   GET_USER,
   GET_MESSAGES,
-  UNLIKE
+  UNLIKE,
+  DELETE_MESSAGE
 } from "./Types";
 import { push } from 'connected-react-router'
 
@@ -195,6 +196,26 @@ export const unlike = (messageId) => (dispatch, getState) => {
       dispatch({
         type: UNLIKE,
         messageId: messageId
+      })
+      dispatch(getMessages())
+    })
+}
+
+export const deleteMessage = (messageId) => (dispatch, getState) => {
+  console.log("arewe getting here?")
+  const token = getState().profile.token
+  let authKey = `Bearer ${token}`
+  const deleteMessage = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", Authorization: authKey },
+  }
+  fetch("https://kwitter-api.herokuapp.com/messages/" + messageId, deleteMessage)
+    .then(res => res.json())
+    .then(data => {
+      console.log("delete message", data)
+      dispatch({
+        type: DELETE_MESSAGE,
+        payload: data
       })
       dispatch(getMessages())
     })
