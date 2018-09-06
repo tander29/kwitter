@@ -17,6 +17,7 @@ export class NavBar extends Component {
 
 
   state = {
+    open: false,
     text: "",
     user: {
       about: '',
@@ -28,14 +29,15 @@ export class NavBar extends Component {
   }
 
   handlePost = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' & event.target.value !== null) {
       this.props.postMessage(this.state.text, this.props.token)
       event.target.value = null
-      this.setState({ text: "" })
+      this.setState({ text: "", open: false })
     }
   }
 
   handleChange = (event) => {
+
     console.log(event.target.value)
     this.setState({ text: event.target.value })
   }
@@ -43,7 +45,12 @@ export class NavBar extends Component {
     this.props.getUser()
   }
 
+  showModal = () => {
+    this.setState({ open: true })
+  }
+
   render() {
+    const { open } = this.state
     return (
       <Menu style={{ marginBottom: '2vh' }}>
         <Menu.Menu>
@@ -65,7 +72,7 @@ export class NavBar extends Component {
         </Menu.Menu>
 
         <Menu.Item>
-          <Modal trigger={<Button color='twitter'>New Kweet</Button>} closeIcon><TextArea onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
+          <Modal open={open} trigger={<Button onClick={this.showModal} color='twitter'>New Kweet</Button>} closeIcon><TextArea onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" style={{ width: '100%' }} /></Modal>
         </Menu.Item>
 
         <Menu.Item position='right'><Button onClick={this.props.getLogout} color='teal'>Logout</Button></Menu.Item>

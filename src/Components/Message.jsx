@@ -8,8 +8,6 @@ export class Message extends Component {
 
   timeConversion = (messageTime) => {
     let time = new Date(messageTime)
-    console.log(time)
-    console.log('date parse', Date.parse(messageTime))
     return time.toLocaleString()
   }
 

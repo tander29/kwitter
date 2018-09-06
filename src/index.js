@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Components/Home';
 import Main from './Components/Main'
+import NoPagePath from './Components/NoPagePath'
 import Profile from './Components/Profile'
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
@@ -22,6 +23,7 @@ ReactDOM.render(
                 <Route exact path="/" render={(props) => (<Home location={props.location.pathname} />)} />
                 <Route exact path="/Main" render={(props) => (<Main location={props.location.pathname} />)} />
                 <Route exact path="/Profile" render={() => (<Profile />)} />
+                <Route component={NoPagePath} />
             </Switch>
         </ConnectedRouter>
     </Provider>,
