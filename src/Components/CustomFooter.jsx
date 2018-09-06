@@ -6,7 +6,7 @@ import "../App.css";
 class CustomFooter extends React.Component {
     render() {
        return (
-           <Card className='custFooter' style={{padding:'1vh'}} fluid>
+           <Card className='custFooter' style={{padding:'1vh', backgroundColor:"#EDF5E1"}} fluid>
           <Card.Content textAlign='center' className="">
             <p className='teamName'>By ScrumTeam1: <Icon name ='copyright' size="small" /></p>
 

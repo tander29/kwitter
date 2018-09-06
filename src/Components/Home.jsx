@@ -37,15 +37,15 @@ export class Home extends Component {
                 </Grid.Column>
 
                 <Grid.Column>
-                  <Container className="register" textAlign={"center"}>
+                  <Container className="register" textAlign={"center"} >
                     <Sticky>
-                      <Card centered>
-                        <Modal size='tiny' trigger={<Button color='teal'>Login</Button>} closeIcon>
+                      <Card style={{ backgroundColor:"#EDF5E1"}} centered>
+                        <Modal size='tiny' trigger={<Button style={{backgroundColor:'#379683', color:'white'}}>Login</Button>} closeIcon>
                           <Login whatever={this.props.login} />
                         </Modal>
-                        <Divider horizontal>Or</Divider>
+                        <Divider horizontal >Or</Divider>
                         <Modal />
-                        <Modal size='tiny' trigger={<Button color='teal'>Register</Button>} closeIcon>
+                        <Modal size='tiny' trigger={<Button style={{backgroundColor:'#379683', color:'white'}}>Register</Button>} closeIcon>
                           <Register test={this.props.register} />
                         </Modal>
                       </Card>
