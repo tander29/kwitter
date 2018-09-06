@@ -20,3 +20,16 @@ header {
 .date{
     font-size: 12px !important;
 }
+
+.teamName{
+    font-size: 16px;
+}
+
+.developers {
+    font-weight: bold;
+}
+
+.address {
+    font-size: 11px;
+    color: gray;
+}

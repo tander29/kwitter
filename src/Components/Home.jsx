@@ -40,12 +40,12 @@ export class Home extends Component {
                   <Container className="register" textAlign={"center"}>
                     <Sticky>
                       <Card centered>
-                        <Modal trigger={<Button color='teal'>Login</Button>} closeIcon>
+                        <Modal size='tiny' trigger={<Button color='teal'>Login</Button>} closeIcon>
                           <Login whatever={this.props.login} />
                         </Modal>
                         <Divider horizontal>Or</Divider>
                         <Modal />
-                        <Modal trigger={<Button color='teal'>Register</Button>} closeIcon>
+                        <Modal size='tiny' trigger={<Button color='teal'>Register</Button>} closeIcon>
                           <Register test={this.props.register} />
                         </Modal>
                       </Card>
