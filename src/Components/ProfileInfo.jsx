@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Icon, Button, Card, Image, Modal, TextArea } from "semantic-ui-react"
-import { getUser } from '../Redux/Actions'
+import { getUser, deleteUser } from '../Redux/Actions'
 import { connect } from "react-redux";
 
 
@@ -38,7 +38,7 @@ export class ProfileInfo extends Component {
         <Modal trigger={<Button>Change Password</Button>}>
           <TextArea placeholder="New Password"></TextArea>
         </Modal>
-        <Button>Delete Profile</Button>
+        <Button onClick={() => this.props.deleteUser()}>Delete Profile</Button>
       </Card>
 
     )
@@ -55,9 +55,12 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-
+    
     getUser: () => {
       dispatch(getUser());
+    },
+    deleteUser: () => {
+      dispatch(deleteUser())
     }
   }
 }
