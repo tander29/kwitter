@@ -26,12 +26,15 @@ export class Login extends Component {
   }
 
   handleEnter = (event) => {
-    event.key === 'Enter' ? this.props.whatever(this.state.username, this.state.password) : null
+
+    if (event.key === 'Enter') {
+      this.props.whatever(this.state.username, this.state.password)
+    }
   }
 
   render() {
     return (
-      <Card style={{padding:'1vh'}} fluid>
+      <Card style={{ padding: '1vh' }} fluid>
         <header className="loginheader">Login</header>
         <input
           autoFocus='true'
@@ -53,7 +56,7 @@ export class Login extends Component {
           onKeyPress={this.handleEnter}
         />
         <button className="submit" onClick={this.handleSubmit} >Submit</button>
-        </Card>
+      </Card>
     );
   }
 }
@@ -88,12 +91,14 @@ export class Register extends Component {
   }
 
   handleEnter = (event) => {
-    event.key === 'Enter' ? this.props.test(this.state.displayName, this.state.username, this.state.password) : null
+    if (event.key === 'Enter') {
+      this.props.test(this.state.displayName, this.state.username, this.state.password)
+    }
   }
 
   render() {
     return (
-      <Card style={{padding:'1vh'}} fluid>
+      <Card style={{ padding: '1vh' }} fluid>
         <Card.Header className="profileHeader">Register</Card.Header>
         <input
           autoFocus='true'
@@ -103,7 +108,6 @@ export class Register extends Component {
           name="displayName"
           value={this.state.displayName}
           onChange={this.updateDisplayName}
-          autoFocus='true'
         />
         <input
           className="username"
@@ -123,7 +127,7 @@ export class Register extends Component {
           onKeyPress={this.handleEnter}
         />
         <button className="submit" onClick={this.handleSubmit}>Submit</button>
-        </Card>
+      </Card>
     );
   }
 }

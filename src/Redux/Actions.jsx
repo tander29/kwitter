@@ -41,7 +41,7 @@ export const getLogout = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/auth/logout")
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+
       dispatch({
         type: GET_LOGOUT,
         message: data.message,
@@ -55,7 +55,7 @@ export const getMessageID = (id) => (dispatch, getState) => {
   fetch("https://kwitter-api.herokuapp.com/messages/" + id)
     .then(response => response.json())
     .then(messageID => {
-      console.log(messageID.message.id)
+
       dispatch({
         type: GET_MESSAGE_ID,
         message: messageID.message.id,
@@ -79,7 +79,7 @@ export const getUser = () => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/users")
     .then(response => response.json())
     .then(data => {
-      console.log("hi data", data.users)
+      console.log(data)
       dispatch({
         type: GET_USER,
         users: data.users
@@ -98,7 +98,7 @@ export const newPost = (text, token) => dispatch => {
   fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+
       dispatch({ type: NEW_POST, messages: data });
       dispatch(getMessages())
     });
@@ -205,7 +205,7 @@ export const unlike = (messageId) => (dispatch, getState) => {
 }
 
 export const deleteMessage = (messageId) => (dispatch, getState) => {
-  console.log("arewe getting here?")
+
   const token = getState().profile.token
   let authKey = `Bearer ${token}`
   const deleteMessage = {
@@ -215,7 +215,7 @@ export const deleteMessage = (messageId) => (dispatch, getState) => {
   fetch("https://kwitter-api.herokuapp.com/messages/" + messageId, deleteMessage)
     .then(res => res.json())
     .then(data => {
-      console.log("delete message", data)
+
       dispatch({
         type: DELETE_MESSAGE,
         payload: data
@@ -259,7 +259,7 @@ export const patchPassword = (password) => (dispatch, getState) => {
   fetch("https://kwitter-api.herokuapp.com/users/", patchUser)
     .then(res => res.json())
     .then(data => {
-      console.log("patching", data)
+
       dispatch({
         type: PATCH_PASSWORD,
         payload: data
@@ -281,7 +281,7 @@ export const patchAbout = (about) => (dispatch, getState) => {
   fetch("https://kwitter-api.herokuapp.com/users/", patchUser)
     .then(res => res.json())
     .then(data => {
-      console.log("patching about section", data)
+
       dispatch({
         type: PATCH_ABOUT,
         payload: data

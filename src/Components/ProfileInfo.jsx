@@ -9,26 +9,26 @@ export class ProfileInfo extends Component {
 
   updatePassword = (event) => {
     if (event.key === 'Enter') {
-      console.log("working?", this.state.password)
+
       this.props.patchPassword(this.state.password)
       this.setState({ password: "" })
     }
   }
 
   handlePasswordChange = (event) => {
-    console.log(this.state)
+
     this.setState({ password: event.target.value })
   }
 
   updateAbout = (event) => {
     if (event.key === 'Enter') {
-      console.log("working?", this.state.about)
+
       this.props.patchAbout(this.state.about)
     }
   }
 
   handleAboutChange = (event) => {
-    console.log(this.state)
+
     this.setState({ about: event.target.value })
   }
 

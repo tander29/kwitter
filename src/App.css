@@ -33,3 +33,7 @@ header {
     font-size: 11px;
     color: gray;
 }
+
+.wordWrap {
+    word-wrap: break-word;
+}

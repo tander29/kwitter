@@ -5,8 +5,6 @@ import CustomFooter from "./CustomFooter";
 
 import { Menu, TextArea, Modal, Button, Card } from "semantic-ui-react";
 import {
-  login,
-  register,
   getLogout,
   getUser
 } from "../Redux/Actions";
@@ -39,7 +37,7 @@ export class NavBar extends Component {
 
   handleChange = (event) => {
 
-    console.log(event.target.value)
+
     this.setState({ text: event.target.value })
   }
   componentDidMount() {
@@ -74,16 +72,16 @@ export class NavBar extends Component {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
-              <Menu.Item> <Modal size ='tiny' trigger={<Button color='vk'>Aboot Kwitter</Button>}> 
-              <Card><CustomFooter></CustomFooter></Card>
-              </Modal></Menu.Item>
+          <Menu.Item> <Modal size='tiny' trigger={<Button color='vk'>Aboot Kwitter</Button>}>
+            <Card><CustomFooter></CustomFooter></Card>
+          </Modal></Menu.Item>
         </Menu.Menu>
 
         <Menu.Item>
-          <Modal size ='tiny' open={open} onClose={this.close} trigger={<Button onClick={this.showModal} color='twitter'>New Kweet</Button>} closeIcon>
-                <Card fluid>
-          <TextArea autoFocus='true' onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" />
-          </Card>
+          <Modal size='tiny' open={open} onClose={this.close} trigger={<Button onClick={this.showModal} color='twitter'>New Kweet</Button>} closeIcon>
+            <Card fluid>
+              <TextArea autoFocus='true' onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" />
+            </Card>
           </Modal>
         </Menu.Item>
 
@@ -114,12 +112,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: (username, password) => {
-      dispatch(login(username, password));
-    },
-    register: (displayName, username, password) => {
-      dispatch(register());
-    },
+
     getLogout: () => {
       dispatch(getLogout());
     },

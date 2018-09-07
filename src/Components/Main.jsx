@@ -9,6 +9,7 @@ import {
   login,
   like,
   newPost,
+  getLogout,
 
   getMessages,
   getMessageID,
@@ -24,6 +25,12 @@ import {
 
 export class Main extends Component {
 
+  componentWillMount() {
+
+    if (!this.props.profile.success) {
+      this.props.getLogout()
+    }
+  }
   render() {
     return (
 
@@ -41,7 +48,7 @@ export class Main extends Component {
                 <Grid.Column width={4}>
                   <Sticky offset={75}>
                     <Card centered>
-                      <Profile name={this.props.profile.username} about={this.props.profile.about} />
+                      <Profile name={this.props.profile.username} about={this.props.userInfo} />
                     </Card>
                   </Sticky>
                 </Grid.Column>
@@ -72,7 +79,7 @@ export class Main extends Component {
 
 const mapStateToProps = state => {
 
-  return { messages: state.messages, profile: state.profile };
+  return { messages: state.messages, profile: state.profile, users: state.users };
 };
 
 function mapDispatchToProps(dispatch) {
@@ -95,6 +102,9 @@ function mapDispatchToProps(dispatch) {
     },
     getUser: () => {
       dispatch(getUser());
+    },
+    getLogout: () => {
+      dispatch(getLogout());
     }
   };
 }
