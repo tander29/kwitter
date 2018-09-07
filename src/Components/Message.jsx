@@ -1,34 +1,67 @@
 import React, { Component } from "react";
 import { like, unlike, getMessageID, deleteMessage } from '../Redux/Actions'
 import { connect } from 'react-redux'
-import { Icon, Button, Divider, Card, Grid } from "semantic-ui-react";
+import { Icon, Button, Divider, Card, Grid, Popup } from "semantic-ui-react";
 
 
 export class Message extends Component {
 
+  state = { user: {}, numberOfKweets: "", peopleWhoLikedKweet: "" }
+
+
   timeConversion = (messageTime) => {
+    console.log('yaaaa', this.props.message)
+    console.log('state', this.props.state)
+    console.log('state', this.props.state.messages)
     let time = new Date(messageTime)
     return time.toLocaleString()
   }
 
+  timeConversionDate = (messageTime) => {
+    let time = new Date(messageTime)
+    return time.toDateString()
+  }
+
   removeMessage = (id) => {
-    console.log("test this stuff please!!", id)
+
     this.props.deleteMessage(id)
 
   }
 
+  getSingleUserforPopUp = (userIdNumber) => {
+    console.log(this.state)
+    const currentUserArray = this.props.state.users.filter(message => message.id === userIdNumber)
+    const currentUser = currentUserArray[0]
+
+    const kweetsArray = this.props.state.messages.filter(message => message.userId === userIdNumber)
+    console.log("kweet this", kweetsArray)
+    this.setState({ user: currentUser ? currentUser : {}, numberOfKweets: kweetsArray.length ? kweetsArray.length : "0" })
+  }
+
   render() {
     return (
-      <Card style={{backgroundColor:"#EDF5E1"}} fluid centered>
+      <Card style={{ backgroundColor: "#EDF5E1" }} fluid centered>
         <article style={{ padding: '2vh' }}>
 
 
           <Grid>
             <Grid.Row columns={2}>
               <Grid.Column textAlign='left'>
-                <Icon name="user secret" size="large" />
+                <Popup header={this.props.displayName}></Popup>
+                <Popup
+
+                  inverted
+                  trigger={<Icon
+                    onClick={() => this.getSingleUserforPopUp(this.props.message.userId)} name="user secret" size="large" />}
+                  header={this.props.displayName}
+                  content={this.state.user.createdAt ?
+                    `
+                  About-:${this.state.user.about}....  I joined kwitter on ${this.timeConversionDate(this.state.user.createdAt)}...
+                  Since then I have kweeted ${this.state.numberOfKweets} time(s)!
+                  `
+                    : 'click for more info!'}
+                />
                 {this.props.displayName}
-                {this.props.username}
               </Grid.Column>
               <Grid.Column textAlign="right" className="timestamp">{this.timeConversion(this.props.time)}</Grid.Column>
             </Grid.Row>
@@ -76,7 +109,7 @@ export class Message extends Component {
 }
 
 const mapStateToProps = state => {
-  return { messages: state.messages, profile: state.profile };
+  return { messages: state.messages, profile: state.profile, state: state };
 };
 
 function mapDispatchToProps(dispatch) {
