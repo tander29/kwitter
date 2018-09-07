@@ -6,7 +6,7 @@ import { Icon, Button, Divider, Card, Grid, Popup } from "semantic-ui-react";
 
 export class Message extends Component {
 
-  state = { user: {}, numberOfKweets: "" }
+  state = { user: {}, numberOfKweets: "", peopleWhoLikedKweet: "" }
 
 
   timeConversion = (messageTime) => {
@@ -28,12 +28,12 @@ export class Message extends Component {
 
   }
 
-  getSingleUserforPopUp = (idNumber) => {
+  getSingleUserforPopUp = (userIdNumber) => {
     console.log(this.state)
-    const currentUserArray = this.props.state.users.filter(message => message.id === idNumber)
+    const currentUserArray = this.props.state.users.filter(message => message.id === userIdNumber)
     const currentUser = currentUserArray[0]
 
-    const kweetsArray = this.props.state.messages.filter(message => message.userId === idNumber)
+    const kweetsArray = this.props.state.messages.filter(message => message.userId === userIdNumber)
     console.log("kweet this", kweetsArray)
     this.setState({ user: currentUser ? currentUser : {}, numberOfKweets: kweetsArray.length ? kweetsArray.length : "0" })
   }

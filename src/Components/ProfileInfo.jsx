@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 
 
 export class ProfileInfo extends Component {
-  state = { password: "", about: "" }
+  state = { password: "", about: "", open: false, }
 
   updatePassword = (event) => {
     if (event.key === 'Enter') {
-
+      this.close()
       this.props.patchPassword(this.state.password)
       this.setState({ password: "" })
     }
@@ -22,7 +22,7 @@ export class ProfileInfo extends Component {
 
   updateAbout = (event) => {
     if (event.key === 'Enter') {
-
+      this.close()
       this.props.patchAbout(this.state.about)
     }
   }
@@ -37,7 +37,16 @@ export class ProfileInfo extends Component {
     return time.toDateString()
   }
 
+  showModal = () => {
+    this.setState({ open: true })
+  }
+
+  close = () => {
+    this.setState({ open: false })
+  }
+
   render() {
+    const { open } = this.state
     return (
 
 
@@ -46,17 +55,25 @@ export class ProfileInfo extends Component {
         <Card.Content>
           <Card.Header>{this.props.displayName}</Card.Header>
           <Card.Meta>
-            <span className='date'>Account Created: {this.timeConversion(this.props.createdAt)}</span>
+            <span className='date'>Account Created:{this.timeConversion(this.props.createdAt)}</span>
           </Card.Meta>
           <Card.Description>{this.props.about}</Card.Description>
         </Card.Content>
-        
-        <Modal trigger={<Button>Bio</Button>}>
+        <Card.Content extra>
+
+
+        </Card.Content>
+
+        <Modal closeIcon open={open} onClose={this.close} trigger={<Button onClick={this.showModal}>Bio</Button>}>
           <TextArea onChange={this.handleAboutChange} onKeyPress={this.updateAbout} placeholder="Update Bio Information"></TextArea>
         </Modal>
-        <Modal trigger={<Button>Change Password</Button>}>
+
+
+
+        <Modal closeIcon trigger={<Button>Change Password</Button>}>
           <TextArea onChange={this.handlePasswordChange} onKeyPress={this.updatePassword} placeholder="New Password"></TextArea>
         </Modal>
+
         <Button onClick={() => this.props.deleteUser()}>Delete Profile</Button>
       </Card>
 
