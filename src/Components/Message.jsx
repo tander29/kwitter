@@ -10,9 +10,6 @@ export class Message extends Component {
 
 
   timeConversion = (messageTime) => {
-    console.log('yaaaa', this.props.message)
-    console.log('state', this.props.state)
-    console.log('state', this.props.state.messages)
     let time = new Date(messageTime)
     return time.toLocaleString()
   }
