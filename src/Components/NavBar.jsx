@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import ProfileInfo from "./ProfileInfo";
-import CustomFooter from "./CustomFooter";
 import scrumteam1sp from '../images/scrumteam1sp.png';
 
 import { Menu, TextArea, Modal, Button, Card, Image } from "semantic-ui-react";

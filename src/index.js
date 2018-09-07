@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Home from './Components/Home';
 import Main from './Components/Main'
 import NoPagePath from './Components/NoPagePath'
-import Profile from './Components/Profile'
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import store, { history } from './Redux/Store'
