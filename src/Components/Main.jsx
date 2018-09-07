@@ -48,7 +48,7 @@ export class Main extends Component {
                 <Grid.Column width={4}>
                   <Sticky offset={75}>
                     <Card centered>
-                      <Profile name={this.props.profile.username} about={this.props.userInfo} />
+                      <Profile name={this.props.profile.username} about={this.props.profile.about} />
                     </Card>
                   </Sticky>
                 </Grid.Column>
