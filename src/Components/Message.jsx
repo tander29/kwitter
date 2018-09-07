@@ -19,7 +19,7 @@ export class Message extends Component {
 
   render() {
     return (
-      <Card style={{backgroundColor:"#EDF5E1"}} fluid centered>
+      <Card style={{ backgroundColor: "#EDF5E1" }} fluid centered>
         <article style={{ padding: '2vh' }}>
 
 
@@ -38,7 +38,7 @@ export class Message extends Component {
 
 
           <Divider style={{ marginBottom: '20px' }} />
-          <div className="message wordWrap" style={{ marginBottom: '20px' }}>{this.props.text}</div>
+          <div className="message wordwrap" style={{ marginBottom: '20px' }}>{this.props.text}</div>
 
 
 
