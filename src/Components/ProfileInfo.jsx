@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Button, Card, Image, Modal, TextArea } from "semantic-ui-react"
+import { Button, Card, Image, Modal, TextArea } from "semantic-ui-react"
 import { getUser, deleteUser, patchPassword, patchAbout } from '../Redux/Actions'
 import { connect } from "react-redux";
 
