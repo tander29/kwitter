@@ -290,3 +290,4 @@ export const patchAbout = (about) => (dispatch, getState) => {
     })
 
 }
+

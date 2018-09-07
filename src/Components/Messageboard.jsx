@@ -43,6 +43,7 @@ class MessageBoard extends Component {
                 time={messages.createdAt}
                 id={messages.id}
                 type="string"
+                message={messages}
                 isLiked={this.props.likes.some(messageId => messageId === messages.id)}
             >
 

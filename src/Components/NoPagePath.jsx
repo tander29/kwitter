@@ -4,6 +4,8 @@ import {
     getLogout,
 
 } from "../Redux/Actions";
+import { Image } from "semantic-ui-react";
+import scrumteam1sp from '../images/scrumteam1sp.png';
 
 class NoPagePath extends Component {
 
@@ -32,6 +34,7 @@ class NoPagePath extends Component {
     render() {
         return (
             <React.Fragment>
+                <Image size='medium' src={scrumteam1sp}></Image>
                 <h2>Beep boop beep beep Boop Calculating!</h2>
                 <h2>{this.state.text1}</h2>
                 <h2>{this.state.text2}</h2>
