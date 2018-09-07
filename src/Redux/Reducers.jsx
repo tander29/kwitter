@@ -75,7 +75,15 @@ export default function (state = initialState, action) {
                 logout: {
                     success: action.success,
                     message: action.message
-                }
+                },
+                profile: {
+                    username: null,
+                    password: null,
+                    token: null,
+                    id: null,
+                    success: null
+                },
+                likes: []
             }
         case GET_USER:
             return {
