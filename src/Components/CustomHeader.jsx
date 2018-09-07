@@ -7,7 +7,7 @@ class CustomHeader extends React.Component {
   render() {
     return (
       <Container className='headerNav' style={{ backgroundColor:'#05386B' }} fluid>
-      <Image src={ kwitter_logo } size='large' centered />
+      <Image src={ kwitter_logo } size='medium' centered />
       
       </Container>
       
