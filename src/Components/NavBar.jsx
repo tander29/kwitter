@@ -6,8 +6,6 @@ import scrumteam1sp from '../images/scrumteam1sp.png';
 
 import { Menu, TextArea, Modal, Button, Card, Image } from "semantic-ui-react";
 import {
-  login,
-  register,
   getLogout,
   getUser
 } from "../Redux/Actions";
@@ -40,7 +38,7 @@ export class NavBar extends Component {
 
   handleChange = (event) => {
 
-    console.log(event.target.value)
+
     this.setState({ text: event.target.value })
   }
   componentDidMount() {
@@ -58,7 +56,7 @@ export class NavBar extends Component {
   render() {
     const { open } = this.state
     return (
-      <Menu style={{ marginBottom: '2vh', backgroundColor:"#EDF5E1" }}>
+      <Menu style={{ marginBottom: '2vh', backgroundColor: "#EDF5E1" }}>
         <Menu.Menu>
           <Menu.Item>
             <Modal trigger={<Button color='red'>Profile</Button>}>
@@ -75,20 +73,20 @@ export class NavBar extends Component {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
-              <Menu.Item> <Modal size ='tiny' trigger={<Button style={{backgroundColor:'#379683', color:'white'}}>Aboot Kwitter</Button>}> 
-              <Image src={scrumteam1sp}></Image>
-              </Modal></Menu.Item>
+          <Menu.Item> <Modal size='tiny' trigger={<Button style={{ backgroundColor: '#379683', color: 'white' }}>Aboot Kwitter</Button>}>
+            <Image src={scrumteam1sp}></Image>
+          </Modal></Menu.Item>
         </Menu.Menu>
 
         <Menu.Item>
-          <Modal size ='tiny' open={open} onClose={this.close} trigger={<Button onClick={this.showModal} style={{backgroundColor:'#379683', color:'white'}}>New Kweet</Button>} closeIcon>
-                <Card fluid>
-          <TextArea autoFocus='true' onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" />
-          </Card>
+          <Modal size='tiny' open={open} onClose={this.close} trigger={<Button onClick={this.showModal} style={{ backgroundColor: '#379683', color: 'white' }}>New Kweet</Button>} closeIcon>
+            <Card fluid>
+              <TextArea autoFocus='true' onChange={this.handleChange} onKeyPress={this.handlePost} placeholder="New Kweet" />
+            </Card>
           </Modal>
         </Menu.Item>
 
-        <Menu.Item position='right'><Button onClick={this.props.getLogout} style={{backgroundColor:'#379683', color:'white'}}>Logout</Button></Menu.Item>
+        <Menu.Item position='right'><Button onClick={this.props.getLogout} style={{ backgroundColor: '#379683', color: 'white' }}>Logout</Button></Menu.Item>
       </Menu>
     )
   }
@@ -115,12 +113,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: (username, password) => {
-      dispatch(login(username, password));
-    },
-    register: (displayName, username, password) => {
-      dispatch(register());
-    },
+
     getLogout: () => {
       dispatch(getLogout());
     },

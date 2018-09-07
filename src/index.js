@@ -22,7 +22,6 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" render={(props) => (<Home location={props.location.pathname} />)} />
                 <Route exact path="/Main" render={(props) => (<Main location={props.location.pathname} />)} />
-                <Route exact path="/Profile" render={() => (<Profile />)} />
                 <Route component={NoPagePath} />
             </Switch>
         </ConnectedRouter>

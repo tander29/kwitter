@@ -9,31 +9,33 @@ export class ProfileInfo extends Component {
 
   updatePassword = (event) => {
     if (event.key === 'Enter') {
-      console.log("working?", this.state.password)
+
       this.props.patchPassword(this.state.password)
       this.setState({ password: "" })
     }
   }
 
   handlePasswordChange = (event) => {
-    console.log(this.state)
+
     this.setState({ password: event.target.value })
   }
 
   updateAbout = (event) => {
     if (event.key === 'Enter') {
-      console.log("working?", this.state.about)
+
       this.props.patchAbout(this.state.about)
     }
   }
 
   handleAboutChange = (event) => {
-    console.log(this.state)
+
     this.setState({ about: event.target.value })
   }
 
-
-
+  timeConversion = (messageTime) => {
+    let time = new Date(messageTime)
+    return time.toDateString()
+  }
 
   render() {
     return (
@@ -44,7 +46,7 @@ export class ProfileInfo extends Component {
         <Card.Content>
           <Card.Header>{this.props.displayName}</Card.Header>
           <Card.Meta>
-            <span className='date'>{this.props.createdAt}</span>
+            <span className='date'>Account Created: {this.timeConversion(this.props.createdAt)}</span>
           </Card.Meta>
           <Card.Description>{this.props.about}</Card.Description>
         </Card.Content>

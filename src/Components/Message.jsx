@@ -12,14 +12,14 @@ export class Message extends Component {
   }
 
   removeMessage = (id) => {
-    console.log("test this stuff please!!", id)
+
     this.props.deleteMessage(id)
 
   }
 
   render() {
     return (
-      <Card style={{backgroundColor:"#EDF5E1"}} fluid centered>
+      <Card style={{ backgroundColor: "#EDF5E1" }} fluid centered>
         <article style={{ padding: '2vh' }}>
 
 
