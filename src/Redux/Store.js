@@ -11,6 +11,7 @@ export const history = createBrowserHistory()
 const middleware = [
     routerMiddleware(history),
     thunk,
+
 ]
 
 const store = createStore(

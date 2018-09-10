@@ -14,11 +14,13 @@ import {
   PATCH_ABOUT
 } from "./Types";
 import { push } from 'connected-react-router'
-
+const heroku = "https://whispering-shelf-14206.herokuapp.com"
+// const herokuOriginal = "https://kwitter-api.herokuapp.com"
 
 export const getMessages = () => (dispatch, getState) => {
 
-  fetch("https://kwitter-api.herokuapp.com/messages?limit=1000")
+  fetch(heroku + "/messages?limit=1000")
+
     .then(response => response.json())
     .then(messagesResponse => {
       const userId = getState().profile.id
@@ -38,7 +40,7 @@ export const getMessages = () => (dispatch, getState) => {
 
 export const getLogout = () => dispatch => {
   //this is a comment to bypass a merge issue
-  fetch("https://kwitter-api.herokuapp.com/auth/logout")
+  fetch(heroku + "/auth/logout")
     .then(response => response.json())
     .then(data => {
 
@@ -52,7 +54,7 @@ export const getLogout = () => dispatch => {
 };
 
 export const getMessageID = (id) => (dispatch, getState) => {
-  fetch("https://kwitter-api.herokuapp.com/messages/" + id)
+  fetch(heroku + "/messages/" + id)
     .then(response => response.json())
     .then(messageID => {
 
@@ -76,7 +78,7 @@ export const getLikeId = (messageId, userId, messages) => {
 }
 
 export const getUser = () => dispatch => {
-  fetch("https://kwitter-api.herokuapp.com/users")
+  fetch(heroku + "/users")
     .then(response => response.json())
     .then(data => {
       dispatch({
@@ -94,7 +96,7 @@ export const newPost = (text, token) => dispatch => {
     body: JSON.stringify({ text: text })
   };
 
-  fetch("https://kwitter-api.herokuapp.com/messages", postRequestOptions)
+  fetch(heroku + "/messages", postRequestOptions)
     .then(response => response.json())
     .then(data => {
 
@@ -112,7 +114,7 @@ export const login = (username, password) => dispatch => {
   };
 
 
-  fetch("https://kwitter-api.herokuapp.com/auth/login", postRequestOptions)
+  fetch(heroku + "/auth/login", postRequestOptions)
     .then(res => res.json())
     .then(data => {
       dispatch({
@@ -139,7 +141,7 @@ export const register = (displayName, username, password, errors) => dispatch =>
     body: JSON.stringify({ username: username, password: password, displayName: displayName })
   }
 
-  fetch("https://kwitter-api.herokuapp.com/auth/register", postRequestOptions)
+  fetch(heroku + "/auth/register", postRequestOptions)
     .then(res => res.json())
     .then(data => {
       dispatch({
@@ -166,7 +168,7 @@ export const like = (messageId) => (dispatch, getState) => {
     body: JSON.stringify({ messageId: messageId })
   }
 
-  fetch("https://kwitter-api.herokuapp.com/likes", postLike)
+  fetch(heroku + "/likes", postLike)
     .then(res => res.json())
     .then(data => {
       dispatch({
@@ -192,7 +194,7 @@ export const unlike = (messageId) => (dispatch, getState) => {
     headers: { "Content-Type": "application/json", Authorization: authKey },
   }
 
-  fetch("https://kwitter-api.herokuapp.com/likes/" + likeId, deleteLike)
+  fetch(heroku + "/likes/" + likeId, deleteLike)
     .then(res => res.json())
     .then(data => {
       dispatch({
@@ -211,7 +213,7 @@ export const deleteMessage = (messageId) => (dispatch, getState) => {
     method: "DELETE",
     headers: { "Content-Type": "application/json", Authorization: authKey },
   }
-  fetch("https://kwitter-api.herokuapp.com/messages/" + messageId, deleteMessage)
+  fetch(heroku + "/messages/" + messageId, deleteMessage)
     .then(res => res.json())
     .then(data => {
 
@@ -233,7 +235,7 @@ export const deleteUser = () => (dispatch, getState) => {
     method: "DELETE",
     headers: { "Content-Type": "application/json", Authorization: authKey },
   }
-  fetch("https://kwitter-api.herokuapp.com/users/", deleteUser)
+  fetch(heroku + "/users/", deleteUser)
     .then(res => res.json())
     .then(data => {
 
@@ -255,7 +257,7 @@ export const patchPassword = (password) => (dispatch, getState) => {
     headers: { "Content-Type": "application/json", Authorization: authKey },
     body: JSON.stringify({ password: password })
   }
-  fetch("https://kwitter-api.herokuapp.com/users/", patchUser)
+  fetch(heroku + "/users/", patchUser)
     .then(res => res.json())
     .then(data => {
 
@@ -277,7 +279,7 @@ export const patchAbout = (about) => (dispatch, getState) => {
     headers: { "Content-Type": "application/json", Authorization: authKey },
     body: JSON.stringify({ about: about })
   }
-  fetch("https://kwitter-api.herokuapp.com/users/", patchUser)
+  fetch(heroku + "/users/", patchUser)
     .then(res => res.json())
     .then(data => {
 

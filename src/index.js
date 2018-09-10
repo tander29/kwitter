@@ -17,7 +17,7 @@ import { Route, Switch } from 'react-router'
 //need to do router work here provider/store,index to be rendered
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <ConnectedRouter basename={process.env.PUBLIC_URL} history={history}>
             <Switch>
                 <Route exact path="/" render={(props) => (<Home location={props.location.pathname} />)} />
                 <Route exact path="/Main" render={(props) => (<Main location={props.location.pathname} />)} />

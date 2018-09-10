@@ -37,9 +37,9 @@ export class NavBar extends Component {
 
   handleChange = (event) => {
 
-
     this.setState({ text: event.target.value })
   }
+
   componentDidMount() {
     this.props.getUser()
   }
