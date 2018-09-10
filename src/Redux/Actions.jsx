@@ -49,7 +49,7 @@ export const getLogout = () => dispatch => {
         message: data.message,
         success: data.success
       });
-      dispatch(push('/'))
+      dispatch(push('/kwitter'))
     });
 };
 
@@ -125,7 +125,7 @@ export const login = (username, password) => dispatch => {
 
       });
       if (data.success === true) {
-        dispatch(push('/Main'))
+        dispatch(push('/kwitter/Main'))
       } else {
         alert("Wrong Username or Password")
       }

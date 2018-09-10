@@ -19,8 +19,8 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter basename={process.env.PUBLIC_URL} history={history}>
             <Switch>
-                <Route exact path="/" render={(props) => (<Home location={props.location.pathname} />)} />
-                <Route exact path="/Main" render={(props) => (<Main location={props.location.pathname} />)} />
+                <Route exact path="/kwitter" render={(props) => (<Home location={props.location.pathname} />)} />
+                <Route exact path="/kwitter/main" render={(props) => (<Main location={props.location.pathname} />)} />
                 <Route component={NoPagePath} />
             </Switch>
         </ConnectedRouter>
